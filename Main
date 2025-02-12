@@ -1,0 +1,5 @@
+curl --request POST \
+--url "http(s)://HOSTNAME/api/v3/app/installations/INSTALLATION_ID/access_tokens" \
+--header "Accept: application/vnd.github+json" \
+--header "Authorization: Bearer JWT" \
+--header "X-GitHub-Api-Version: 2022-11-28"
