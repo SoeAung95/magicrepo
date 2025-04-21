@@ -1,0 +1,8 @@
+[user]
+	signingkey = 80C3B23E2566C038
+	name = SoeAung95
+	email = soeaung2981995@gmail.com
+[commit]
+	gpgsign = true
+[gpg]
+	program = /usr/bin/gpg
