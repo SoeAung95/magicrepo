@@ -1,7 +1,1 @@
-.cache/
-.gnupg/
-.npm/
-.ash_history
-.env
-*.log
 .ssh/
