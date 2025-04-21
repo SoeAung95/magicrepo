@@ -4,3 +4,4 @@
 .ash_history
 .env
 *.log
+.ssh/
