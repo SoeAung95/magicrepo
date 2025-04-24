@@ -1,5 +1,25 @@
-<meta name="description" content="Welcome to magicStone.online — Your digital creative stone!">
-<meta property="og:title" content="MagicStone" />
-<meta property="og:description" content="A creative space for digital builders!" />
-<meta property="og:url" content="https://magicstone.online" />
-<meta property="og:type" content="website" />
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>MagicStone</title>
+
+    <!-- Original meta tags -->
+    <meta name="description" content="Welcome to magicStone.online — Your digital creative stone!">
+    <meta property="og:title" content="MagicStone" />
+    <meta property="og:description" content="A creative space for digital builders!" />
+    <meta property="og:url" content="https://magicstone.online" />
+    <meta property="og:type" content="website" />
+
+    <!-- HTTPS Redirect Logic -->
+    <script>
+      if (location.protocol !== 'https:') {
+        location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
+      }
+    </script>
+  </head>
+  <body>
+    <h1>MagicStone is LIVE with HTTPS!</h1>
+    <p>Welcome to your digital domain! This page is hosted on GitHub Pages with custom domain & SSL.</p>
+  </body>
+</html>
