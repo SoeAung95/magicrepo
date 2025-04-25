@@ -1,0 +1,61 @@
+# ====================
+# OS + Editor Files
+# ====================
+.DS_Store
+Thumbs.db
+*.swp
+
+# ====================
+# Shell + iSH History
+# ====================
+.ash_history
+.bash_history
+.zsh_history
+
+# ====================
+# Sensitive Configs & Secrets
+# ====================
+.env
+*.key
+*.pem
+*.crt
+*.p12
+*.gpg
+*.asc
+
+# ====================
+# Language-specific
+# ====================
+
+# Node.js
+node_modules/
+.npm/
+.nvm/
+
+# Python
+__pycache__/
+*.pyc
+.python_history
+
+# ====================
+# GitHub Pages / Project Artifacts
+# ====================
+CNAME
+.rebuild
+.trigger*
+.sslping
+main
+HEAD
+Host:
+accept:
+user-agent:
+
+# ====================
+# Logs & Temp Files
+# ====================
+*.log
+*.bak
+*.tmp
+
+# Cleanup Scripts
+cleanup.sh
