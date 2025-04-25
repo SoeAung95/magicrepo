@@ -3,6 +3,6 @@
 	name = SoeAung95
 	email = soeaung2981995@gmail.com
 [commit]
-	gpgsign = true
+	gpgsign = false
 [gpg]
 	program = /usr/bin/gpg
