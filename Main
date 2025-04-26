@@ -1,6 +1,31 @@
-curl --request POST \
---url "http(s)://HOSTNAME/api/v3/app/installations/INSTALLATION_ID/access_tokens" \
---header "Accept: application/vnd.github+json" \
---header "Authorization: Bearer JWT" \
---header "X-GitHub-Api-Version: 2022-11-28"
-https://magicstone.online/
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MagicStone - AI Gateway</title>
+
+  <!-- ✅ SEO -->
+  <meta name="description" content="MagicStone — OpenAI API Gateway with GitHub and Google Login.">
+  <meta property="og:title" content="MagicStone" />
+  <meta property="og:description" content="Welcome to your AI-powered creative space!" />
+  <meta property="og:url" content="https://magicstone.online" />
+  <meta property="og:type" content="website" />
+
+  <!-- ✅ Redirect to HTTPS -->
+  <script>
+    if (location.protocol !== 'https:') {
+      location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
+    }
+  </script>
+</head>
+<body>
+  <h1>Welcome to MagicStone.online!</h1>
+  <p>⚡ Your AI-powered future begins here. Ready to connect with GitHub, Google & OpenAI!</p>
+
+  <!-- ✅ Future: Login buttons -->
+  <button onclick="loginGithub()">Login with GitHub</button>
+  <button onclick="loginGoogle()">Login with Google</button>
+
+  <script src="/src/auth.js"></script> <!-- Auth script (optional future) -->
+</body>
+</html>
