@@ -1,1 +1,5 @@
 <above content>
+
+# SSH Keys and Folders
+.ssh/
+ssh-*
