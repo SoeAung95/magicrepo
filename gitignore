@@ -62,3 +62,8 @@ cleanup.sh
 # SSH Keys and Folders
 .ssh/
 ssh-*
+magicrepo.git/
+magicrepo.tar
+magicrepo.zip
+bfg-1.14.0.jar
+bfg.jar
