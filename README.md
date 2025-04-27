@@ -1,15 +1,15 @@
-# ✨ MagicStone
+# MagicStone.online - your digital sandbox
 
-**Welcome to MagicStone.online** — your digital sandbox for creativity, ideas, and innovation, fully powered by GitHub Pages.
+![Security Cleanup](https://img.shields.io/badge/Security-Cleaned-brightgreen)
 
 ---
 
-### 🚀 Live Preview
+### % Live Preview
 [https://magicstone.online](https://magicstone.online)
 
 ---
 
-### ⚙️ Tech Stack
+### 1@ Tech Stack
 - Static site hosted with **GitHub Pages**
 - Pure **HTML** + minimal JavaScript
 - Custom domain: `magicstone.online`
@@ -17,19 +17,14 @@
 
 ---
 
-### ✅ Setup Highlights
-- `CNAME` added for custom domain
-- `.nojekyll` file disables Jekyll build process
-- SEO tags + HTTPS redirect in `index.html`
+### V Setup Highlights
+- 'CNAME' added for custom domain
+- 'nojekyll' file disables Jekyll build process
+- SEO tags + HTTPS redirect in 'index.html'
 - DNS fully verified + GitHub domain linked
 
 ---
 
-### 💡 Next Ideas (Optional)
+### Next Ideas (Optional)
 - Add custom JS chatbot or AI Assistant
 - Embed Telegram or Email form
-- Setup GitHub Actions for auto-redeploy
-
----
-
-> Built with vision. Managed with code. Run with vibes.
