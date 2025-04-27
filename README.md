@@ -28,3 +28,14 @@
 ### Next Ideas (Optional)
 - Add custom JS chatbot or AI Assistant
 - Embed Telegram or Email form
+# MagicStone.online ✨
+
+**Live Preview:** [Visit Here](https://magicstone.online)
+
+## Tech Stack
+- Static Site with GitHub Pages
+- Custom Domain
+- SSL Secured
+
+## About
+Welcome to your ultimate creative sandbox! Build, play, and launch amazing ideas.
