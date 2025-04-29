@@ -3,3 +3,4 @@
 # SSH Keys and Folders
 .ssh/
 ssh-*
+.ash_history
