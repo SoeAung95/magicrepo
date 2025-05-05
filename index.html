@@ -20,14 +20,12 @@
       .then(data => {
         const container = document.getElementById('identity');
         container.innerHTML = `
-          <div class="item"><span class="label">Name:</span> ${data.name}</div>
+          <div class="item"><span class="label">Username:</span> ${data.username}</div>
           <div class="item"><span class="label">Wallet:</span> ${data.wallet}</div>
-          <div class="item"><span class="label">Citizen Level:</span> ${data.citizen_level}</div>
-          <div class="item"><span class="label">Telegram:</span> ${data.telegram_status}</div>
           <div class="item"><span class="label">GitHub:</span> <a href="${data.github}" target="_blank">${data.username}</a></div>
-          <div class="item"><span class="label">Airdrop Earnings:</span> ${data.airdrop_score}</div>
-          <div class="item"><span class="label">Projects:</span><ul>${data.projects.map(p => `<li>${p}</li>`).join('')}</ul></div>
-          <div class="item"><em>${data.note}</em></div>
+          <div class="item"><span class="label">Website:</span> <a href="${data.website}" target="_blank">${data.website}</a></div>
+          <div class="item"><span class="label">Platforms:</span><ul>${data.platforms.map(p => `<li>${p}</li>`).join('')}</ul></div>
+          <div class="item"><span class="label">Badges:</span><ul>${data.badges.map(b => `<li>${b}</li>`).join('')}</ul></div>
         `;
       });
   </script>
