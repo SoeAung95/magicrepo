@@ -1,15 +1,12 @@
 {
-  "name": "Your Name or Alias",
   "username": "SoeAung95",
-  "wallet": "0x1234...abcd",
-  "citizen_level": 250,
-  "telegram_status": "account lost",
-  "projects": [
-    "BeraChain - S1",
-    "Mots - Top 500",
-    "Catizen - Lv250+"
+  "wallet": "0x1234abcd5678efgh9012ijkl",
+  "platforms": ["Galxe", "Zealy", "Layer3", "TaskOn", "DappRadar"],
+  "badges": [
+    "Early Adopter",
+    "Airdrop Hunter",
+    "GitHub Builder"
   ],
   "github": "https://github.com/SoeAung95",
-  "airdrop_score": "1000$+",
-  "note": "OG airdrop hunter from Myanmar. Lost Telegram access, but still active."
+  "website": "https://soeaung95.github.io/magicrepo/"
 }
