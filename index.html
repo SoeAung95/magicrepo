@@ -1,1 +1,35 @@
-<h1>magicstone.online is live</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GitGab Identity</title>
+  <meta charset="UTF-8">
+  <style>
+    body { font-family: sans-serif; max-width: 600px; margin: auto; padding: 1em; }
+    h1 { color: #444; }
+    .item { margin-bottom: 1em; }
+    .label { font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>GitGab Identity Dashboard</h1>
+  <div id="identity"></div>
+
+  <script>
+    fetch('identity.json')
+      .then(response => response.json())
+      .then(data => {
+        const container = document.getElementById('identity');
+        container.innerHTML = `
+          <div class="item"><span class="label">Name:</span> ${data.name}</div>
+          <div class="item"><span class="label">Wallet:</span> ${data.wallet}</div>
+          <div class="item"><span class="label">Citizen Level:</span> ${data.citizen_level}</div>
+          <div class="item"><span class="label">Telegram:</span> ${data.telegram_status}</div>
+          <div class="item"><span class="label">GitHub:</span> <a href="${data.github}" target="_blank">${data.username}</a></div>
+          <div class="item"><span class="label">Airdrop Earnings:</span> ${data.airdrop_score}</div>
+          <div class="item"><span class="label">Projects:</span><ul>${data.projects.map(p => `<li>${p}</li>`).join('')}</ul></div>
+          <div class="item"><em>${data.note}</em></div>
+        `;
+      });
+  </script>
+</body>
+</html>
