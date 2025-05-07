@@ -1,18 +1,8 @@
 {
   "username": "SoeAung95",
-  "wallet": "0x1234abcd5678efgh9012ijkl",
+  "wallet": "0x1234abcd...",
   "github": "https://github.com/SoeAung95",
-  "website": "https://soeaung95.github.io/magicrepo/",
-  "platforms": [
-    "Galxe",
-    "Zealy",
-    "Layer3",
-    "TaskOn",
-    "DappRadar"
-  ],
-  "badges": [
-    "Early Adopter",
-    "Airdrop Hunter",
-    "GitHub Builder"
-  ]
+  "website": "https://magicstone.online",
+  "platforms": [ "Galxe", "Zealy", "Layer3" ],
+  "badges": [ "Early Adopter", "Airdrop Hunter" ]
 }
