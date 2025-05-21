@@ -1,1 +1,71 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Resporn | Web3 CV</title><style>body { font-family: Arial, sans-serif; background: #f9f9f9; color: #222; padding: 20px; }h1 { color: #5f27cd; }.section { margin-bottom: 20px; }code { background: #eee; padding: 3px 5px; border-radius: 4px; }</style></head><body><h1>🌱 Resporn's Web3 Farming CV</h1><div class="section"><h2>📲 Wallets</h2><ul><li>MetaMask: <code>0xABC...123</code></li><li>Bitget: ✅ Verified</li></ul></div><div class="section"><h2>🧾 Farming Stats</h2><ul><li>Grass Node Uptime: 97%</li><li>Epoch 7 Earnings: <b>516.25 tokens</b></li></ul></div><div class="section"><h2>🛠 Tools Used</h2><ul><li>Grass Node</li><li>MetaMask (iOS)</li><li>GitHub Pages</li></ul></div><div class="section"><h2>✅ Proof of Work</h2><ul><li>Farming Logs: Uploaded</li><li>Wallet Activity: Snapshot available</li></ul></div><div class="section"><h2>🔗 Contact</h2><p>Telegram: <code>@your_username</code> | GitHub: <code>github.com/yourhandle</code></p></div></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Resporn | Web3 CV</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f9f9f9; color: #222; padding: 20px; }
+    h1 { color: #5f27cd; }
+    .section { margin-bottom: 20px; }
+    code { background: #eee; padding: 3px 5px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <h1>🌱 Resporn's Web3 Farming CV</h1>
+
+  <div class="section">
+    <h2>📲 Wallets</h2>
+    <ul id="wallets">
+      <li>Loading wallet addresses... ⏳</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>🧾 Farming Stats</h2>
+    <ul>
+      <li>Grass Node Uptime: 97%</li>
+      <li>Epoch 7 Earnings: <b>516.25 tokens</b></li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>🛠 Tools Used</h2>
+    <ul>
+      <li>Grass Node</li>
+      <li>MetaMask (iOS)</li>
+      <li>GitHub Pages</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>✅ Proof of Work</h2>
+    <ul>
+      <li>Farming Logs: Uploaded</li>
+      <li>Wallet Activity: Snapshot available</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>🔗 Contact</h2>
+    <p>Telegram: <code>@your_username</code> | GitHub: <code>github.com/yourhandle</code></p>
+  </div>
+
+  <script>
+    fetch('wallets.json')
+      .then(res => res.json())
+      .then(data => {
+        const walletsUl = document.getElementById('wallets');
+        walletsUl.innerHTML = `
+          <li>TON: <code>${data.ton}</code></li>
+          <li>Solana: <code>${data.solana}</code></li>
+          <li>EVM: <code>${data.evm || 'Coming soon 🔍'}</code></li>
+        `;
+      })
+      .catch(err => {
+        document.getElementById('wallets').innerHTML = `<li>Error loading wallet addresses ❌</li>`;
+        console.error(err);
+      });
+  </script>
+</body>
+</html>
