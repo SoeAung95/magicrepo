@@ -1,3 +1,5 @@
-.ssh
-.cache
-.npm
+.ssh/
+cache/
+npm/
+*.log
+*.tmp
