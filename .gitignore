@@ -1,5 +1,5 @@
 .ssh/
 cache/
-npm/
+node_modules/
 *.log
 *.tmp
