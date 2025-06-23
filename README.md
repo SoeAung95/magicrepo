@@ -1,16 +1,11 @@
-# MagicRepo — Sone See Yar POS & Network
+# MagicStone POS + Grass Lite Node + Browser Extension
 
-This repository contains:
-- ⚡ Grass Lite Node setup
-- 🌐 Browser frontend (GitHub Pages ready)
-- 🔑 Wallet basic setup scripts
-- 🔧 Full PowerShell setup automation
+Offline POS system with:
+- MagicStone branded frontend
+- Grass Lite Node connection simulation
+- Browser extension
 
-## 📌 How to setup
-1️⃣ Clone this repo  
-2️⃣ Run `scripts/full_setup.ps1`  
-3️⃣ Access your site: `https://magicstone.online`
-
-## 🌟 DNS
-Point your domain A record:
-
+## Usage
+✅ Open `index.html` in browser  
+✅ Load extension in browser → Load unpacked → select repo folder  
+✅ Run POS offline, simulate Grass Lite Node connect
