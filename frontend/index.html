@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="MagicStone Web3 Dashboard">
+    <title>MagicStone Web3 Dashboard</title>
+    <link rel="manifest" href="../manifest.json">
+    <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+    <link rel="icon" href="../favicon.ico">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="status-bar">
+                <span class="time" id="current-time">9:41</span>
+                <div class="status-icons">
+                    <span class="signal">•••</span>
+                    <span class="wifi">📶</span>
+                    <span class="battery">🔋</span>
+                </div>
+            </div>
+            <h1 class="app-title">✨ MagicStone Web3 Dashboard</h1>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Wallet Section -->
+            <section class="wallet-section">
+                <div class="section-header">
+                    <h2>💰 My Wallets</h2>
+                    <button class="refresh-btn" id="refresh-wallets" onclick="fetchBalances()">
+                        <span class="refresh-icon">🔄</span>
+                    </button>
+                </div>
+                <div id="wallet-container" class="wallet-grid"></div>
+            </section>
+
+            <!-- Quick Actions -->
+            <section class="quick-actions">
+                <h3>⚡ Quick Actions</h3>
+                <div class="action-grid">
+                    <button class="action-btn" id="connect-wallet">
+                        <span class="icon">🔗</span>
+                        <span class="label">Connect Wallet</span>
+                    </button>
+                    <button class="action-btn" id="view-portfolio">
+                        <span class="icon">📊</span>
+                        <span class="label">Portfolio</span>
+                    </button>
+                    <button class="action-btn" id="send-crypto">
+                        <span class="icon">💸</span>
+                        <span class="label">Send</span>
+                    </button>
+                    <button class="action-btn" id="receive-crypto">
+                        <span class="icon">📥</span>
+                        <span class="label">Receive</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Network Status -->
+            <section class="network-status">
+                <div class="section-header">
+                    <h3>🌐 Network Connections</h3>
+                    <div class="connection-indicator">
+                        <span class="pulse-dot"></span>
+                        <span class="connection-text">All Systems Online</span>
+                    </div>
+                </div>
+                <div class="network-grid">
+                    <div class="network-item active" data-network="ethereum">
+                        <div class="network-info">
+                            <div class="network-header">
+                                <span class="network-icon eth">⚡</span>
+                                <span class="network-name">Ethereum</span>
+                                <div class="connection-status connected">
+                                    <span class="status-dot"></span>
+                                    <span class="status-text">Connected</span>
+                                </div>
+                            </div>
+                            <div class="network-details">
+                                <span class="block-height">Block: 18,742,891</span>
+                                <span class="gas-price">Gas: 23 gwei</span>
+                            </div>
+                        </div>
+                        <div class="connection-strength">
+                            <div class="strength-bars">
+                                <div class="bar active"></div>
+                                <div class="bar active"></div>
+                                <div class="bar active"></div>
+                                <div class="bar active"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="network-item active" data-network="bsc">
+                        <div class="network-info">
+                            <div class="network-header">
+                                <span class="network-icon bsc">🟡</span>
+                                <span class="network-name">BSC</span>
+                                <div class="connection-status connected">
+                                    <span class="status-dot"></span>
+                                    <span class="status-text">Connected</span>
+                                </div>
+                            </div>
+                            <div class="network-details">
+                                <span class="block-height">Block: 34,123,456</span>
+                                <span class="gas-price">Gas: 5 gwei</span>
+                            </div>
+                        </div>
+                        <div class="connection-strength">
+                            <div class="strength-bars">
+                                <div class="bar active"></div>
+                                <div class="bar active"></div>
+                                <div class="bar active"></div>
+                                <div class="bar"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="network-item active" data-network="solana">
+                        <div class="network-info">
+                            <div class="network-header">
+                                <span class="network-icon sol">🔥</span>
+                                <span class="network-name">Solana</span>
+                                <div class="connection-status connected">
+                                    <span class="status-dot"></span>
+                                    <span class="status-text">Connected</span>
+                                </div>
+                            </div>
+                            <div class="network-details">
+                                <span class="block-height">Slot: 234,567,890</span>
+                                <span class="gas-price">Fee: 0.00025 SOL</span>
+                            </div>
+                        </div>
+                        <div class="connection-strength">
+                            <div class="strength-bars">
+                                <div class="bar active"></div>
+                                <div class="bar active"></div>
+                                <div class="bar active"></div>
+                                <div class="bar active"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="network-item active" data-network="ton">
+                        <div class="network-info">
+                            <div class="network-header">
+                                <span class="network-icon ton">🔷</span>
+                                <span class="network-name">TON</span>
+                                <div class="connection-status connected">
+                                    <span class="status-dot"></span>
+                                    <span class="status-text">Connected</span>
+                                </div>
+                            </div>
+                            <div class="network-details">
+                                <span class="block-height">Block: 45,678,901</span>
+                                <span class="gas-price">Fee: 0.05 TON</span>
+                            </div>
+                        </div>
+                        <div class="connection-strength">
+                            <div class="strength-bars">
+                                <div class="bar active"></div>
+                                <div class="bar active"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <button class="nav-btn active" data-section="wallet">
+                <span class="nav-icon">💰</span>
+                <span class="nav-label">Wallet</span>
+            </button>
+            <button class="nav-btn" data-section="portfolio">
+                <span class="nav-icon">📊</span>
+                <span class="nav-label">Portfolio</span>
+            </button>
+            <button class="nav-btn" data-section="trade">
+                <span class="nav-icon">💱</span>
+                <span class="nav-label">Trade</span>
+            </button>
+            <button class="nav-btn" data-section="settings">
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-label">Settings</span>
+            </button>
+        </nav>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>Loading wallets...</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="env.js"></script>
+    <script src="wallet.js"></script>
+    <script src="ai.js"></script>
+</body>
+</html>
