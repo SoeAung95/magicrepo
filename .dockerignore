@@ -1,0 +1,30 @@
+# Git files
+.git
+.gitignore
+
+# Documentation
+README.md
+*.md
+
+# Build files
+Dockerfile
+.dockerignore
+
+# Downloaded files
+*.tar.gz
+*.zip
+
+# Logs
+*.log
+
+# IDE files
+.vscode
+.idea
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
