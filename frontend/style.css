@@ -5,12 +5,101 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-    color: white;
-    min-height: 100vh;
-    padding: 20px;
+   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+   min-height: 100vh;
+   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+.card {
+   border: none;
+   border-radius: 15px;
+   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+   transition: transform 0.3s ease;
+}
+.card:hover {
+   transform: translateY(-5px);
+}
+.navbar-brand {
+   font-weight: bold;
+   font-size: 1.5rem;
+}
+.btn {
+   border-radius: 25px;
+   padding: 10px 20px;
+}
+.fa-3x {
+   margin-bottom: 15px;
+}
+```
+**3. 🔧 Enhanced JavaScript (wallet.js):**
+```javascript
+// Modern Dashboard Functions
+class Dashboard {
+   constructor() {
+       this.init();
+   }
+   async init() {
+       await this.loadHealthStatus();
+       await this.loadWalletBalance();
+       await this.loadApiKeys();
+       this.setupEventListeners();
+   }
+   async loadHealthStatus() {
+       try {
+           const response = await fetch('/api/health');
+           const data = await response.json();
+           document.getElementById('healthStatus').innerHTML =
+               `<span class="text-success"><i class="fas fa-check-circle"></i> ${data.status}</span>`;
+       } catch (error) {
+           document.getElementById('healthStatus').innerHTML =
+               `<span class="text-danger"><i class="fas fa-times-circle"></i> Error</span>`;
+       }
+   }
+   async loadWalletBalance() {
+       try {
+           const response = await fetch('/api/wallet');
+           const data = await response.json();
+           document.getElementById('walletBalance').innerHTML =
+               `<span class="text-success h4">$${data.balance}</span>`;
+       } catch (error) {
+           document.getElementById('walletBalance').innerHTML =
+               `<span class="text-danger">Error loading</span>`;
+       }
+   }
+   async loadApiKeys() {
+       try {
+           const response = await fetch('/api/keys');
+           const data = await response.json();
+           const keyCount = Object.keys(data.keys).length;
+           document.getElementById('apiStatus').innerHTML =
+               `<span class="text-info">${keyCount} Keys Active</span>`;
+       } catch (error) {
+           document.getElementById('apiStatus').innerHTML =
+               `<span class="text-danger">Error</span>`;
+       }
+   }
+   setupEventListeners() {
+       // Wallet Connect
+       document.getElementById('connectWallet').addEventListener('click', () => {
+           this.connectWallet();
+       });
+       // Gmail Connect
+       document.getElementById('gmailConnect').addEventListener('click', () => {
+           this.connectGmail();
+       });
+   }
+   connectWallet() {
+       // Wallet connection logic
+       alert('Wallet connection feature coming soon!');
+   }
+   connectGmail() {
+       // Gmail OAuth integration
+       alert('Gmail integration feature coming soon!');
+   }
+}
+// Initialize Dashboard
+document.addEventListener('DOMContentLoaded', () => {
+   new Dashboard();
+});
 
 .container {
     max-width: 800px;
