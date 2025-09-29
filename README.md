@@ -1,29 +1,27 @@
-MagicStone.online - your digital sandbox
-Security Cleanup
+# Hi there 👋
 
-% Live Preview
-https://magicstone.online
+---
 
-1@ Tech Stack
-- Static site hosted with GitHub Pages
-- Pure HTML + minimal JavaScript
-- Custom domain: magicstone.online
-- SSL: Pending Let's Encrypt from GitHub
+## License
 
-V Setup Highlights
-- 'CNAME' added for custom domain
-- 'nojekyll' file disables Jekyll build process
-- SEO tags + HTTPS redirect in 'index.html'
-- DNS fully verified + GitHub domain linked
+MIT License  
 
-Next Ideas (Optional)
-- Add custom JS chatbot or AI Assistant
-- Embed Telegram or Email form
-MagicStone.online ✨
-Live Preview: Visit Here
-Tech Stack
-- Static Site with GitHub Pages
-- Custom Domain
-- SSL Secured
-About
-Welcome to your ultimate creative sandbox! Build, play, and launch amazing ideas. 
+Copyright (c) 2025 **Soe Aung**  
+
+Permission is hereby granted, free of charge, to any person obtaining a copy  
+of this software and associated documentation files (the "Software"), to deal  
+in the Software without restriction, including without limitation the rights  
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell  
+copies of the Software, and to permit persons to whom the Software is  
+furnished to do so, subject to the following conditions:  
+
+The above copyright notice and this permission notice shall be included in  
+all copies or substantial portions of the Software.  
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR  
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,  
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE  
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER  
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING  
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS  
+IN THE SOFTWARE.
