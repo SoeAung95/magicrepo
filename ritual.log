@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 MAGIC-232 | 2025-10-11 17:20:10 | Ghost rebase traces cleared, branch aligned with origin/main
 MAGIC-965 | 2025-10-21 04:13:02 | ritual.log sealed; branch switch to main prepared; divergence requires merge/rebase decision
 MAGIC-966 | 2025-10-21 04:14:31 | main branch synced with origin; sovereignty choice pending: merge master, keep dual branches, or unify history
@@ -7,3 +8,26 @@ MAGIC-971 | 2025-10-21 04:24:40 | my-feature + feat/awesome-feature purged; rema
 MAGIC-972 | 2025-10-21 04:27:35 | ritual.log sealed; feature/verified-test merge retried; obsolete branches confirmed purged or already gone
 MAGIC-973 | 2025-10-21 04:28:07 | All obsolete branches purged; main stands sovereign and unified
 MAGIC-975 | 2025-10-21 04:30:56 | Sovereignty markers injected; branch protection rules noted; CodeQL scan pending
+=======
+MAGIC-014 | 2025-10-07 04:59 | DNS rupture traced: magicrepo.magicstone.online NXDOMAIN, subdomain not sculpted yet
+MAGIC-019 | 2025-10-08 22:17 | ulimit patch injected, no resource exhaustion, app launch failure traced to GUI fog or sandbox isolation
+MAGIC-020 | 2025-10-08 22:20 | Git push rejected, remote contains unsynced history, patch pending
+MAGIC-025 | 2025-10-08 22:30 | Network interface eth0 active with IP 172.22.250.123, backend clarity confirmed
+MAGIC-026 | 2025-10-08 22:35 | iPhone trade status unclear, backend fog traced, emotional cost pending
+MAGIC-032 | 2025-10-09 15:56 | System fog traced: PowerShell crash, network unclear, GitHub rituals broken, MCP signal missing
+MAGIC-034 | 2025-10-09 16:03 | GitHub token rebind corrected, angle brackets removed, push ritual restored
+MAGIC-035 | 2025-10-09 16:06 | MCP certificate and MSI score download traced via Microsoft Certification Dashboard
+MAGIC-036 | 2025-10-09 16:17 | All recovery rituals sculpted from Windows host: PowerShell patch, GitHub token rebind, MCP credential trace, MSI score download confirmed
+MAGIC-037 | 2025-10-09 16:19 | MCP Credential Ritual: Accessed via Microsoft Certification Dashboard (https://learn.microsoft.com/en-us/credentials/certifications/access-certificates-badges-transcript), Token-bound GitHub push confirmed, MSI score and transcript downloaded, Ritual log entries: MAGIC-035, MAGIC-036
+MAGIC-037 | 2025-10-09 16:24 | MCP Credential Ritual: Accessed via Microsoft Certification Dashboard (https://learn.microsoft.com/en-us/credentials/certifications/access-certificates-badges-transcript), Token-bound GitHub push confirmed, MSI score and transcript downloaded, Ritual log entries: MAGIC-035, MAGIC-036
+MAGIC-042 | 2025-10-09 16:53 | All shells blocked (PowerShell, CMD, Git Bash, Ubuntu). Recovery rituals prepared: Task Manager entry, SFC/DISM, winget reinstall, new profile fallback.
+MAGIC-045 | 2025-10-09 17:09 | PowerShell install failed via apt, Microsoft repo injected, pwsh ritual prepared
+MAGIC-047 | 2025-10-09 17:35 | Direct PowerShell .deb download failed, redirected to official LTS release page, manual install prepared
+MAGIC-047 | 2025-10-09 17:40 | Direct PowerShell .deb download failed, redirected to official LTS release page, manual install prepared
+[1340] Thu Oct 23 09:38:48 UTC 2025 Local main reset to origin/main; ahead by 2 commits; push to main queued; GitHub verification glow imminent
+[1342] Thu Oct 23 09:41:32 UTC 2025 Signed commit 9687548 traced; cherry-pick into main queued; push prepared for GitHub verification glow; shell command misfire resolved
+[1343] Thu Oct 23 09:42:32 UTC 2025 Signed commit 2f58724 pushed to main; GitHub verification glow confirmed; MAGIC‑KEY‑1333 authorship sealed; backend sovereignty honoured
+[1344] Thu Oct 23 09:47:57 UTC 2025 Global Git signing config confirmed; MAGIC‑KEY‑1333 active across all repos; backend authorship sovereignty sealed
+[1351] Thu Oct 23 11:39:15 UTC 2025 GitHub UI fog confirmed; primary email inspection delayed; shell-only clarity preferred; shortcut and CLI inspection injected
+[1358] Thu Oct 23 12:45:28 UTC 2025 WSL2 backend rebirth confirmed; interop layer reactivated; shell-to-Windows bindings restored; sovereignty glow reestablished
+>>>>>>> c5b02c7 (Update ritual.log before rebase)
