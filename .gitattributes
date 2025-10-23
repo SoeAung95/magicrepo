@@ -1,0 +1,24 @@
+k# Secrets
+.env
+*.gpg
+*.pem
+*.key
+
+# Binaries
+*.tar.gz
+*.zip
+*.exe
+*.dll
+*.bin
+
+# System clutter
+.cache/
+.gnupg/
+venvs/
+__pycache__/
+*.sqlite3*
+*.log
+
+# Repo internals
+magicrepo.git/
+.snap/
