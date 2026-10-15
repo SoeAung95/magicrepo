@@ -329,14 +329,19 @@
         const resDb = await fetch('data.json');
         if (resDb.ok) {
           const db = await resDb.json();
-          menuItems = (db.items && db.items.length > 0) ? db.items : defaultMenuBackup;
+          const savedCustomMenu = localStorage.getItem('sm_custom_menu');
+          if (savedCustomMenu) {
+            menuItems = JSON.parse(savedCustomMenu);
+          } else {
+            menuItems = (db.items && db.items.length > 0) ? db.items : defaultMenuBackup;
+          }
           renderCategoryFilter(db.categories || ['All', 'Food', 'Alcohol', 'KTV', 'Room', 'Service']);
         } else {
-          menuItems = defaultMenuBackup;
+          const savedM = localStorage.getItem('sm_custom_menu'); menuItems = savedM ? JSON.parse(savedM) : defaultMenuBackup;
           renderCategoryFilter(['All', 'Food', 'Alcohol', 'KTV', 'Room', 'Service']);
         }
       } catch(e) {
-        menuItems = defaultMenuBackup;
+        const savedM = localStorage.getItem('sm_custom_menu'); menuItems = savedM ? JSON.parse(savedM) : defaultMenuBackup;
         renderCategoryFilter(['All', 'Food', 'Alcohol', 'KTV', 'Room', 'Service']);
       }
       renderMenuGrid(menuItems);
@@ -602,7 +607,7 @@
         total += sub;
         ctx.textAlign = 'left';
         boldText(ctx, `${it.name}   x${it.qty}`, 14, y);
-        if (type !== 'kot') {
+        if (type !== 'kot' && sub > 0) {
           ctx.textAlign = 'right';
           boldText(ctx, sub.toLocaleString() + ' Ks', width - 14, y);
         }
@@ -618,7 +623,8 @@
         ctx.textAlign = 'left';
         boldText(ctx, 'ကျသင့်ငွေ :', 14, y);
         ctx.textAlign = 'right';
-        boldText(ctx, total.toLocaleString() + ' Ks', width - 14, y);
+        const finalTotal = (data.total && data.total > 0) ? data.total : total;
+        boldText(ctx, finalTotal.toLocaleString() + ' Ks', width - 14, y);
         y += lineH + 4;
 
         if (data.discount > 0) {
@@ -887,16 +893,47 @@
       const tbody = document.getElementById('tblManageItems');
       tbody.innerHTML = '';
       menuItems.forEach((it, idx) => {
-        tbody.innerHTML += `<tr><td>${it.image ? `<img src="${it.image}" style="width:30px;height:30px;border-radius:4px;">` : '-'}</td><td><strong>${it.name}</strong></td><td>${it.category}</td><td class="text-end">${it.price.toLocaleString()}</td><td class="text-center"><button class="btn btn-sm btn-outline-danger py-0 px-1" onclick="menuItems.splice(${idx},1);renderManageTable();renderMenuGrid(menuItems);">&times;</button></td></tr>`;
+        tbody.innerHTML += `<tr><td>${it.image ? `<img src="${it.image}" style="width:30px;height:30px;border-radius:4px;">` : '-'}</td><td><strong>${it.name}</strong></td><td>${it.category}</td><td class="text-end">${it.price.toLocaleString()}</td><td class="text-center">
+          <button class="btn btn-sm btn-outline-info py-0 px-1 me-1" onclick="editManageItem(${idx})"><i class="fas fa-edit"></i></button>
+          <button class="btn btn-sm btn-outline-danger py-0 px-1" onclick="deleteManageItem(${idx})"><i class="fas fa-trash"></i></button>
+        </td></tr>`;
       });
     }
+    function editManageItem(idx) {
+      const it = menuItems[idx];
+      if (!it) return;
+      document.getElementById('lblFormMode').textContent = '✏️ ကုန်ပစ္စည်း ပြင်ဆင်ရန်';
+      document.getElementById('manageItemId').value = it.id;
+      document.getElementById('manageItemName').value = it.name;
+      document.getElementById('manageItemPrice').value = it.price;
+      document.getElementById('manageItemCat').value = it.category;
+      currentCompressedBase64 = it.image || '';
+      document.getElementById('imgPreviewThumb').innerHTML = it.image ? `<img src="${it.image}" style="width:40px;height:40px;object-fit:cover;border-radius:4px;">` : '';
+    }
+    function deleteManageItem(idx) {
+      if (!confirm('ဤပစ္စည်းကို ဖျက်မည် သေချာပါသလား?')) return;
+      menuItems.splice(idx, 1);
+      localStorage.setItem('sm_custom_menu', JSON.stringify(menuItems));
+      renderManageTable(); filterMenu();
+    }
     function saveItemData() {
+      const editId = document.getElementById('manageItemId').value;
       const name = document.getElementById('manageItemName').value.trim();
       const price = parseInt(document.getElementById('manageItemPrice').value);
       const cat = document.getElementById('manageItemCat').value;
       if (!name || isNaN(price)) return alert("အမည်နှင့် ဈေးနှုန်း ဖြည့်ပါ");
-      menuItems.push({ id: Date.now(), name, price, category: cat, image: currentCompressedBase64 });
-      resetManageForm(); renderManageTable(); renderMenuGrid(menuItems);
+      if (editId) {
+        const target = menuItems.find(m => m.id == editId);
+        if (target) {
+          target.name = name; target.price = price; target.category = cat;
+          if (currentCompressedBase64) target.image = currentCompressedBase64;
+        }
+      } else {
+        menuItems.push({ id: Date.now(), name, price, category: cat, image: currentCompressedBase64 });
+      }
+      localStorage.setItem('sm_custom_menu', JSON.stringify(menuItems));
+      resetManageForm(); renderManageTable(); filterMenu();
+      alert('ကုန်ပစ္စည်းစာရင်း အောင်မြင်စွာ သိမ်းဆည်းပြီးပါပြီ!');
     }
 
     initSystem();
