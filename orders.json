@@ -1,0 +1,937 @@
+[
+  {
+    "order_id": "c09e6adc",
+    "table_name": "Table 1",
+    "order_time": "12:00:22",
+    "waiter_name": "",
+    "waiter_email": "",
+    "customer_name": "",
+    "items": [],
+    "sub_total": 0,
+    "discount": 0,
+    "total": 0,
+    "paid_amount": 0,
+    "due_amount": 0,
+    "payment_type": "",
+    "note": ""
+  },
+  {
+    "order_id": "173c8628",
+    "table_name": "Table 2",
+    "order_time": "12:01:28",
+    "waiter_name": "",
+    "waiter_email": "",
+    "customer_name": "",
+    "items": [
+      {
+        "detail_id": "d27013d1",
+        "item_id": 10005,
+        "name": "Black-Label",
+        "price": 230000,
+        "qty": 2
+      },
+      {
+        "detail_id": "219adf02",
+        "item_id": 10049,
+        "name": "Myanmar ပုလင်း",
+        "price": 5000,
+        "qty": 1
+      },
+      {
+        "detail_id": "cdd2bc6b",
+        "item_id": 50022,
+        "name": "No. 202 အခန်းခ",
+        "price": 80000,
+        "qty": 1
+      }
+    ],
+    "sub_total": 0,
+    "discount": 0,
+    "total": 545000,
+    "paid_amount": 0,
+    "due_amount": 0,
+    "payment_type": "",
+    "note": ""
+  },
+  {
+    "order_id": "206b7946",
+    "table_name": "Table 4",
+    "order_time": "12:01:59",
+    "waiter_name": "",
+    "waiter_email": "",
+    "customer_name": "",
+    "items": [
+      {
+        "detail_id": "e8d6e2d1",
+        "item_id": 10041,
+        "name": "Indo ကြက်ကြော်",
+        "price": 45000,
+        "qty": 1
+      },
+      {
+        "detail_id": "eda79a3a",
+        "item_id": 40057,
+        "name": "(၁၂)မျိုးဟင်းရည်",
+        "price": 35000,
+        "qty": 1
+      },
+      {
+        "detail_id": "a11c05c6",
+        "item_id": 50022,
+        "name": "No. 202 အခန်းခ",
+        "price": 80000,
+        "qty": 1
+      },
+      {
+        "detail_id": "469f000d",
+        "item_id": 10015,
+        "name": "KTV K-2",
+        "price": 50000,
+        "qty": 1
+      },
+      {
+        "detail_id": "4e30db6b",
+        "item_id": 10046,
+        "name": "1H Starlink",
+        "price": 1000,
+        "qty": 1
+      }
+    ],
+    "sub_total": 0,
+    "discount": 0,
+    "total": 211000,
+    "paid_amount": 0,
+    "due_amount": 0,
+    "payment_type": "",
+    "note": ""
+  },
+  {
+    "order_id": "72b78d02",
+    "table_name": "Table 4",
+    "order_time": "12:06:30",
+    "waiter_name": "",
+    "waiter_email": "",
+    "customer_name": "",
+    "items": [
+      {
+        "detail_id": "0aa65782",
+        "item_id": 10049,
+        "name": "Myanmar ပုလင်း",
+        "price": 5000,
+        "qty": 1
+      },
+      {
+        "detail_id": "3b4f7219",
+        "item_id": 10001,
+        "name": "ABC Beer",
+        "price": 7000,
+        "qty": 1
+      },
+      {
+        "detail_id": "7e14f8e2",
+        "item_id": 50022,
+        "name": "No. 202 အခန်းခ",
+        "price": 80000,
+        "qty": 1
+      }
+    ],
+    "sub_total": 0,
+    "discount": 0,
+    "total": 92000,
+    "paid_amount": 0,
+    "due_amount": 0,
+    "payment_type": "",
+    "note": ""
+  },
+  {
+    "order_id": "ac1e7a7a",
+    "table_name": "Table 1",
+    "order_time": "12:12:42",
+    "waiter_name": "",
+    "waiter_email": "",
+    "customer_name": "",
+    "items": [
+      {
+        "detail_id": "e12c2335",
+        "item_id": 10046,
+        "name": "1H Starlink",
+        "price": 1000,
+        "qty": 1
+      },
+      {
+        "detail_id": "e333d6fa",
+        "item_id": 10015,
+        "name": "KTV K-2",
+        "price": 50000,
+        "qty": 1
+      }
+    ],
+    "sub_total": 0,
+    "discount": 0,
+    "total": 51000,
+    "paid_amount": 0,
+    "due_amount": 0,
+    "payment_type": "",
+    "note": ""
+  },
+  {
+    "order_id": "8ab74072",
+    "table_name": "Table 1",
+    "order_time": "12:19:22",
+    "waiter_name": "",
+    "waiter_email": "",
+    "customer_name": "",
+    "items": [
+      {
+        "detail_id": "6a076e57",
+        "item_id": 50003,
+        "name": "Carabao",
+        "price": 3500,
+        "qty": 1
+      },
+      {
+        "detail_id": "18998cbf",
+        "item_id": 10024,
+        "name": "Cola",
+        "price": 3000,
+        "qty": 1
+      },
+      {
+        "detail_id": "9a4ee924",
+        "item_id": 50004,
+        "name": "Lipo",
+        "price": 3500,
+        "qty": 1
+      },
+      {
+        "detail_id": "ab5e6912",
+        "item_id": 10045,
+        "name": "Ice Coffee",
+        "price": 3000,
+        "qty": 1
+      }
+    ],
+    "sub_total": 0,
+    "discount": 0,
+    "total": 13000,
+    "paid_amount": 0,
+    "due_amount": 0,
+    "payment_type": "",
+    "note": ""
+  },
+  {
+    "order_id": "fcc70b22",
+    "table_name": "Table 1",
+    "order_time": "12:37:18",
+    "waiter_name": "",
+    "waiter_email": "",
+    "customer_name": "",
+    "items": [
+      {
+        "detail_id": "",
+        "item_id": 40069,
+        "name": "(၃)မျိုးထောင်း",
+        "price": 35000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 10041,
+        "name": "Indo ကြက်ကြော်",
+        "price": 45000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 40035,
+        "name": "ဝက်စုံသုပ်",
+        "price": 15000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 10019,
+        "name": "Service 4",
+        "price": 20000,
+        "qty": 1
+      }
+    ],
+    "sub_total": 0,
+    "discount": 0,
+    "total": 115000,
+    "paid_amount": 0,
+    "due_amount": 0,
+    "payment_type": "",
+    "note": ""
+  },
+  {
+    "order_id": "7452782f",
+    "table_name": "Table 1",
+    "order_time": "13:29:03",
+    "waiter_name": "",
+    "waiter_email": "",
+    "customer_name": "",
+    "items": [
+      {
+        "detail_id": "",
+        "item_id": 10016,
+        "name": "Service 2",
+        "price": 10000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 10059,
+        "name": "Starlink အင်တာနက်",
+        "price": 2000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 50010,
+        "name": "Napoli (လိပ်)",
+        "price": 4000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 10046,
+        "name": "1H Starlink",
+        "price": 1000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 50007,
+        "name": "Mevius Blue (လိပ်)",
+        "price": 15000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 50008,
+        "name": "Mevius Yellow (ဗူး)",
+        "price": 2000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 50009,
+        "name": "Mevius Blue (ဗူး)",
+        "price": 3000,
+        "qty": 1
+      }
+    ],
+    "sub_total": 0,
+    "discount": 0,
+    "total": 37000,
+    "paid_amount": 0,
+    "due_amount": 0,
+    "payment_type": "",
+    "note": ""
+  },
+  {
+    "order_id": "b1030283",
+    "table_name": "Table 1",
+    "order_time": "13:30:23",
+    "waiter_name": "",
+    "waiter_email": "",
+    "customer_name": "",
+    "items": [
+      {
+        "detail_id": "",
+        "item_id": 10026,
+        "name": "C(:)-up/down",
+        "price": 15000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 10025,
+        "name": "C[ကြား]-ဆိုင်စျေး",
+        "price": 12500,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 10006,
+        "name": "Double-Black",
+        "price": 260000,
+        "qty": 2
+      },
+      {
+        "detail_id": "",
+        "item_id": 10065,
+        "name": "Dann5 (1P)",
+        "price": 2500,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 10007,
+        "name": "Gold-Label",
+        "price": 330000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 10011,
+        "name": "Grand Royal Sherry",
+        "price": 28000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 50014,
+        "name": "No. 104 အခန်းခ",
+        "price": 35000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 50013,
+        "name": "No. 103 အခန်းခ",
+        "price": 45000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 50016,
+        "name": "No. 106 အခန်းခ",
+        "price": 35000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 50015,
+        "name": "No. 105 အခန်းခ",
+        "price": 45000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 10019,
+        "name": "Service 4",
+        "price": 20000,
+        "qty": 1
+      }
+    ],
+    "sub_total": 0,
+    "discount": 0,
+    "total": 1088000,
+    "paid_amount": 0,
+    "due_amount": 0,
+    "payment_type": "",
+    "note": ""
+  },
+  {
+    "order_id": "82ce1e64",
+    "table_name": "VIP 1",
+    "order_time": "13:33:03",
+    "waiter_name": "",
+    "waiter_email": "",
+    "customer_name": "",
+    "items": [
+      {
+        "detail_id": "",
+        "item_id": 10065,
+        "name": "Dann5 (1P)",
+        "price": 2500,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 10006,
+        "name": "Double-Black",
+        "price": 260000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 10003,
+        "name": "Full-Moon",
+        "price": 7000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 10013,
+        "name": "DUNFIFE",
+        "price": 28000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 10011,
+        "name": "Grand Royal Sherry",
+        "price": 28000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 10002,
+        "name": "Tiger",
+        "price": 6000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 10045,
+        "name": "Ice Coffee",
+        "price": 3000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 50004,
+        "name": "Lipo",
+        "price": 3500,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 10052,
+        "name": "အင်တာနက် ၁၂",
+        "price": 5000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 10059,
+        "name": "Starlink အင်တာနက်",
+        "price": 2000,
+        "qty": 1
+      }
+    ],
+    "sub_total": 0,
+    "discount": 0,
+    "total": 345000,
+    "paid_amount": 0,
+    "due_amount": 0,
+    "payment_type": "",
+    "note": ""
+  },
+  {
+    "order_id": "3d104eb7",
+    "table_name": "VIP 1",
+    "order_time": "13:34:32",
+    "waiter_name": "",
+    "waiter_email": "",
+    "customer_name": "",
+    "items": [
+      {
+        "detail_id": "",
+        "item_id": 10021,
+        "name": "ဖီတန်သုပ်",
+        "price": 10000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 40065,
+        "name": "ပြောင်းဖူးထောင်း",
+        "price": 10000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 40017,
+        "name": "ပြည်လုံးချမ်းသာ",
+        "price": 30000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 40071,
+        "name": "ပြောင်းဖူး",
+        "price": 10000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 40077,
+        "name": "ပုဇွန်တန်ပူရာ",
+        "price": 35000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 10062,
+        "name": "ပုဇွန်ချဉ်စပ်",
+        "price": 35000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 40045,
+        "name": "ကိုက်လန်သုပ်",
+        "price": 10000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 10039,
+        "name": "ကန်စွန်းပလိန်း",
+        "price": 6000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 40047,
+        "name": "အသား၃မျိုးစပ်",
+        "price": 25000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 40043,
+        "name": "၃မျိုးစပ် လွတ်",
+        "price": 15000,
+        "qty": 1
+      }
+    ],
+    "sub_total": 0,
+    "discount": 0,
+    "total": 186000,
+    "paid_amount": 0,
+    "due_amount": 0,
+    "payment_type": "",
+    "note": ""
+  },
+  {
+    "order_id": "ceefc6be",
+    "table_name": "A1",
+    "order_time": "13:43:04",
+    "waiter_name": "",
+    "waiter_email": "",
+    "customer_name": "",
+    "items": [
+      {
+        "detail_id": "",
+        "item_id": 40043,
+        "name": "၃မျိုးစပ် လွတ်",
+        "price": 15000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 10041,
+        "name": "Indo ကြက်ကြော်",
+        "price": 45000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 10005,
+        "name": "Black-Label",
+        "price": 230000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 50013,
+        "name": "No. 103 အခန်းခ",
+        "price": 45000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 10033,
+        "name": "KTV 1g",
+        "price": 30000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 10015,
+        "name": "KTV K-2",
+        "price": 50000,
+        "qty": 1
+      }
+    ],
+    "sub_total": 0,
+    "discount": 0,
+    "total": 415000,
+    "paid_amount": 0,
+    "due_amount": 0,
+    "payment_type": "",
+    "note": ""
+  },
+  {
+    "order_id": "28343dd8",
+    "table_name": "Table 2",
+    "order_time": "13:46:03",
+    "waiter_name": "",
+    "waiter_email": "",
+    "customer_name": "",
+    "items": [
+      {
+        "detail_id": "",
+        "item_id": 10063,
+        "name": "KTV select",
+        "price": 300000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 10064,
+        "name": "ငါး ဒုက္ခ",
+        "price": 35000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 40049,
+        "name": "ငါးခေါင်းမျှစ်ချဉ်",
+        "price": 35000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 40030,
+        "name": "ငါးချဉ်ခြောက်စပ်",
+        "price": 25000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 40032,
+        "name": "ငါးမုန့်ကြော်",
+        "price": 10000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 10060,
+        "name": "ထမင်းကြမ်း ပွဲကြီး",
+        "price": 25000,
+        "qty": 1
+      }
+    ],
+    "sub_total": 0,
+    "discount": 0,
+    "total": 430000,
+    "paid_amount": 0,
+    "due_amount": 0,
+    "payment_type": "",
+    "note": ""
+  },
+  {
+    "order_id": "48be4105",
+    "table_name": "A1",
+    "order_time": "13:49:18",
+    "waiter_name": "",
+    "waiter_email": "",
+    "customer_name": "",
+    "items": [
+      {
+        "detail_id": "",
+        "item_id": 10025,
+        "name": "C[ကြား]-ဆိုင်စျေး",
+        "price": 12500,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 10026,
+        "name": "C(:)-up/down",
+        "price": 15000,
+        "qty": 1
+      }
+    ],
+    "sub_total": 0,
+    "discount": 0,
+    "total": 27500,
+    "paid_amount": 0,
+    "due_amount": 0,
+    "payment_type": "",
+    "note": ""
+  },
+  {
+    "order_id": "d884646f",
+    "table_name": "Table 1",
+    "order_time": "16:23:44",
+    "waiter_name": "",
+    "waiter_email": "",
+    "customer_name": "",
+    "items": [
+      {
+        "detail_id": "",
+        "item_id": 10040,
+        "name": "ဆိတ်မွှထောင်း",
+        "price": 25000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 10016,
+        "name": "Service 2",
+        "price": 10000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 10052,
+        "name": "အင်တာနက် ၁၂",
+        "price": 5000,
+        "qty": 1
+      }
+    ],
+    "sub_total": 0,
+    "discount": 0,
+    "total": 40000,
+    "paid_amount": 0,
+    "due_amount": 0,
+    "payment_type": "",
+    "note": ""
+  },
+  {
+    "order_id": "e26477be",
+    "table_name": "No. 109",
+    "order_time": "16:35:07",
+    "waiter_name": "",
+    "waiter_email": "",
+    "customer_name": "",
+    "items": [
+      {
+        "detail_id": "",
+        "item_id": 50018,
+        "name": "No. 108 အခန်းခ",
+        "price": 35000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 50029,
+        "name": "No. 209 အခန်းခ",
+        "price": 35000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 50030,
+        "name": "No. 210 အခန်းခ",
+        "price": 35000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 10019,
+        "name": "Service 4",
+        "price": 20000,
+        "qty": 1
+      }
+    ],
+    "sub_total": 0,
+    "discount": 0,
+    "total": 125000,
+    "paid_amount": 0,
+    "due_amount": 0,
+    "payment_type": "",
+    "note": ""
+  },
+  {
+    "order_id": "9e6d5589",
+    "table_name": "Table 4",
+    "order_time": "17:52:09",
+    "waiter_name": "Sky Mother",
+    "waiter_email": "soeaung.boy.zoe@gmail.com",
+    "customer_name": "ဂျာကြီး",
+    "items": [
+      {
+        "detail_id": "",
+        "item_id": 10001,
+        "name": "ABC Beer",
+        "price": 7000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 10011,
+        "name": "Grand Royal Sherry",
+        "price": 28000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 10002,
+        "name": "Tiger",
+        "price": 6000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 10032,
+        "name": "S-G",
+        "price": 3000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 10030,
+        "name": "Red (1P)",
+        "price": 9000,
+        "qty": 1
+      }
+    ],
+    "sub_total": 53000,
+    "discount": 0,
+    "total": 53000,
+    "paid_amount": 3000,
+    "due_amount": 50000,
+    "payment_type": "ငွေသား",
+    "note": "Linlin"
+  },
+  {
+    "order_id": "662405d7",
+    "table_name": "201",
+    "order_time": "02:05:15",
+    "waiter_name": "Soe Aung",
+    "waiter_email": "owner@gmail.com",
+    "customer_name": "",
+    "items": [
+      {
+        "detail_id": "",
+        "item_id": 40057,
+        "name": "(၁၂)မျိုးဟင်းရည်",
+        "price": 35000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 40069,
+        "name": "(၃)မျိုးထောင်း",
+        "price": 35000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 10041,
+        "name": "Indo ကြက်ကြော်",
+        "price": 45000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 40047,
+        "name": "အသား၃မျိုးစပ်",
+        "price": 25000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 10039,
+        "name": "ကန်စွန်းပလိန်း",
+        "price": 6000,
+        "qty": 1
+      }
+    ],
+    "sub_total": 146000,
+    "discount": 0,
+    "total": 146000,
+    "paid_amount": 200000,
+    "due_amount": 0,
+    "payment_type": "ငွေသား",
+    "note": ""
+  }
+]

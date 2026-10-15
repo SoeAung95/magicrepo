@@ -1,0 +1,47 @@
+{
+  "No. 108": {
+    "order_id": "d80700c2",
+    "table_name": "No. 108",
+    "order_time": "16:09:02",
+    "waiter_name": "",
+    "waiter_email": "",
+    "customer_name": "",
+    "items": [
+      {
+        "detail_id": "",
+        "item_id": 10009,
+        "name": "Grand (p)",
+        "price": 16000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 10004,
+        "name": "Red-Label",
+        "price": 130000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 10010,
+        "name": "Grand (p) 1/2",
+        "price": 8000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 10012,
+        "name": "Grand Sherry 1/2",
+        "price": 14000,
+        "qty": 1
+      }
+    ],
+    "sub_total": 0,
+    "discount": 0,
+    "total": 168000,
+    "paid_amount": 0,
+    "due_amount": 0,
+    "payment_type": "",
+    "note": ""
+  }
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "id": "usr_owner",
+    "email": "soeaung.boy.zoe@gmail.com",
+    "name": "Sky Mother",
+    "password": "123",
+    "role": "owner",
+    "pin": "1234"
+  },
+  {
+    "id": "usr_cap",
+    "email": "captain@gmail.com",
+    "name": "Captain",
+    "password": "123",
+    "role": "captain",
+    "pin": "2222"
+  },
+  {
+    "id": "usr_waiter",
+    "email": "waiter1@gmail.com",
+    "name": "Waiter 1",
+    "password": "123",
+    "role": "waiter",
+    "pin": ""
+  }
+]
