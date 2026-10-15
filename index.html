@@ -34,7 +34,7 @@
   <!-- Top Master Bar -->
   <header class="pos-card p-2 mb-2 d-flex justify-content-between align-items-center flex-wrap gap-2">
     <div class="d-flex align-items-center gap-2">
-      <img src="/logo.svg" style="height: 36px; border-radius: 6px; background: #fff; padding: 2px;" alt="Logo">
+      <img src="logo.svg" style="height: 36px; border-radius: 6px; background: #fff; padding: 2px;" alt="Logo">
       <div>
         <h6 class="fw-bold mb-0 text-info">Sky Mother POS <span class="badge bg-primary" style="font-size: 9px;">PRO</span></h6>
         <small class="text-secondary" style="font-size: 11px;">Hotel &amp; Restaurant</small>
@@ -345,12 +345,17 @@
     async function initSystem() {
       document.getElementById('selPrintEngine').value = printEngine;
       try {
-        const [resDb, resCfg] = await Promise.all([fetch('data.json'), fetch('/api/config')]);
-        const db = await resDb.json();
-        config = await resCfg.json();
-        menuItems = db.items || [];
-        renderCategoryFilter(db.categories || ['All']);
-        renderMenuGrid(menuItems);
+        const resDb = await fetch('data.json');
+        if (resDb.ok) {
+          const db = await resDb.json();
+          menuItems = db.items || [];
+          renderCategoryFilter(db.categories || ['All']);
+          renderMenuGrid(menuItems);
+        }
+      } catch(e) {}
+      try {
+        const resCfg = await fetch('/api/config');
+        if (resCfg.ok) config = await resCfg.json();
       } catch(e) {}
 
       await syncOrders();
