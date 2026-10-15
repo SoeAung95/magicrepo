@@ -30,31 +30,34 @@
 <body class="p-1 p-md-2">
 
   <!-- Top Bar -->
+    <!-- Top Bar -->
   <header class="pos-card p-2 mb-2 d-flex justify-content-between align-items-center flex-wrap gap-2">
     <div class="d-flex align-items-center gap-2">
-      <img src="logo.svg" style="height: 36px; border-radius: 6px; background: #fff; padding: 2px;" alt="Logo" onerror="this.style.display='none'">
+      <img id="shopLogoImg" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230f172a' stroke='%23eab308' stroke-width='5'/><text x='50' y='46' font-size='28' text-anchor='middle' fill='%23eab308' font-family='sans-serif' font-weight='bold'>SM</text><text x='50' y='76' font-size='15' text-anchor='middle' fill='%2338bdf8' font-family='sans-serif' font-weight='bold'>POS</text></svg>" style="height: 40px; width: 40px; object-fit: cover; border-radius: 8px; cursor: pointer;" alt="Logo" onclick="openZywellSettings()" title="ပုံနှင့် ဆက်တင်ပြောင်းရန် နှိပ်ပါ">
       <div>
-        <h6 class="fw-bold mb-0 text-info">Sky Mother POS <span class="badge bg-success" style="font-size: 9px;">HD Print</span></h6>
-        <small class="text-secondary" style="font-size: 11px;">Hotel &amp; Restaurant</small>
+        <h6 class="fw-bold mb-0 text-info"><span id="lblShopName">Sky Mother POS</span> <span class="badge bg-success" style="font-size: 9px;">HD Print</span></h6>
+        <small class="text-secondary" id="lblShopTagline" style="font-size: 11px;">၃ ထပ် စားသောက်ဆိုင်နှင့် တည်းခိုခန်း</small>
       </div>
       <span class="badge bg-dark border border-secondary text-light ms-1 p-2 btn-live" onclick="promptStaff()" style="cursor: pointer;">
         <i class="fas fa-user-shield text-info me-1"></i><span id="lblStaff">Soe Aung</span>
       </span>
     </div>
-    <div class="d-flex align-items-center gap-1">
-      <button class="btn btn-sm btn-outline-info btn-live py-1" onclick="openMenuManager()"><i class="fas fa-boxes"></i> ကုန်ပစ္စည်း</button>
-      <button class="btn btn-sm btn-outline-light btn-live py-1" onclick="printerModal.show()"><i class="fas fa-print text-info"></i> Printer</button>
+    <div class="d-flex align-items-center justify-content-between w-100 gap-1 mt-1">
+      <button class="btn btn-sm btn-outline-info btn-live py-1 px-2 flex-fill" style="font-size:12px;" onclick="openMenuManager()"><i class="fas fa-boxes"></i> ပစ္စည်း</button>
+      <button class="btn btn-sm btn-outline-warning btn-live py-1 px-2 flex-fill" style="font-size:12px;" onclick="openSalesReport()"><i class="fas fa-chart-line"></i> စာရင်း</button>
+      <button class="btn btn-sm btn-outline-light btn-live py-1 px-2 flex-fill" style="font-size:12px;" onclick="printerModal.show()"><i class="fas fa-print text-info"></i> Printer</button>
+      <button class="btn btn-sm btn-info text-dark fw-bold btn-live py-1 px-2 flex-fill" style="font-size:12px;" onclick="openZywellSettings()"><i class="fas fa-cog"></i> ဆက်တင်</button>
     </div>
   </header>
 
   <!-- Floor & Table -->
   <div class="pos-card p-2 mb-2 d-flex justify-content-between align-items-center flex-wrap gap-2">
     <div class="h-scroll" id="floorBar">
-      <button class="pill-btn active" onclick="switchFloor('all', this)">အားလုံး</button>
-      <button class="pill-btn" onclick="switchFloor('flr1', this)">၁ ထပ် (ဆိုင်)</button>
-      <button class="pill-btn" onclick="switchFloor('ktv', this)">KTV အခန်းများ</button>
-      <button class="pill-btn" onclick="switchFloor('flr2', this)">၂ ထပ် (တည်းခို)</button>
-      <button class="pill-btn" onclick="switchFloor('flr3', this)">၃ ထပ် (တည်းခို)</button>
+      <button class="pill-btn active" onclick="switchFloor('all', this)">🌐 အားလုံး</button>
+      <button class="pill-btn" onclick="switchFloor('flr1', this)">🍽️ ၁ ထပ် (ဆိုင်)</button>
+      <button class="pill-btn" onclick="switchFloor('ktv', this)">🎤 KTV အခန်း</button>
+      <button class="pill-btn" onclick="switchFloor('flr2', this)">🛏️ ၂ ထပ် (တည်းခို)</button>
+      <button class="pill-btn" onclick="switchFloor('flr3', this)">🏢 ၃ ထပ် (တည်းခို)</button>
     </div>
     <div class="d-flex align-items-center gap-1">
       <span class="small text-secondary fw-bold"><i class="fas fa-chair"></i> ဝိုင်း/အခန်း:</span>
@@ -84,6 +87,7 @@
         <div class="d-flex align-items-center gap-1">
           <span class="fs-6 fw-bold text-info me-1" id="ticketTableTitle">A1</span>
           <span class="badge" id="ticketStatusBadge">လွတ်နေသည်</span>
+          <button class="btn btn-sm btn-outline-warning py-1 px-2 me-1" onclick="transferTable()" title="ဝိုင်း/အခန်း ရွှေ့မည်"><i class="fas fa-exchange-alt"></i> ရွှေ့မည်</button>
           <button class="btn btn-sm btn-outline-danger py-1 px-2" onclick="clearActiveTable()"><i class="fas fa-trash-alt"></i></button>
         </div>
       </div>
@@ -310,7 +314,7 @@
     function showView(view) {
       document.getElementById('viewMenu').style.display = (view === 'ticket') ? 'none' : 'block';
       document.getElementById('viewTicket').style.display = (view === 'ticket') ? 'block' : 'none';
-      document.getElementById('stickyBottomBar').style.display = (view === 'ticket') ? 'none' : 'flex';
+      document.getElementById('stickyBottomBar').classList.toggle('d-none', view === 'ticket');
       window.scrollTo(0, 0);
     }
 
@@ -344,8 +348,20 @@
     function renderCategoryFilter(cats) {
       const box = document.getElementById('categoryBar');
       box.innerHTML = '';
+      const catIcons = {
+        'All': '✨ အားလုံး',
+        'Food': '🍲 ဟင်းပွဲ (Food)',
+        'Alcohol': '🍺 အဖျော်ယမကာ',
+        'Drink': '🥤 အအေး (Drink)',
+        'Room': '🔑 အခန်းခ (Room)',
+        'KTV': '🎶 KTV',
+        'Cigarettes': '🚬 ဆေးလိပ်',
+        'Internet': '📶 အင်တာနက်',
+        'Service': '🛎️ ဝန်ဆောင်မှု'
+      };
       cats.forEach((c, idx) => {
-        box.innerHTML += `<button class="pill-btn ${idx===0?'active':''}" onclick="setCategory('${c}', this)">${c}</button>`;
+        const label = catIcons[c] || ('🏷️ ' + c);
+        box.innerHTML += `<button class="pill-btn ${idx===0?'active':''}" onclick="setCategory('${c}', this)">${label}</button>`;
       });
       const catSel = document.getElementById('manageItemCat');
       catSel.innerHTML = '';
@@ -494,13 +510,27 @@
     // ========================================================
     function boldText(ctx, text, x, y) {
       ctx.fillText(text, x, y);
-      ctx.fillText(text, x + 0.7, y); // Double-stroke for extra dark thermal output
+      ctx.fillText(text, x + 0.6, y); ctx.fillText(text, x, y + 0.6); // Double-stroke for extra dark thermal output
     }
 
-    function buildReceiptCanvas(type, data) {
-      const width = 384; // 58mm = 384 dots (48 bytes per line)
+        function buildReceiptCanvas(type, data) {
+      const width = parseInt(localStorage.getItem('sm_paper_width') || '576');
+      const scale = parseFloat(localStorage.getItem('sm_font_scale') || '1.18');
+      const printLogo = (localStorage.getItem('sm_print_logo') !== 'false');
+      const shopName = localStorage.getItem('sm_shop_name') || 'Sky Mother';
+      const shopTagline = localStorage.getItem('sm_shop_tagline') || '၃ ထပ် စားသောက်ဆိုင်နှင့် တည်းခိုခန်း';
+      const shopPhone = localStorage.getItem('sm_shop_phone') || '09-340339520';
+      const shopKpay = localStorage.getItem('sm_shop_kpay') || 'KPay: 09-783222755';
+      const shopFooter = localStorage.getItem('sm_shop_footer') || 'ကျေးဇူးတင်ပါသည် - Thank You!';
+
+      const fTitle = Math.round(28 * scale);
+      const fSub = Math.round(20 * scale);
+      const fBody = Math.round(20 * scale);
+      const fTotal = Math.round(25 * scale);
+      const lineH = Math.round(28 * scale);
+
       const items = data.items || [];
-      const maxH = 260 + (items.length * 34) + 140;
+      const maxH = 400 + (items.length * (lineH + 8)) + 240;
 
       const canvas = document.createElement('canvas');
       canvas.width = width;
@@ -511,86 +541,108 @@
       ctx.fillRect(0, 0, width, maxH);
       ctx.fillStyle = '#000000';
 
-      let y = 34;
+      let y = 24;
+      const logoEl = document.getElementById('shopLogoImg');
+      if (printLogo && logoEl && logoEl.complete && logoEl.naturalWidth > 0) {
+        try {
+          const logoRatio = parseFloat(localStorage.getItem('sm_logo_ratio') || '0.38');
+          const logoSize = Math.round(width * logoRatio);
+          ctx.drawImage(logoEl, (width - logoSize) / 2, y, logoSize, logoSize);
+          y += logoSize + 28;
+        } catch(e) { y += 14; }
+      } else { y += 14; }
+
       ctx.textAlign = 'center';
-      ctx.font = 'bold 26px sans-serif';
-      boldText(ctx, 'Sky Mother', width / 2, y);
-      y += 26;
+      ctx.font = `bold ${fTitle}px sans-serif`;
+      boldText(ctx, shopName, width / 2, y);
+      y += lineH;
 
-      ctx.font = 'bold 18px sans-serif';
-      boldText(ctx, 'Hotel & Restaurant', width / 2, y);
-      y += 24;
-      boldText(ctx, 'Ph: 09-340339520', width / 2, y);
-      y += 18;
+      ctx.font = `bold ${fSub}px sans-serif`;
+      boldText(ctx, shopTagline, width / 2, y);
+      y += lineH - 2;
+      boldText(ctx, 'Ph: ' + shopPhone, width / 2, y);
+      y += lineH - 4;
 
-      ctx.fillRect(10, y, width - 20, 2); // Solid thick divider line
-      y += 24;
+      if (shopKpay) {
+        boldText(ctx, shopKpay, width / 2, y);
+        y += lineH - 4;
+      }
 
-      ctx.font = 'bold 20px sans-serif';
+      ctx.fillRect(12, y, width - 24, 3);
+      y += lineH;
+
+      ctx.font = `bold ${Math.round(22 * scale)}px sans-serif`;
       if (type === 'preview') boldText(ctx, '** PREVIEW ဘေလ်စစ်ရန် **', width / 2, y);
       else if (type === 'kot') boldText(ctx, '** မီးဖိုချောင် အော်ဒါ (KOT) **', width / 2, y);
       else boldText(ctx, '** ပြေစာ / RECEIPT **', width / 2, y);
-      y += 28;
+      y += lineH + 4;
+
+      ctx.font = `bold ${fBody}px sans-serif`;
+      ctx.textAlign = 'left';
+      boldText(ctx, 'ဝိုင်း/အခန်း : ' + data.table, 14, y);
+      ctx.textAlign = 'right';
+      boldText(ctx, new Date().toLocaleTimeString(), width - 14, y);
+      y += lineH;
 
       ctx.textAlign = 'left';
-      ctx.font = 'bold 18px sans-serif';
-      boldText(ctx, 'ဝိုင်း/အခန်း : ' + data.table, 12, y);
-      y += 24;
-      boldText(ctx, 'အချိန် : ' + new Date().toLocaleTimeString(), 12, y);
-      y += 24;
-      boldText(ctx, 'တာဝန်ခံ : ' + (data.staff || currentUser.name), 12, y);
-      y += 16;
+      boldText(ctx, 'တာဝန်ခံ : ' + (data.staff || currentUser.name), 14, y);
+      if (data.customer) {
+        ctx.textAlign = 'right';
+        boldText(ctx, 'ဧည့်သည်: ' + data.customer, width - 14, y);
+      }
+      y += Math.round(lineH * 0.7);
 
-      ctx.fillRect(10, y, width - 20, 2);
-      y += 26;
+      ctx.fillRect(12, y, width - 24, 3);
+      y += lineH;
 
       let total = 0;
-      ctx.font = 'bold 18px sans-serif';
+      ctx.font = `bold ${fBody}px sans-serif`;
       items.forEach(it => {
         const sub = it.price * it.qty;
         total += sub;
         ctx.textAlign = 'left';
-        boldText(ctx, it.name + ' x' + it.qty, 12, y);
+        boldText(ctx, `${it.name}   x${it.qty}`, 14, y);
         if (type !== 'kot') {
           ctx.textAlign = 'right';
-          boldText(ctx, sub.toLocaleString() + ' Ks', width - 12, y);
+          boldText(ctx, sub.toLocaleString() + ' Ks', width - 14, y);
         }
-        y += 30;
+        y += lineH + 4;
       });
 
       if (type !== 'kot') {
         y += 4;
-        ctx.fillRect(10, y, width - 20, 2);
-        y += 28;
+        ctx.fillRect(12, y, width - 24, 3);
+        y += lineH + 4;
 
-        ctx.font = 'bold 22px sans-serif';
+        ctx.font = `bold ${fTotal}px sans-serif`;
         ctx.textAlign = 'left';
-        boldText(ctx, 'ကျသင့်ငွေ :', 12, y);
+        boldText(ctx, 'ကျသင့်ငွေ :', 14, y);
         ctx.textAlign = 'right';
-        boldText(ctx, total.toLocaleString() + ' Ks', width - 12, y);
-        y += 28;
+        boldText(ctx, total.toLocaleString() + ' Ks', width - 14, y);
+        y += lineH + 4;
 
         if (data.discount > 0) {
-          ctx.font = 'bold 18px sans-serif';
-          ctx.textAlign = 'left'; boldText(ctx, 'လျှော့ဈေး :', 12, y);
-          ctx.textAlign = 'right'; boldText(ctx, data.discount.toLocaleString() + ' Ks', width - 12, y);
-          y += 24;
+          ctx.font = `bold ${fBody}px sans-serif`;
+          ctx.textAlign = 'left'; boldText(ctx, 'လျှော့ဈေး :', 14, y);
+          ctx.textAlign = 'right'; boldText(ctx, '- ' + data.discount.toLocaleString() + ' Ks', width - 14, y);
+          y += lineH;
         }
         if (data.due > 0) {
-          ctx.font = 'bold 18px sans-serif';
-          ctx.textAlign = 'left'; boldText(ctx, 'အကြွေးကျန် :', 12, y);
-          ctx.textAlign = 'right'; boldText(ctx, data.due.toLocaleString() + ' Ks', width - 12, y);
-          y += 24;
+          ctx.font = `bold ${fBody}px sans-serif`;
+          ctx.textAlign = 'left'; boldText(ctx, 'အကြွေးကျန် :', 14, y);
+          ctx.textAlign = 'right'; boldText(ctx, data.due.toLocaleString() + ' Ks', width - 14, y);
+          y += lineH;
         }
       }
 
-      y += 12;
+      y += 8;
+      ctx.fillRect(12, y, width - 24, 1);
+      y += lineH;
       ctx.textAlign = 'center';
-      ctx.font = 'bold 16px sans-serif';
-      boldText(ctx, 'Thank You! See You Again', width / 2, y);
-      y += 24;
+      ctx.font = `bold ${Math.round(17 * scale)}px sans-serif`;
+      boldText(ctx, shopFooter, width / 2, y);
+      y += 28;
 
-      // Make height multiple of 24 for clean strip slicing
       const finalHeight = Math.ceil(y / 24) * 24;
       const out = document.createElement('canvas');
       out.width = width;
@@ -602,7 +654,6 @@
       return out;
     }
 
-    // Converts canvas into small 24-dot strips so Mini Printer buffer NEVER overflows!
     function canvasToStripsESCPOS(canvas) {
       const width = canvas.width;
       const height = canvas.height;
@@ -614,7 +665,7 @@
       chunks.push(new Uint8Array([0x1B, 0x40]));
 
       // 2. Slice into 24-pixel high strips (each strip is only 1,160 bytes!)
-      const stripH = 24;
+      const stripH = 72;
       for (let y0 = 0; y0 < height; y0 += stripH) {
         const h = Math.min(stripH, height - y0);
         const stripBuf = new Uint8Array(8 + (widthBytes * h));
@@ -629,7 +680,7 @@
               const px = (xByte * 8) + bit;
               const pIdx = ((y * width) + px) * 4;
               const lum = (imgData[pIdx] + imgData[pIdx+1] + imgData[pIdx+2]) / 3;
-              if (lum < 195) { // High-contrast dark threshold
+              if (lum < 220) { // High-contrast dark threshold
                 byteVal |= (1 << (7 - bit));
               }
             }
@@ -640,7 +691,7 @@
       }
 
       // 3. Feed 3 lines at bottom
-      chunks.push(new Uint8Array([0x1B, 0x64, 0x03]));
+      const feedLines = parseInt(localStorage.getItem('sm_feed_lines') || '4'); chunks.push(new Uint8Array([0x1B, 0x64, feedLines]));
       return chunks;
     }
 
@@ -662,13 +713,13 @@
         if (printEngine === 'direct_bt' && btChar) {
           // Send strip-by-strip in 64-byte BLE packets with flow control delay!
           for (const strip of stripChunks) {
-            const mtu = 64;
+            const mtu = 180;
             for (let i = 0; i < strip.length; i += mtu) {
               const slice = strip.slice(i, i + mtu);
               await btChar.writeValue(slice);
-              await new Promise(r => setTimeout(r, 15));
+              await new Promise(r => setTimeout(r, 4));
             }
-            await new Promise(r => setTimeout(r, 55)); // Let stepper motor advance 24 dots
+            await new Promise(r => setTimeout(r, 12)); // Let stepper motor advance 24 dots
           }
         } else {
           // Merge all strips into single ESC/POS byte stream for RawBT
@@ -787,6 +838,18 @@
         });
       } catch(e) {}
 
+            const savedSales = JSON.parse(localStorage.getItem('sm_sales_history') || '[]');
+      savedSales.unshift({
+        id: 'B' + Date.now(), isoDate: new Date().toISOString().slice(0, 10), time: new Date().toLocaleString(),
+        table: t,
+        customer: cust,
+        total: net,
+        paid: paid,
+        due: due,
+        staff: currentUser.name,
+        rawItems: JSON.parse(JSON.stringify(currentCart)), items: currentCart.map(i => i.name + ' x' + i.qty).join(', ')
+      });
+      localStorage.setItem('sm_sales_history', JSON.stringify(savedSales.slice(0, 5000)));
       checkoutModal.hide();
       currentCart = []; delete activeOrders[t];
       renderCartUI(); buildTableOptions(); filterMenu(); showView('menu');
@@ -838,5 +901,593 @@
 
     initSystem();
   </script>
+
+  <!-- Shop Settings Modal -->
+  <div class="modal fade" id="shopSettingsModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark text-white border-secondary p-3">
+        <h6 class="fw-bold text-info mb-3"><i class="fas fa-cog"></i> ဆိုင်အချက်အလက် ဆက်တင်များ</h6>
+        <div class="mb-2">
+          <label class="small text-secondary">ဆိုင်အမည် (Shop Name):</label>
+          <input type="text" id="setShopName" class="form-control form-control-sm bg-black text-white border-secondary" value="Sky Mother POS">
+        </div>
+        <div class="mb-2">
+          <label class="small text-secondary">ဆိုင်အမျိုးအစား / ဖော်ပြချက် (Tagline):</label>
+          <input type="text" id="setShopTagline" class="form-control form-control-sm bg-black text-white border-secondary" value="Hotel & Restaurant">
+        </div>
+        <div class="mb-3">
+          <label class="small text-secondary">ဖုန်းနံပါတ် (Phone):</label>
+          <input type="text" id="setShopPhone" class="form-control form-control-sm bg-black text-white border-secondary" value="09-340339520">
+        </div>
+        <div class="d-flex gap-2">
+          <button class="btn btn-success w-100 fw-bold btn-live" onclick="saveShopSettings()"><i class="fas fa-save"></i> သိမ်းဆည်းမည်</button>
+          <button class="btn btn-secondary w-100" data-bs-dismiss="modal">ပိတ်မည်</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const shopSettingsModal = new bootstrap.Modal(document.getElementById('shopSettingsModal'));
+    function openZywellSettings() {
+      document.getElementById('setShopName').value = localStorage.getItem('sm_shop_name') || 'Sky Mother POS';
+      document.getElementById('setShopTagline').value = localStorage.getItem('sm_shop_tagline') || 'Hotel & Restaurant';
+      document.getElementById('setShopPhone').value = localStorage.getItem('sm_shop_phone') || '09-340339520';
+      shopSettingsModal.show();
+    }
+    function saveShopSettings() {
+      const name = document.getElementById('setShopName').value.trim();
+      const tagline = document.getElementById('setShopTagline').value.trim();
+      const phone = document.getElementById('setShopPhone').value.trim();
+      localStorage.setItem('sm_shop_name', name);
+      localStorage.setItem('sm_shop_tagline', tagline);
+      localStorage.setItem('sm_shop_phone', phone);
+      shopSettingsModal.hide();
+      applyShopSettings();
+      alert("ဆိုင်အချက်အလက်များ အောင်မြင်စွာ ပြောင်းလဲပြီးပါပြီ!");
+    }
+    function applyShopSettings() {
+      const name = localStorage.getItem('sm_shop_name');
+      const tagline = localStorage.getItem('sm_shop_tagline');
+      if (name) {
+        const el = document.querySelector('header h6');
+        if (el) el.innerHTML = name + ' <span class="badge bg-success" style="font-size: 9px;">HD Print</span>';
+      }
+      if (tagline) {
+        const el = document.querySelector('header small');
+        if (el) el.textContent = tagline;
+      }
+    }
+    window.addEventListener('DOMContentLoaded', applyShopSettings);
+  </script>
+
+
+    <!-- Complete Shop & Receipt Settings Modal -->
+  <div class="modal fade" id="shopSettingsModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content bg-dark text-white border-secondary p-3">
+        <div class="d-flex justify-content-between align-items-center border-bottom border-secondary pb-2 mb-3">
+          <h6 class="fw-bold text-info mb-0"><i class="fas fa-sliders-h me-1"></i> ဆိုင်၊ ပြေစာ (Receipt) နှင့် Printer ဆက်တင်</h6>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body p-0 pe-1" style="max-height: 70vh; overflow-y: auto;">
+          <!-- Logo Upload -->
+          <div class="mb-3 text-center p-2 rounded bg-black bg-opacity-50 border border-secondary">
+            <img id="previewSettingLogo" src="" style="width: 60px; height: 60px; object-fit: cover; border-radius: 10px; border: 2px solid #00d2ff;" class="mb-2"><br>
+            <label class="btn btn-sm btn-outline-info fw-bold">
+              <i class="fas fa-camera me-1"></i> ဖုန်းထဲမှ Logo ပုံရွေးမည်
+              <input type="file" accept="image/*" style="display: none;" onchange="uploadNewLogo(this)">
+            </label>
+            <div class="form-check form-switch d-flex justify-content-center align-items-center gap-2 mt-2">
+              <input class="form-check-input" type="checkbox" id="chkPrintLogo" checked>
+              <label class="form-check-label small text-light" for="chkPrintLogo">ပြေစာစလစ်ပေါ်တွင် Logo ပုံ ထည့်ရိုက်မည်</label>
+            </div>
+          </div>
+
+          <!-- Printer Hardware Profile -->
+          <div class="p-2 mb-3 rounded bg-secondary bg-opacity-10 border border-info">
+            <div class="fw-bold text-info small mb-2"><i class="fas fa-print me-1"></i> Printer အမျိုးအစားနှင့် စက္ကူဆိုဒ် (ZyWell ZM06H)</div>
+            <div class="row g-2">
+              <div class="col-7">
+                <label class="small text-secondary">စက္ကူအကျယ် (Paper Width):</label>
+                <select id="selPaperWidth" class="form-select form-select-sm bg-black text-white border-secondary fw-bold">
+                  <option value="576" selected>80mm (၃ လက်မ - ZyWell ZM06H အပြည့်)</option>
+                  <option value="384">58mm (၂ လက်မ - အသေး)</option>
+                </select>
+              </div>
+              <div class="col-5">
+                <label class="small text-secondary">စာလုံးအရွယ်အစား:</label>
+                <select id="selFontScale" class="form-select form-select-sm bg-black text-white border-secondary">
+                  <option value="1">ပုံမှန် (Normal)</option>
+                  <option value="1.18" selected>အကြီး (Large)</option>
+                  <option value="1.32">အထူးအကြီး (XL)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Receipt Texts -->
+          <div class="mb-2">
+            <label class="small text-secondary">ဆိုင်အမည် (Header Title):</label>
+            <input type="text" id="inpShopName" class="form-control form-control-sm bg-black text-white border-secondary" placeholder="Sky Mother">
+          </div>
+          <div class="mb-2">
+            <label class="small text-secondary">ဆိုင်အမျိုးအစား / လိပ်စာ (Subtitle):</label>
+            <input type="text" id="inpShopTagline" class="form-control form-control-sm bg-black text-white border-secondary" placeholder="၃ ထပ် စားသောက်ဆိုင်နှင့် တည်းခိုခန်း">
+          </div>
+          <div class="row g-2 mb-2">
+            <div class="col-6">
+              <label class="small text-secondary">ဖုန်းနံပါတ်:</label>
+              <input type="text" id="inpShopPhone" class="form-control form-control-sm bg-black text-white border-secondary" placeholder="09-761196119">
+            </div>
+            <div class="col-6">
+              <label class="small text-secondary">KPay / WavePay နံပါတ်:</label>
+              <input type="text" id="inpShopKpay" class="form-control form-control-sm bg-black text-white border-secondary" placeholder="KPay: 09-783222755">
+            </div>
+          </div>
+          <div class="mb-2">
+            <label class="small text-secondary">ပြေစာအောက်ခြေ စာသား (Receipt Footer):</label>
+            <input type="text" id="inpShopFooter" class="form-control form-control-sm bg-black text-white border-secondary" placeholder="ကျေးဇူးတင်ပါသည် - နောက်လည်း လာအားပေးပါဦးခင်ဗျာ">
+          </div>
+          <div class="mb-3">
+            <label class="small text-secondary">စလစ်အောက်ခြေ စက္ကူပိုထုတ်မည့် လိုင်းအရေအတွက် (ဖြဲရလွယ်စေရန်):</label>
+            <select id="selFeedLines" class="form-select form-select-sm bg-black text-white border-secondary">
+              <option value="2">၂ လိုင်း (စက္ကူချွေတာ)</option>
+              <option value="4" selected>၄ လိုင်း (ပုံမှန် - ဖြဲရလွယ်)</option>
+              <option value="6">၆ လိုင်း (အရှည်)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="d-flex gap-2 pt-2 border-top border-secondary mt-2">
+          <button class="btn btn-success w-100 fw-bold py-2 btn-live" onclick="saveNewShopSettings()"><i class="fas fa-check-circle me-1"></i> သိမ်းဆည်းမည်</button>
+          <button class="btn btn-secondary w-100" data-bs-dismiss="modal">ပိတ်မည်</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <script>
+        let tempLogoData = '';
+    function openZywellSettings() {
+      document.getElementById('inpShopName').value = localStorage.getItem('sm_shop_name') || 'Sky Mother';
+      document.getElementById('inpShopTagline').value = localStorage.getItem('sm_shop_tagline') || '၃ ထပ် စားသောက်ဆိုင်နှင့် တည်းခိုခန်း';
+      document.getElementById('inpShopPhone').value = localStorage.getItem('sm_shop_phone') || '09-340339520';
+      document.getElementById('inpShopKpay').value = localStorage.getItem('sm_shop_kpay') || 'KPay: 09-783222755';
+      document.getElementById('inpShopFooter').value = localStorage.getItem('sm_shop_footer') || 'ကျေးဇူးတင်ပါသည် - နောက်လည်း လာအားပေးပါဦးခင်ဗျာ';
+      document.getElementById('selPaperWidth').value = localStorage.getItem('sm_paper_width') || '576';
+      document.getElementById('selFontScale').value = localStorage.getItem('sm_font_scale') || '1.18';
+      document.getElementById('selFeedLines').value = localStorage.getItem('sm_feed_lines') || '4';
+      document.getElementById('chkPrintLogo').checked = (localStorage.getItem('sm_print_logo') !== 'false');
+      document.getElementById('previewSettingLogo').src = document.getElementById('shopLogoImg').src;
+      tempLogoData = '';
+      new bootstrap.Modal(document.getElementById('shopSettingsModal')).show();
+    }
+
+    function uploadNewLogo(input) {
+      if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const img = new Image();
+          img.onload = () => {
+            const canvas = document.createElement('canvas');
+            canvas.width = 320; canvas.height = 320;
+            const ctx = canvas.getContext('2d');
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillRect(0, 0, 320, 320);
+            ctx.drawImage(img, 0, 0, 320, 320);
+            tempLogoData = canvas.toDataURL('image/jpeg', 0.9);
+            document.getElementById('previewSettingLogo').src = tempLogoData;
+          };
+          img.src = e.target.result;
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    function saveNewShopSettings() {
+      const name = document.getElementById('inpShopName').value.trim() || 'Sky Mother';
+      const tagline = document.getElementById('inpShopTagline').value.trim() || '၃ ထပ် စားသောက်ဆိုင်နှင့် တည်းခိုခန်း';
+      const phone = document.getElementById('inpShopPhone').value.trim() || '09-340339520';
+      const kpay = document.getElementById('inpShopKpay').value.trim();
+      const footer = document.getElementById('inpShopFooter').value.trim() || 'Thank You!';
+      const paperW = document.getElementById('selPaperWidth').value;
+      const fontS = document.getElementById('selFontScale').value;
+      const feedL = document.getElementById('selFeedLines').value;
+      const pLogo = document.getElementById('chkPrintLogo').checked ? 'true' : 'false';
+
+      localStorage.setItem('sm_shop_name', name);
+      localStorage.setItem('sm_shop_tagline', tagline);
+      localStorage.setItem('sm_shop_phone', phone);
+      localStorage.setItem('sm_shop_kpay', kpay);
+      localStorage.setItem('sm_shop_footer', footer);
+      localStorage.setItem('sm_paper_width', paperW);
+      localStorage.setItem('sm_font_scale', fontS);
+      localStorage.setItem('sm_feed_lines', feedL);
+      if(document.getElementById('zwLogoRatio')) localStorage.setItem('sm_logo_ratio', document.getElementById('zwLogoRatio').value);
+      localStorage.setItem('sm_print_logo', pLogo);
+
+      if (tempLogoData) {
+        localStorage.setItem('custom_shop_logo', tempLogoData);
+      }
+      loadSavedShopSettings();
+      bootstrap.Modal.getInstance(document.getElementById('shopSettingsModal')).hide();
+      alert('ဆိုင်နှင့် Printer (80mm/58mm) ဆက်တင်များ သိမ်းဆည်းပြီးပါပြီ!');
+    }
+
+    function loadSavedShopSettings() {
+      const name = localStorage.getItem('sm_shop_name');
+      const tagline = localStorage.getItem('sm_shop_tagline');
+      const logo = localStorage.getItem('custom_shop_logo');
+      if (name && document.getElementById('lblShopName')) document.getElementById('lblShopName').textContent = name;
+      if (tagline && document.getElementById('lblShopTagline')) document.getElementById('lblShopTagline').textContent = tagline;
+      if (logo && document.getElementById('shopLogoImg')) document.getElementById('shopLogoImg').src = logo;
+    }
+    loadSavedShopSettings();
+  </script>
+
+
+
+
+
+  <!-- ZyWell ZM06H & Receipt Settings Modal -->
+  <div class="modal fade" id="zywellSettingsModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content bg-dark text-white border-info p-3">
+        <div class="d-flex justify-content-between align-items-center border-bottom border-secondary pb-2 mb-2">
+          <h6 class="fw-bold text-info mb-0"><i class="fas fa-sliders-h me-1"></i> ဆိုင်၊ ပြေစာနှင့် Printer ဆက်တင် (ZyWell 80mm)</h6>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body p-0 pe-1" style="max-height: 68vh; overflow-y: auto;">
+          <div class="mb-2 text-center p-2 rounded bg-black bg-opacity-50 border border-secondary">
+            <img id="zwPreviewLogo" src="" style="width: 56px; height: 56px; object-fit: cover; border-radius: 10px; border: 2px solid #00d2ff;" class="mb-1"><br>
+            <label class="btn btn-sm btn-outline-info fw-bold py-1">
+              <i class="fas fa-camera me-1"></i> ဖုန်းထဲမှ Logo ပုံရွေးမည်
+              <input type="file" accept="image/*" style="display: none;" onchange="zwUploadLogo(this)">
+            </label>
+            <div class="form-check form-switch d-flex justify-content-center align-items-center gap-2 mt-1">
+              <input class="form-check-input" type="checkbox" id="zwChkPrintLogo" checked>
+              <label class="form-check-label small text-light" for="zwChkPrintLogo">စလစ်ပေါ်တွင် Logo ပုံ ထည့်ရိုက်မည်</label>
+            </div>
+            <div class="mt-2 px-3">
+              <label class="small text-info fw-bold">စလစ်ပေါ်ရှိ Logo အရွယ်အစား:</label>
+              <select id="zwLogoRatio" class="form-select form-select-sm bg-black text-white border-secondary text-center fw-bold mt-1">
+                <option value="0.25">အလတ် (Medium - 25%)</option>
+                <option value="0.38" selected>အကြီး (Large - 38% အကြံပြု)</option>
+                <option value="0.50">အထူးအကြီး (Extra Large - 50%)</option>
+                <option value="0.65">စာရွက်အပြည့်နီးပါး (Banner - 65%)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="p-2 mb-2 rounded bg-info bg-opacity-10 border border-info">
+            <div class="fw-bold text-info small mb-1"><i class="fas fa-print me-1"></i> Printer အမျိုးအစား (ZyWell ZM06H)</div>
+            <div class="row g-2">
+              <div class="col-7">
+                <label class="small text-secondary">စက္ကူအကျယ် (Paper Width):</label>
+                <select id="zwPaperWidth" class="form-select form-select-sm bg-black text-white border-secondary fw-bold">
+                  <option value="576" selected>80mm (၃ လက်မ - ZyWell ZM06H)</option>
+                  <option value="384">58mm (၂ လက်မ - အသေး)</option>
+                </select>
+              </div>
+              <div class="col-5">
+                <label class="small text-secondary">စာလုံးဆိုဒ်:</label>
+                <select id="zwFontScale" class="form-select form-select-sm bg-black text-white border-secondary">
+                  <option value="1">ပုံမှန် (Normal)</option>
+                  <option value="1.18" selected>အကြီး (Large)</option>
+                  <option value="1.32">အထူးအကြီး (XL)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-2">
+            <label class="small text-secondary">ဆိုင်အမည် (Shop Name):</label>
+            <input type="text" id="zwShopName" class="form-control form-control-sm bg-black text-white border-secondary">
+          </div>
+          <div class="mb-2">
+            <label class="small text-secondary">ဆိုင်အမျိုးအစား စာသား (Subtitle):</label>
+            <input type="text" id="zwShopTagline" class="form-control form-control-sm bg-black text-white border-secondary">
+          </div>
+          <div class="row g-2 mb-2">
+            <div class="col-6">
+              <label class="small text-secondary">ဖုန်းနံပါတ်:</label>
+              <input type="text" id="zwShopPhone" class="form-control form-control-sm bg-black text-white border-secondary">
+            </div>
+            <div class="col-6">
+              <label class="small text-secondary">KPay နံပါတ်:</label>
+              <input type="text" id="zwShopKpay" class="form-control form-control-sm bg-black text-white border-secondary">
+            </div>
+          </div>
+          <div class="mb-2">
+            <label class="small text-secondary">ပြေစာအောက်ခြေ ဆုတောင်းစာသား (Footer):</label>
+            <input type="text" id="zwShopFooter" class="form-control form-control-sm bg-black text-white border-secondary">
+          </div>
+        </div>
+
+        <div class="d-flex gap-2 pt-2 border-top border-secondary mt-2">
+          <button class="btn btn-success w-100 fw-bold py-2 btn-live" onclick="zwSaveSettings()"><i class="fas fa-check-circle me-1"></i> သိမ်းဆည်းမည်</button>
+          <button class="btn btn-secondary w-100" data-bs-dismiss="modal">ပိတ်မည်</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Force unregister old service workers so updates appear immediately!
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(regs => { for(let r of regs) r.unregister(); });
+    }
+
+    let zwTempLogo = '';
+    function openZywellSettings() {
+      document.getElementById('zwShopName').value = localStorage.getItem('sm_shop_name') || 'Sky Mother';
+      document.getElementById('zwShopTagline').value = localStorage.getItem('sm_shop_tagline') || '၃ ထပ် စားသောက်ဆိုင်နှင့် တည်းခိုခန်း';
+      document.getElementById('zwShopPhone').value = localStorage.getItem('sm_shop_phone') || '09-340339520';
+      document.getElementById('zwShopKpay').value = localStorage.getItem('sm_shop_kpay') || 'KPay: 09-783222755';
+      document.getElementById('zwShopFooter').value = localStorage.getItem('sm_shop_footer') || 'ကျေးဇူးတင်ပါသည် - Thank You!';
+      document.getElementById('zwPaperWidth').value = localStorage.getItem('sm_paper_width') || '576';
+      document.getElementById('zwFontScale').value = localStorage.getItem('sm_font_scale') || '1.18';
+      if(document.getElementById('zwLogoRatio')) document.getElementById('zwLogoRatio').value = localStorage.getItem('sm_logo_ratio') || '0.38';
+      document.getElementById('zwChkPrintLogo').checked = (localStorage.getItem('sm_print_logo') !== 'false');
+      const logoImg = document.getElementById('shopLogoImg');
+      if (logoImg) document.getElementById('zwPreviewLogo').src = logoImg.src;
+      zwTempLogo = '';
+      new bootstrap.Modal(document.getElementById('zywellSettingsModal')).show();
+    }
+
+    function zwUploadLogo(input) {
+      if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const img = new Image();
+          img.onload = () => {
+            const canvas = document.createElement('canvas');
+            canvas.width = 320; canvas.height = 320;
+            const ctx = canvas.getContext('2d');
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillRect(0, 0, 320, 320);
+            ctx.drawImage(img, 0, 0, 320, 320);
+            zwTempLogo = canvas.toDataURL('image/jpeg', 0.9);
+            document.getElementById('zwPreviewLogo').src = zwTempLogo;
+          };
+          img.src = e.target.result;
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    function zwSaveSettings() {
+      localStorage.setItem('sm_shop_name', document.getElementById('zwShopName').value.trim() || 'Sky Mother');
+      localStorage.setItem('sm_shop_tagline', document.getElementById('zwShopTagline').value.trim() || '၃ ထပ် စားသောက်ဆိုင်နှင့် တည်းခိုခန်း');
+      localStorage.setItem('sm_shop_phone', document.getElementById('zwShopPhone').value.trim() || '09-340339520');
+      localStorage.setItem('sm_shop_kpay', document.getElementById('zwShopKpay').value.trim());
+      localStorage.setItem('sm_shop_footer', document.getElementById('zwShopFooter').value.trim() || 'Thank You!');
+      localStorage.setItem('sm_paper_width', document.getElementById('zwPaperWidth').value);
+      localStorage.setItem('sm_font_scale', document.getElementById('zwFontScale').value);
+      if(document.getElementById('zwLogoRatio')) localStorage.setItem('sm_logo_ratio', document.getElementById('zwLogoRatio').value);
+      localStorage.setItem('sm_print_logo', document.getElementById('zwChkPrintLogo').checked ? 'true' : 'false');
+      if (zwTempLogo) localStorage.setItem('custom_shop_logo', zwTempLogo);
+      loadSavedShopSettings();
+      bootstrap.Modal.getInstance(document.getElementById('zywellSettingsModal')).hide();
+      alert('ဆက်တင်များ အောင်မြင်စွာ သိမ်းဆည်းပြီးပါပြီ!');
+    }
+  </script>
+
+  <!-- Sales Report & Monthly Audit Modal -->
+  <div class="modal fade" id="salesReportModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg">
+      <div class="modal-content bg-dark text-white border-warning p-3">
+        <div class="d-flex justify-content-between align-items-center border-bottom border-secondary pb-2 mb-2">
+          <h6 class="fw-bold text-warning mb-0"><i class="fas fa-chart-pie me-1"></i> စာရင်းစစ်နှင့် လချုပ်အစီရင်ခံစာ (Audit)</h6>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+
+        <!-- Period Filter Pills -->
+        <div class="d-flex gap-1 overflow-auto pb-2 mb-2">
+          <button class="btn btn-sm btn-info fw-bold text-dark py-1 px-2" id="flt_today" onclick="setAuditFilter('today')">📅 ယနေ့</button>
+          <button class="btn btn-sm btn-outline-info py-1 px-2" id="flt_7days" onclick="setAuditFilter('7days')">🗓️ ၇ ရက်စာ</button>
+          <button class="btn btn-sm btn-outline-info py-1 px-2" id="flt_month" onclick="setAuditFilter('month')">📊 ၁ လစာ (ယခုလ)</button>
+          <button class="btn btn-sm btn-outline-danger py-1 px-2" id="flt_debt" onclick="setAuditFilter('debt')">⚠️ အကြွေးကျန်များ</button>
+          <button class="btn btn-sm btn-outline-secondary py-1 px-2" id="flt_all" onclick="setAuditFilter('all')">အားလုံး</button>
+        </div>
+
+        <!-- Custom Date Picker & Search -->
+        <div class="row g-1 mb-2">
+          <div class="col-5">
+            <input type="date" id="auditDateInput" class="form-control form-control-sm bg-black text-white border-secondary" onchange="setAuditFilter('custom')">
+          </div>
+          <div class="col-7">
+            <input type="text" id="auditSearchInput" class="form-control form-control-sm bg-black text-white border-secondary" placeholder="🔍 ဝိုင်း / ဧည့်သည် / ဟင်းပွဲ ရှာရန်..." oninput="renderAuditTable()">
+          </div>
+        </div>
+
+        <!-- Summary Cards -->
+        <div class="row g-2 mb-2 text-center">
+          <div class="col-3">
+            <div class="p-2 rounded bg-black border border-secondary">
+              <div style="font-size:10px;" class="text-secondary">ဘေလ်အရေအတွက်</div>
+              <div class="fw-bold text-light" id="repBillCount">0</div>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="p-2 rounded bg-black border border-secondary">
+              <div style="font-size:10px;" class="text-secondary">ရောင်းရငွေ</div>
+              <div class="fw-bold text-success" style="font-size:13px;" id="repTotalSales">0 Ks</div>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="p-2 rounded bg-black border border-secondary">
+              <div style="font-size:10px;" class="text-secondary">လက်ခံရရှိငွေ</div>
+              <div class="fw-bold text-info" style="font-size:13px;" id="repTotalPaid">0 Ks</div>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="p-2 rounded bg-black border border-secondary">
+              <div style="font-size:10px;" class="text-secondary">အကြွေးကျန်</div>
+              <div class="fw-bold text-danger" style="font-size:13px;" id="repTotalDue">0 Ks</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Audit Table -->
+        <div class="table-responsive" style="max-height: 44vh;">
+          <table class="table table-dark table-sm table-bordered small align-middle mb-0">
+            <thead>
+              <tr class="text-secondary">
+                <th>အချိန် / ဝိုင်း</th>
+                <th>ဟင်းပွဲများ</th>
+                <th class="text-end">သင့်ငွေ</th>
+                <th class="text-end">အကြွေး/လုပ်ဆောင်ချက်</th>
+              </tr>
+            </thead>
+            <tbody id="tblSalesReport"></tbody>
+          </table>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top border-secondary flex-wrap gap-1">
+          <button class="btn btn-sm btn-outline-danger py-1" onclick="clearSalesHistory()"><i class="fas fa-trash"></i> ရှင်းမည်</button>
+          <div class="d-flex gap-1">
+            <button class="btn btn-sm btn-success fw-bold py-1" onclick="exportLocalCSV()"><i class="fas fa-file-excel me-1"></i> Excel ထုတ်မည်</button>
+            <button class="btn btn-sm btn-secondary py-1" data-bs-dismiss="modal">ပိတ်မည်</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentAuditMode = 'today';
+
+    function getRecordIsoDate(r) {
+      if (r.isoDate) return r.isoDate;
+      try {
+        const d = new Date(r.time);
+        if (!isNaN(d)) return d.toISOString().slice(0, 10);
+      } catch(e) {}
+      return new Date().toISOString().slice(0, 10);
+    }
+
+    function openSalesReport() {
+      document.getElementById('auditDateInput').value = new Date().toISOString().slice(0, 10);
+      setAuditFilter('today');
+      new bootstrap.Modal(document.getElementById('salesReportModal')).show();
+    }
+
+    function setAuditFilter(mode) {
+      currentAuditMode = mode;
+      ['today', '7days', 'month', 'debt', 'all'].forEach(m => {
+        const el = document.getElementById('flt_' + m);
+        if (el) {
+          el.className = (m === mode) ? 'btn btn-sm btn-info fw-bold text-dark py-1 px-2' : 'btn btn-sm btn-outline-info py-1 px-2';
+        }
+      });
+      renderAuditTable();
+    }
+
+    function getFilteredAuditList() {
+      const list = JSON.parse(localStorage.getItem('sm_sales_history') || '[]');
+      const now = new Date();
+      const todayStr = now.toISOString().slice(0, 10);
+      const monthPrefix = todayStr.slice(0, 7);
+      const q = (document.getElementById('auditSearchInput')?.value || '').toLowerCase().trim();
+      const customDate = document.getElementById('auditDateInput')?.value || todayStr;
+
+      return list.map((r, idx) => ({ ...r, _idx: idx })).filter(r => {
+        const rDate = getRecordIsoDate(r);
+        if (currentAuditMode === 'today' && rDate !== todayStr) return false;
+        if (currentAuditMode === 'month' && !rDate.startsWith(monthPrefix)) return false;
+        if (currentAuditMode === 'custom' && rDate !== customDate) return false;
+        if (currentAuditMode === '7days') {
+          const diffDays = (now - new Date(rDate)) / (1000 * 60 * 60 * 24);
+          if (diffDays > 7 || diffDays < -1) return false;
+        }
+        if (currentAuditMode === 'debt' && (!r.due || r.due <= 0)) return false;
+
+        if (q) {
+          const hay = `${r.table || ''} ${r.customer || ''} ${r.items || ''} ${r.staff || ''}`.toLowerCase();
+          if (!hay.includes(q)) return false;
+        }
+        return true;
+      });
+    }
+
+    function renderAuditTable() {
+      const filtered = getFilteredAuditList();
+      let sumTotal = 0, sumPaid = 0, sumDue = 0;
+      const tbody = document.getElementById('tblSalesReport');
+      tbody.innerHTML = '';
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="4" class="text-center text-secondary py-4">ရွေးချယ်ထားသော ကာလအတွင်း စာရင်းမရှိပါ</td></tr>';
+      } else {
+        filtered.forEach(r => {
+          sumTotal += (r.total || 0);
+          sumPaid += (r.paid || 0);
+          sumDue += (r.due || 0);
+          const reprintBtn = `<button class="btn btn-xs btn-outline-info py-0 px-1 mt-1 ms-1" style="font-size:10px;" onclick="reprintSavedBill(${r._idx})">🖨️ ပုံနှိပ်</button>`;
+          const settleBtn = (r.due > 0)
+            ? `<button class="btn btn-xs btn-warning text-dark fw-bold py-0 px-1 mt-1" style="font-size:10px;" onclick="settleDebtRecord(${r._idx})">💵 အကြွေးဆပ်</button>`
+            : `<span class="badge bg-success bg-opacity-25 text-success" style="font-size:10px;">ရှင်းပြီး</span>`;
+
+          tbody.innerHTML += `<tr>
+            <td>
+              <strong class="text-info">${r.table}</strong>
+              <div class="text-secondary" style="font-size:10px;">${r.time}</div>
+              ${r.customer ? `<span class="badge bg-secondary" style="font-size:10px;">👤 ${r.customer}</span>` : ''}
+            </td>
+            <td style="font-size:11.5px;">${r.items}</td>
+            <td class="text-end text-warning fw-bold">${(r.total||0).toLocaleString()}</td>
+            <td class="text-end">
+              <div class="${r.due > 0 ? 'text-danger fw-bold' : 'text-secondary'}">${(r.due||0).toLocaleString()}</div>
+              ${settleBtn}${reprintBtn}
+            </td>
+          </tr>`;
+        });
+      }
+
+      document.getElementById('repBillCount').textContent = filtered.length;
+      document.getElementById('repTotalSales').textContent = sumTotal.toLocaleString() + ' Ks';
+      document.getElementById('repTotalPaid').textContent = sumPaid.toLocaleString() + ' Ks';
+      document.getElementById('repTotalDue').textContent = sumDue.toLocaleString() + ' Ks';
+    }
+
+    function settleDebtRecord(idx) {
+      const list = JSON.parse(localStorage.getItem('sm_sales_history') || '[]');
+      const rec = list[idx];
+      if (!rec) return;
+      if (!confirm(`[${rec.table}] ${rec.customer || ''} ၏ အကြွေးကျန် (${rec.due.toLocaleString()} Ks) ကို အကျေလက်ခံပြီး စာရင်းရှင်းမည်လား?`)) return;
+      rec.paid = rec.total;
+      rec.due = 0;
+      localStorage.setItem('sm_sales_history', JSON.stringify(list));
+      renderAuditTable();
+    }
+
+    function exportLocalCSV() {
+      const filtered = getFilteredAuditList();
+      if (filtered.length === 0) return alert('ထုတ်ယူရန် စာရင်းမရှိပါ');
+      let csv = 'Date/Time,Table,Customer,Items,Total,Paid,Due,Staff\n';
+      filtered.forEach(r => {
+        const cleanItems = (r.items || '').replace(/,/g, ' | ');
+        csv += `"${r.time}","${r.table}","${r.customer || '-'}","${cleanItems}",${r.total || 0},${r.paid || 0},${r.due || 0},"${r.staff || ''}"\n`;
+      });
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `SkyMother_Audit_${currentAuditMode}_${new Date().toISOString().slice(0,10)}.csv`;
+      a.click();
+    }
+
+    function clearSalesHistory() {
+      if (!confirm('သတိပေးချက်: အရောင်းစာရင်းမှတ်တမ်း အားလုံးကို ဖျက်မည် သေချာပါသလား?')) return;
+      localStorage.removeItem('sm_sales_history');
+      renderAuditTable();
+    }
+  </script>
+
 </body>
 </html>
