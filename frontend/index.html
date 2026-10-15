@@ -8,7 +8,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <style>
     * { -webkit-tap-highlight-color: transparent; box-sizing: border-box; }
-    body { background: #060911; color: #f8fafc; font-family: system-ui, -apple-system, sans-serif; padding-bottom: 75px; -webkit-user-select: none; }
+    body { background: #060911; color: #f8fafc; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Pyidaungsu", sans-serif; padding-bottom: 75px; -webkit-user-select: none; }
     .pos-card { background: #0d1527; border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; }
     .btn-live { transition: 0.1s; border-radius: 8px; font-weight: 600; }
     .btn-live:active { transform: scale(0.93); filter: brightness(1.2); }
@@ -17,7 +17,7 @@
     .item-img { width: 100%; height: 68px; object-fit: cover; border-radius: 6px; background: #10192a; margin-bottom: 4px; }
     .item-title { font-size: 13px; font-weight: 600; line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 35px; color: #f1f5f9; }
     .price-pill { background: linear-gradient(135deg, #0284c7, #2563eb); color: white; font-size: 11px; font-weight: 700; border-radius: 6px; padding: 2px 7px; }
-    .in-cart-badge { position: absolute; top: 4px; right: 4px; background: #10b981; color: #032014; font-size: 11px; font-weight: 800; border-radius: 12px; padding: 1px 7px; box-shadow: 0 0 8px rgba(16,185,129,0.6); z-index: 5; }
+    .in-cart-badge { position: absolute; top: 4px; right: 4px; background: #10b981; color: #032014; font-size: 11px; font-weight: 800; border-radius: 12px; padding: 1px 7px; z-index: 5; }
     .h-scroll { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; }
     .h-scroll::-webkit-scrollbar { display: none; }
     .pill-btn { white-space: nowrap; border-radius: 20px; padding: 5px 14px; font-size: 12.5px; font-weight: 600; border: 1px solid #1f2f48; background: #111a2d; color: #8fa0bc; }
@@ -25,8 +25,6 @@
     .sticky-bar { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(13,21,39,0.96); backdrop-filter: blur(12px); border-top: 1px solid rgba(255,255,255,0.12); padding: 8px 12px; z-index: 1040; }
     .cash-pill { background: #152238; border: 1px solid #233758; color: #38bdf8; font-weight: bold; border-radius: 6px; padding: 6px 2px; font-size: 12px; cursor: pointer; text-align: center; }
     .cash-pill:active { background: #00d2ff; color: #000; }
-    .receipt-box { background: #fff; color: #000; font-family: monospace; padding: 16px; border-radius: 8px; font-size: 13px; }
-    .dashed-line { border-top: 1px dashed #444; margin: 8px 0; }
   </style>
 </head>
 <body class="p-1 p-md-2">
@@ -34,20 +32,18 @@
   <!-- Top Master Bar -->
   <header class="pos-card p-2 mb-2 d-flex justify-content-between align-items-center flex-wrap gap-2">
     <div class="d-flex align-items-center gap-2">
-      <img src="logo.svg" style="height: 36px; border-radius: 6px; background: #fff; padding: 2px;" alt="Logo">
+      <img src="logo.svg" style="height: 36px; border-radius: 6px; background: #fff; padding: 2px;" alt="Logo" onerror="this.style.display='none'">
       <div>
         <h6 class="fw-bold mb-0 text-info">Sky Mother POS <span class="badge bg-primary" style="font-size: 9px;">PRO</span></h6>
         <small class="text-secondary" style="font-size: 11px;">Hotel &amp; Restaurant</small>
       </div>
       <span class="badge bg-dark border border-secondary text-light ms-1 p-2 btn-live" onclick="promptStaff()" style="cursor: pointer;">
-        <i class="fas fa-user-shield text-info me-1"></i><span id="lblRole">OWNER</span>: <span id="lblStaff">Soe Aung</span>
+        <i class="fas fa-user-shield text-info me-1"></i><span id="lblStaff">Soe Aung</span>
       </span>
     </div>
     <div class="d-flex align-items-center gap-1">
       <button class="btn btn-sm btn-outline-info btn-live py-1" onclick="openMenuManager()"><i class="fas fa-boxes"></i> ကုန်ပစ္စည်း</button>
-      <button class="btn btn-sm btn-outline-warning btn-live py-1" onclick="openReportModal()"><i class="fas fa-chart-line"></i> စာရင်း</button>
       <button class="btn btn-sm btn-outline-light btn-live py-1" onclick="printerModal.show()"><i class="fas fa-print text-info"></i> Printer</button>
-      <button class="btn btn-sm btn-outline-secondary btn-live py-1" onclick="openSettingsModal()"><i class="fas fa-cog"></i></button>
     </div>
   </header>
 
@@ -78,7 +74,7 @@
     </div>
   </div>
 
-  <!-- Screen 2: Dedicated Ticket Screen (စခရင်အုပ်မိုးသည့် Modal မဟုတ်တော့ပါ) -->
+  <!-- Screen 2: Dedicated Ticket Screen -->
   <div id="viewTicket" style="display: none;">
     <div class="pos-card p-3 mb-2">
       <div class="d-flex justify-content-between align-items-center border-bottom border-secondary pb-2 mb-2">
@@ -100,8 +96,8 @@
           <span class="fs-3 fw-bold text-warning" id="lblTicketTotal">0 Ks</span>
         </div>
         <div class="row g-2">
-          <div class="col-6"><button class="btn btn-warning w-100 py-2 fw-bold btn-live" onclick="printSmartKOT()"><i class="fas fa-utensils me-1"></i> KOT မီးဖိုချောင်</button></div>
-          <div class="col-6"><button class="btn btn-outline-warning w-100 py-2 fw-bold btn-live" onclick="showBillPreview()"><i class="fas fa-eye me-1"></i> ဘေလ်စစ်မည်</button></div>
+          <div class="col-6"><button class="btn btn-warning w-100 py-2 fw-bold btn-live" onclick="printHDGraphicSlip('kot')"><i class="fas fa-utensils me-1"></i> KOT မီးဖိုချောင်</button></div>
+          <div class="col-6"><button class="btn btn-outline-warning w-100 py-2 fw-bold btn-live" onclick="printHDGraphicSlip('preview')"><i class="fas fa-eye me-1"></i> ဘေလ်စစ်မည်</button></div>
           <div class="col-6"><button class="btn btn-primary w-100 py-2 fw-bold btn-live" onclick="saveCartToTable()"><i class="fas fa-save me-1"></i> အော်ဒါသိမ်းမည်</button></div>
           <div class="col-6"><button class="btn btn-success w-100 py-2 fw-bold btn-live" onclick="openCheckoutModal()"><i class="fas fa-cash-register me-1"></i> ဘေလ်ရှင်းမည်</button></div>
         </div>
@@ -109,7 +105,7 @@
     </div>
   </div>
 
-  <!-- Sticky Bottom Bar (Always Accessible on Menu Screen) -->
+  <!-- Sticky Bottom Bar -->
   <div class="sticky-bar d-flex justify-content-between align-items-center" id="stickyBottomBar">
     <div onclick="showView('ticket')" style="cursor: pointer;">
       <div class="d-flex align-items-center gap-1">
@@ -119,7 +115,7 @@
       <div class="text-warning fw-bold fs-5" id="barSubTotal">0 Ks <small class="text-secondary small fw-normal">(<span id="barItemCount">0</span> မျိုး)</small></div>
     </div>
     <div class="d-flex gap-1">
-      <button class="btn btn-warning btn-sm btn-live px-2 py-2 fw-bold" onclick="printSmartKOT()" title="KOT မီးဖိုချောင်"><i class="fas fa-utensils"></i> KOT</button>
+      <button class="btn btn-warning btn-sm btn-live px-2 py-2 fw-bold" onclick="printHDGraphicSlip('kot')" title="KOT မီးဖိုချောင်"><i class="fas fa-utensils"></i> KOT</button>
       <button class="btn btn-success btn-live px-3 py-2 fw-bold" onclick="showView('ticket')"><i class="fas fa-receipt me-1"></i> ဘေလ်စစ်/ရှင်းမည် ❯</button>
     </div>
   </div>
@@ -184,40 +180,39 @@
         </div>
 
         <div class="d-flex gap-2">
-          <button class="btn btn-success w-100 fw-bold py-2 btn-live" onclick="confirmFinalCheckout()"><i class="fas fa-check-circle"></i> ဘေလ်ပိတ်ပြီး Print ထုတ်မည်</button>
+          <button class="btn btn-success w-100 fw-bold py-2 btn-live" id="btnConfirmPay" onclick="confirmFinalCheckout()"><i class="fas fa-check-circle"></i> ဘေလ်ပိတ်ပြီး Print ထုတ်မည်</button>
           <button class="btn btn-secondary w-100" data-bs-dismiss="modal">ပိတ်မည်</button>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Preview Modal -->
-  <div class="modal fade" id="previewModal" tabindex="-1">
+  <!-- Printer Modal -->
+  <div class="modal fade" id="printerModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content bg-transparent border-0">
-        <div class="receipt-box shadow-lg">
-          <div class="text-center">
-            <h5 class="fw-bold mb-0">Sky Mother</h5>
-            <small>Hotel &amp; Restaurant</small><br>
-            <div class="badge bg-warning text-dark fw-bold my-1">** PREVIEW စစ်ဆေးရန် **</div><br>
-            <small>Ph: 09-340339520 | KPay: 09-783222755</small>
+      <div class="modal-content bg-dark text-white border-secondary">
+        <div class="modal-header border-secondary p-2">
+          <h6 class="modal-title text-info fw-bold"><i class="fas fa-print"></i> Thermal Printer (58mm/80mm)</h6>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body small">
+          <div class="alert alert-info border-secondary py-2 small mb-3">
+            <strong><i class="fas fa-check-circle text-success"></i> HD Graphic Printing:</strong><br>
+            မြန်မာစာ မွဲခြောက်ခြင်းနှင့် တရုတ်စာ ရောထွက်ခြင်း မဖြစ်စေရန် ပြေစာများကို Graphic Image စနစ်ဖြင့် စက္ကူမဖြုန်းဘဲ အတိအကျ ပုံနှိပ်ပေးပါသည်။
           </div>
-          <div class="dashed-line"></div>
-          <div>ဝိုင်း/အခန်း: <strong id="pvTable"></strong></div>
-          <div>အချိန်: <span id="pvTime"></span> | တာဝန်ခံ: <span id="pvStaff"></span></div>
-          <div class="dashed-line"></div>
-          <div id="pvItems"></div>
-          <div class="dashed-line"></div>
-          <div class="d-flex justify-content-between fw-bold fs-6">
-            <span>ကျသင့်ငွေ:</span>
-            <span id="pvTotal"></span>
+          <div class="d-grid gap-2 mb-3">
+            <button class="btn btn-outline-info py-2 fw-bold text-start btn-live" onclick="connectWebBluetooth()">
+              <i class="fab fa-bluetooth text-primary fs-5 me-2"></i> Bluetooth ဖြင့် တိုက်ရိုက်ချိတ်မည် (Printer001)
+            </button>
           </div>
-          <div class="dashed-line"></div>
-          <div class="text-center small text-muted">* ဤစာရွက်သည် စာရင်းမပိတ်ရသေးသော အစမ်းစလစ်ဖြစ်ပါသည် *</div>
-          <div class="mt-3 d-flex gap-2">
-            <button class="btn btn-dark w-100 fw-bold btn-live" onclick="executePreviewPrint()"><i class="fas fa-print"></i> စက္ကူ Print ထုတ်မည်</button>
-            <button class="btn btn-secondary w-100" data-bs-dismiss="modal">ပိတ်မည်</button>
+          <div class="p-2 mb-2 bg-secondary bg-opacity-25 rounded border border-secondary">
+            <label class="text-secondary mb-1">ပုံနှိပ်မည့် နည်းလမ်း:</label>
+            <select id="selPrintEngine" class="form-select form-select-sm bg-black text-white border-secondary" onchange="setPrintEngine(this.value)">
+              <option value="rawbt" selected>RawBT App (အကြည်လင်ဆုံး - အကြံပြု)</option>
+              <option value="direct_bt">Web Bluetooth (တိုက်ရိုက် Graphic)</option>
+            </select>
           </div>
+          <button class="btn btn-warning w-100 fw-bold py-2 btn-live" onclick="testThermalPrint()"><i class="fas fa-bolt"></i> စမ်းသပ် Print ထုတ်ကြည့်မည် (HD)</button>
         </div>
       </div>
     </div>
@@ -272,39 +267,26 @@
     </div>
   </div>
 
-  <!-- Printer Modal -->
-  <div class="modal fade" id="printerModal" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content bg-dark text-white border-secondary">
-        <div class="modal-header border-secondary p-2">
-          <h6 class="modal-title text-info fw-bold"><i class="fas fa-print"></i> Thermal Printer ချိတ်ဆက်မှု</h6>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-        </div>
-        <div class="modal-body small">
-          <div class="d-grid gap-2 mb-3">
-            <button class="btn btn-outline-info py-2 fw-bold text-start btn-live" onclick="connectWebBluetooth()">
-              <i class="fab fa-bluetooth text-primary fs-5 me-2"></i> Bluetooth ဖြင့် တိုက်ရိုက်ချိတ်မည် (Printer001)
-            </button>
-            <button class="btn btn-outline-success py-2 fw-bold text-start btn-live" onclick="connectWebUSB()">
-              <i class="fas fa-usb text-success fs-5 me-2"></i> USB OTG ကြိုးဖြင့် တိုက်ရိုက်ချိတ်မည်
-            </button>
-          </div>
-          <div class="p-2 mb-2 bg-secondary bg-opacity-25 rounded border border-secondary">
-            <label class="text-secondary mb-1">ပုံနှိပ်မည့် နည်းလမ်း:</label>
-            <select id="selPrintEngine" class="form-select form-select-sm bg-black text-white border-secondary" onchange="setPrintEngine(this.value)">
-              <option value="rawbt" selected>RawBT App (အငြိမ်းချမ်းဆုံး/အကြံပြု)</option>
-              <option value="direct_bt">Web Bluetooth (တိုက်ရိုက်)</option>
-              <option value="direct_usb">Web USB (တိုက်ရိုက်)</option>
-            </select>
-          </div>
-          <button class="btn btn-warning w-100 fw-bold py-2 btn-live" onclick="testThermalPrint()"><i class="fas fa-bolt"></i> စမ်းသပ် Print ထုတ်ကြည့်မည်</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
+    // Embedded Fallback Menu to guarantee dishes ALWAYS load on GitHub Pages!
+    const defaultMenuBackup = [
+      { id: 1, name: "(၁၂)မျိုးဟင်းရည်", price: 35000, category: "Food" },
+      { id: 2, name: "(၃)မျိုးထောင်း", price: 35000, category: "Food" },
+      { id: 3, name: "၃မျိုးစပ် လွတ်", price: 15000, category: "Food" },
+      { id: 4, name: "Indo ကြက်ကြော်", price: 45000, category: "Food" },
+      { id: 5, name: "အသား၃မျိုးစပ်", price: 25000, category: "Food" },
+      { id: 6, name: "ကန်စွန်းပုလင်း", price: 6000, category: "Food" },
+      { id: 7, name: "ABC Beer", price: 7000, category: "Alcohol" },
+      { id: 8, name: "Black Shield", price: 3500, category: "Alcohol" },
+      { id: 9, name: "C-Beer", price: 2500, category: "Alcohol" },
+      { id: 10, name: "Myanmar ပုလင်း", price: 6500, category: "Alcohol" },
+      { id: 11, name: "KTV Room (1 hr)", price: 15000, category: "KTV" },
+      { id: 12, name: "Standard Room", price: 45000, category: "Room" },
+      { id: 13, name: "VIP Room", price: 65000, category: "Room" },
+      { id: 14, name: "Service Fee", price: 5000, category: "Service" }
+    ];
+
     const floorList = {
       'flr1': ['A1', 'A2', 'Table 1', 'Table 2', 'Table 3', 'Table 4', 'Table 5', 'Table 6', 'Table 7', 'Table 8', 'Table 9', 'V1', 'V2'],
       'ktv': ['K2', 'K3'],
@@ -316,12 +298,12 @@
     let activeFloor = 'all', activeCat = 'All';
     let currentUser = { name: 'Soe Aung', role: 'owner' };
     let currentCompressedBase64 = '';
-    let btDevice = null, btChar = null, usbDevice = null, usbEndpoint = null;
+    let btDevice = null, btChar = null;
+    let isPrinting = false; // Prevents multiple prints at once!
     let printEngine = localStorage.getItem('sm_print_engine') || 'rawbt';
 
     const menuManagerModal = new bootstrap.Modal(document.getElementById('menuManagerModal'));
     const checkoutModal = new bootstrap.Modal(document.getElementById('checkoutModal'));
-    const previewModal = new bootstrap.Modal(document.getElementById('previewModal'));
     const printerModal = new bootstrap.Modal(document.getElementById('printerModal'));
 
     function showView(view) {
@@ -348,15 +330,17 @@
         const resDb = await fetch('data.json');
         if (resDb.ok) {
           const db = await resDb.json();
-          menuItems = db.items || [];
-          renderCategoryFilter(db.categories || ['All']);
-          renderMenuGrid(menuItems);
+          menuItems = (db.items && db.items.length > 0) ? db.items : defaultMenuBackup;
+          renderCategoryFilter(db.categories || ['All', 'Food', 'Alcohol', 'KTV', 'Room', 'Service']);
+        } else {
+          menuItems = defaultMenuBackup;
+          renderCategoryFilter(['All', 'Food', 'Alcohol', 'KTV', 'Room', 'Service']);
         }
-      } catch(e) {}
-      try {
-        const resCfg = await fetch('/api/config');
-        if (resCfg.ok) config = await resCfg.json();
-      } catch(e) {}
+      } catch(e) {
+        menuItems = defaultMenuBackup;
+        renderCategoryFilter(['All', 'Food', 'Alcohol', 'KTV', 'Room', 'Service']);
+      }
+      renderMenuGrid(menuItems);
 
       await syncOrders();
       buildTableOptions();
@@ -496,7 +480,6 @@
       document.getElementById('lblTicketTotal').textContent = total.toLocaleString() + ' Ks';
       document.getElementById('barSubTotal').innerHTML = `${total.toLocaleString()} Ks <small class="text-secondary small fw-normal">(${currentCart.length} မျိုး)</small>`;
 
-      // Fix Dynamic Status Badges
       const isOccupied = (currentCart.length > 0);
       const badgeCls = isOccupied ? 'badge bg-danger' : 'badge bg-success';
       const badgeTxt = isOccupied ? '🔴 ဧည့်ရှိ' : '🟢 လွတ်နေသည်';
@@ -508,12 +491,14 @@
     }
 
     function modQty(i, delta) {
+      if ('vibrate' in navigator) navigator.vibrate(25);
       currentCart[i].qty += delta;
       if (currentCart[i].qty <= 0) currentCart.splice(i, 1);
       renderCartUI();
       filterMenu();
     }
     function delCartItem(i) {
+      if ('vibrate' in navigator) navigator.vibrate(25);
       currentCart.splice(i, 1);
       renderCartUI();
       filterMenu();
@@ -550,44 +535,334 @@
     async function syncOrders() {
       try {
         const res = await fetch('/api/active');
-        activeOrders = await res.json();
+        if (res.ok) activeOrders = await res.json();
       } catch(e) {}
     }
 
-    function printSmartKOT() {
-      const t = document.getElementById('selTable').value;
-      if (currentCart.length === 0) return alert("မီးဖိုချောင်သို့ ပို့ရန် အော်ဒါမရှိပါ");
+    // ==========================================
+    // HD CANVASES: 100% Crisp Burmese Printing!
+    // ==========================================
+    function createReceiptCanvas(type, data) {
+      const width = 384; // Standard 58mm Thermal Printer Pixel Width
+      const items = data.items || [];
+      const calculatedHeight = Math.max(340, 200 + items.length * 30 + (type !== 'kot' ? 120 : 40));
 
-      let newItems = [];
-      currentCart.forEach(it => {
-        let sent = it.kot_printed || 0;
-        let delta = it.qty - sent;
-        if (delta > 0) {
-          newItems.push({ name: it.name, qty: delta, is_new: sent > 0 });
-          it.kot_printed = it.qty;
+      const canvas = document.createElement('canvas');
+      canvas.width = width;
+      canvas.height = calculatedHeight;
+      const ctx = canvas.getContext('2d');
+
+      // Pure White Background
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, width, calculatedHeight);
+
+      // Deep Black Ink
+      ctx.fillStyle = '#000000';
+      ctx.textAlign = 'center';
+
+      let y = 32;
+      ctx.font = 'bold 24px -apple-system, sans-serif';
+      ctx.fillText('Sky Mother', width / 2, y);
+      y += 24;
+
+      ctx.font = '16px -apple-system, sans-serif';
+      ctx.fillText('Hotel & Restaurant', width / 2, y);
+      y += 22;
+      ctx.fillText('Ph: 09-340339520', width / 2, y);
+      y += 24;
+
+      // Dashed Line
+      ctx.beginPath();
+      ctx.setLineDash([5, 5]);
+      ctx.moveTo(10, y);
+      ctx.lineTo(width - 10, y);
+      ctx.stroke();
+      y += 22;
+
+      // Header Tag
+      ctx.font = 'bold 18px -apple-system, sans-serif';
+      if (type === 'preview') {
+        ctx.fillText('** PREVIEW ဘေလ်စစ်ရန် **', width / 2, y);
+      } else if (type === 'kot') {
+        ctx.fillText('** KITCHEN ORDER (မီးဖိုချောင်) **', width / 2, y);
+      } else {
+        ctx.fillText('ပြေစာ / INVOICE', width / 2, y);
+      }
+      y += 24;
+
+      // Table & Staff Info
+      ctx.font = '16px -apple-system, sans-serif';
+      ctx.textAlign = 'left';
+      ctx.fillText('ဝိုင်း/အခန်း: ' + data.table, 15, y);
+      y += 22;
+      ctx.fillText('အချိန်: ' + new Date().toLocaleTimeString(), 15, y);
+      y += 22;
+      ctx.fillText('တာဝန်ခံ: ' + (data.staff || currentUser.name), 15, y);
+      if (data.customer) {
+        y += 22;
+        ctx.fillText('ဧည့်သည်: ' + data.customer, 15, y);
+      }
+      y += 18;
+
+      // Dashed Line
+      ctx.beginPath();
+      ctx.moveTo(10, y);
+      ctx.lineTo(width - 10, y);
+      ctx.stroke();
+      y += 24;
+
+      // Items
+      ctx.font = 'bold 16px -apple-system, sans-serif';
+      let total = 0;
+      items.forEach(it => {
+        const sub = it.price * it.qty;
+        total += sub;
+        ctx.textAlign = 'left';
+        ctx.fillText(it.name + ' x ' + it.qty, 15, y);
+        if (type !== 'kot') {
+          ctx.textAlign = 'right';
+          ctx.fillText(sub.toLocaleString() + ' Ks', width - 15, y);
         }
+        y += 26;
       });
 
-      if (newItems.length === 0) return alert("မီးဖိုချောင်သို့ ပို့ရန် အော်ဒါအသစ် မရှိပါ");
-      saveCartToTable();
+      // Summary
+      if (type !== 'kot') {
+        y += 5;
+        ctx.beginPath();
+        ctx.moveTo(10, y);
+        ctx.lineTo(width - 10, y);
+        ctx.stroke();
+        y += 24;
 
-      let text = `KITCHEN ORDER (မီးဖိုချောင်)
-${config.shop_name || 'Sky Mother'}
---------------------------------
-ဝိုင်း/အခန်း: ${t}
-အချိန်: ${new Date().toLocaleTimeString()}
-တာဝန်ခံ: ${currentUser.name}
---------------------------------
-`;
-      newItems.forEach(i => { text += `[ ] ${i.name}   x${i.qty} ${i.is_new ? '(+အသစ်)' : ''}
-`; });
-      text += `--------------------------------
-* စားဖိုမှူး စလစ် *
+        ctx.font = 'bold 19px -apple-system, sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText('ကျသင့်ငွေ:', 15, y);
+        ctx.textAlign = 'right';
+        ctx.fillText(total.toLocaleString() + ' Ks', width - 15, y);
+        y += 24;
 
+        if (data.discount) {
+          ctx.font = '16px -apple-system, sans-serif';
+          ctx.textAlign = 'left';
+          ctx.fillText('လျှော့ဈေး:', 15, y);
+          ctx.textAlign = 'right';
+          ctx.fillText(data.discount.toLocaleString() + ' Ks', width - 15, y);
+          y += 22;
+        }
+        if (data.due > 0) {
+          ctx.font = 'bold 16px -apple-system, sans-serif';
+          ctx.textAlign = 'left';
+          ctx.fillText('အကြွေးကျန်:', 15, y);
+          ctx.textAlign = 'right';
+          ctx.fillText(data.due.toLocaleString() + ' Ks', width - 15, y);
+          y += 22;
+        }
+      }
 
-`;
-      sendRawPrint(text);
-      alert("မီးဖိုချောင်သို့ အော်ဒါစလစ် ထုတ်ပြီးပါပြီ");
+      y += 12;
+      ctx.font = 'italic 15px -apple-system, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('Have a wonderful day! Thank You', width / 2, y);
+      y += 30;
+
+      // Crop to actual content height to save paper!
+      const croppedCanvas = document.createElement('canvas');
+      croppedCanvas.width = width;
+      croppedCanvas.height = y;
+      const cropCtx = croppedCanvas.getContext('2d');
+      cropCtx.drawImage(canvas, 0, 0, width, y, 0, 0, width, y);
+
+      return croppedCanvas;
+    }
+
+    async function sendGraphicToPrinter(canvas) {
+      if (isPrinting) return;
+      isPrinting = true;
+
+      try {
+        if (printEngine === 'rawbt') {
+          // Send high-res PNG to RawBT - Sharp, Zero Chinese chars!
+          const b64 = canvas.toDataURL('image/png').split(',')[1];
+          window.location.href = "rawbt:data:image/png;base64," + b64;
+        } else if (printEngine === 'direct_bt' && btChar) {
+          // Convert Canvas to ESC/POS Raster command (GS v 0)
+          const imgData = canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height);
+          const rasterBytes = convertImageDataToESCPOS(imgData);
+          const chunkSize = 512;
+          for (let i = 0; i < rasterBytes.length; i += chunkSize) {
+            await btChar.writeValue(rasterBytes.slice(i, i + chunkSize));
+            await new Promise(r => setTimeout(r, 20));
+          }
+        } else {
+          // Fallback to RawBT
+          const b64 = canvas.toDataURL('image/png').split(',')[1];
+          window.location.href = "rawbt:data:image/png;base64," + b64;
+        }
+      } catch(e) {
+        alert("Print Error: " + e.message);
+      } finally {
+        setTimeout(() => { isPrinting = false; }, 1500); // 1.5s debounce
+      }
+    }
+
+    function convertImageDataToESCPOS(imgData) {
+      const width = imgData.width;
+      const height = imgData.height;
+      const widthBytes = Math.ceil(width / 8);
+      const header = new Uint8Array([0x1B, 0x40, 0x1D, 0x76, 0x30, 0, widthBytes % 256, Math.floor(widthBytes / 256), height % 256, Math.floor(height / 256)]);
+      const rasterData = new Uint8Array(widthBytes * height);
+
+      let idx = 0;
+      for (let y = 0; y < height; y++) {
+        for (let x = 0; x < widthBytes; x++) {
+          let byte = 0;
+          for (let b = 0; b < 8; b++) {
+            const px = x * 8 + b;
+            if (px < width) {
+              const pIdx = (y * width + px) * 4;
+              const brightness = (imgData.data[pIdx] + imgData.data[pIdx+1] + imgData.data[pIdx+2]) / 3;
+              if (brightness < 128) byte |= (1 << (7 - b)); // Black dot
+            }
+          }
+          rasterData[idx++] = byte;
+        }
+      }
+
+      const footer = new Uint8Array([0x1B, 0x64, 0x03]); // Feed 3 lines
+      const total = new Uint8Array(header.length + rasterData.length + footer.length);
+      total.set(header);
+      total.set(rasterData, header.length);
+      total.set(footer, header.length + rasterData.length);
+      return total;
+    }
+
+    function printHDGraphicSlip(type) {
+      const t = document.getElementById('selTable').value;
+      if (currentCart.length === 0) return alert("အော်ဒါမရှိပါ");
+      const canvas = createReceiptCanvas(type, { table: t, staff: currentUser.name, items: currentCart });
+      sendGraphicToPrinter(canvas);
+    }
+
+    function testThermalPrint() {
+      const canvas = createReceiptCanvas('preview', {
+        table: 'Test 01',
+        staff: currentUser.name,
+        items: [{ name: 'စမ်းသပ်ပစ္စည်း ၁', price: 1000, qty: 1 }]
+      });
+      sendGraphicToPrinter(canvas);
+    }
+
+    async function connectWebBluetooth() {
+      try {
+        btDevice = await navigator.bluetooth.requestDevice({
+          acceptAllDevices: true,
+          optionalServices: ['000018f0-0000-1000-8000-00805f9b34fb', '49535343-fe7d-4ae5-8fa9-9fafd205e455']
+        });
+        const server = await btDevice.gatt.connect();
+        const svcs = await server.getPrimaryServices();
+        for (let s of svcs) {
+          const chars = await s.getCharacteristics();
+          for (let c of chars) {
+            if (c.properties.write || c.properties.writeWithoutResponse) { btChar = c; break; }
+          }
+        }
+        alert("Bluetooth Printer ချိတ်ဆက်မှု အောင်မြင်ပါသည်");
+      } catch(e) { alert("Bluetooth ချိတ်၍မရပါ: " + e.message); }
+    }
+
+    function setPrintEngine(mode) {
+      printEngine = mode;
+      localStorage.setItem('sm_print_engine', mode);
+    }
+
+    function openCheckoutModal() {
+      const t = document.getElementById('selTable').value;
+      if (currentCart.length === 0) return alert("ဘေလ်ရှင်းရန် အော်ဒါမရှိပါ");
+      let sub = 0; currentCart.forEach(c => sub += (c.price * c.qty));
+      document.getElementById('chkTotalKs').textContent = sub.toLocaleString() + ' Ks';
+      document.getElementById('chkDiscount').value = '0';
+      document.getElementById('chkNetKs').textContent = sub.toLocaleString() + ' Ks';
+      document.getElementById('chkPaidKs').value = sub;
+      document.getElementById('chkDueKs').textContent = '0 Ks';
+      document.getElementById('chkCustomer').value = '';
+      checkoutModal.show();
+    }
+
+    function calcNetTotal() {
+      let sub = 0; currentCart.forEach(c => sub += (c.price * c.qty));
+      let disc = parseInt(document.getElementById('chkDiscount').value) || 0;
+      let net = Math.max(0, sub - disc);
+      document.getElementById('chkNetKs').textContent = net.toLocaleString() + ' Ks';
+      let paid = parseInt(document.getElementById('chkPaidKs').value);
+      if (isNaN(paid)) paid = net;
+      let due = Math.max(0, net - paid);
+      document.getElementById('chkDueKs').textContent = due.toLocaleString() + ' Ks';
+    }
+
+    function quickCash(val) {
+      let sub = 0; currentCart.forEach(c => sub += (c.price * c.qty));
+      let disc = parseInt(document.getElementById('chkDiscount').value) || 0;
+      let net = Math.max(0, sub - disc);
+      if (val === 'exact') {
+        document.getElementById('chkPaidKs').value = net;
+      } else if (val === 'round') {
+        document.getElementById('chkPaidKs').value = Math.ceil(net / 1000) * 1000;
+      } else {
+        document.getElementById('chkPaidKs').value = val;
+      }
+      calcNetTotal();
+    }
+
+    async function confirmFinalCheckout() {
+      const t = document.getElementById('selTable').value;
+      let sub = 0; currentCart.forEach(c => sub += (c.price * c.qty));
+      let disc = parseInt(document.getElementById('chkDiscount').value) || 0;
+      let net = Math.max(0, sub - disc);
+      let paid = parseInt(document.getElementById('chkPaidKs').value) || net;
+      let due = Math.max(0, net - paid);
+      let cust = document.getElementById('chkCustomer').value.trim();
+      let payType = document.getElementById('chkPayType').value;
+
+      const orderData = {
+        table: t,
+        staff: currentUser.name,
+        customer: cust,
+        items: currentCart,
+        total: net,
+        discount: disc,
+        paid: paid,
+        due: due,
+        pay_type: payType
+      };
+
+      // Print High-Res Graphic Slip!
+      const canvas = createReceiptCanvas('final', orderData);
+      sendGraphicToPrinter(canvas);
+
+      try {
+        await fetch('/api/checkout', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({
+            table_name: t,
+            customer_name: cust,
+            discount: disc,
+            paid_amount: paid,
+            payment_type: payType,
+            waiter_name: currentUser.name
+          })
+        });
+      } catch(e) {}
+
+      checkoutModal.hide();
+      currentCart = [];
+      delete activeOrders[t];
+      renderCartUI();
+      buildTableOptions();
+      filterMenu();
+      showView('menu');
+      alert(`[${t}] ဘေလ်ရှင်းပြီး စာရင်းပိတ်လိုက်ပါပြီ`);
     }
 
     function previewGalleryImage(input) {
@@ -665,229 +940,23 @@ ${config.shop_name || 'Sky Mother'}
       const category = document.getElementById('manageItemCat').value;
       if (!name || isNaN(price)) return alert("အမည်နှင့် ဈေးနှုန်း မှန်ကန်စွာ ဖြည့်ပါ");
 
-      const url = '/api/items';
-      const method = id ? 'PUT' : 'POST';
-      const payload = id ? { id: parseInt(id), name, price, category, image: currentCompressedBase64 } : { name, price, category, image: currentCompressedBase64 };
-
-      await fetch(url, { method, headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload) });
+      if (id) {
+        const it = menuItems.find(m => m.id == id);
+        if (it) { it.name = name; it.price = price; it.category = category; if (currentCompressedBase64) it.image = currentCompressedBase64; }
+      } else {
+        menuItems.push({ id: Date.now(), name, price, category, image: currentCompressedBase64 });
+      }
       resetManageForm();
-      await initSystem();
+      renderMenuGrid(menuItems);
       renderManageTable();
       alert("ကုန်ပစ္စည်း အောင်မြင်စွာ သိမ်းဆည်းပြီးပါပြီ");
     }
 
-    async function deleteManageItem(id) {
+    function deleteManageItem(id) {
       if (!confirm("ဤပစ္စည်းကို ဖျက်မည် သေချာပါသလား?")) return;
-      await fetch('/api/items', { method: 'DELETE', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ id }) });
-      await initSystem();
+      menuItems = menuItems.filter(m => m.id != id);
+      renderMenuGrid(menuItems);
       renderManageTable();
-    }
-
-    async function connectWebBluetooth() {
-      try {
-        btDevice = await navigator.bluetooth.requestDevice({
-          acceptAllDevices: true,
-          optionalServices: ['000018f0-0000-1000-8000-00805f9b34fb', '49535343-fe7d-4ae5-8fa9-9fafd205e455']
-        });
-        const server = await btDevice.gatt.connect();
-        const svcs = await server.getPrimaryServices();
-        for (let s of svcs) {
-          const chars = await s.getCharacteristics();
-          for (let c of chars) {
-            if (c.properties.write || c.properties.writeWithoutResponse) { btChar = c; break; }
-          }
-        }
-        alert("Bluetooth Printer ချိတ်ဆက်မှု အောင်မြင်ပါသည်");
-      } catch(e) { alert("Bluetooth ချိတ်၍မရပါ: " + e.message); }
-    }
-
-    async function connectWebUSB() {
-      try {
-        usbDevice = await navigator.usb.requestDevice({ filters: [] });
-        await usbDevice.open();
-        await usbDevice.selectConfiguration(1);
-        await usbDevice.claimInterface(0);
-        usbEndpoint = usbDevice.configuration.interfaces[0].alternate.endpoints.find(e => e.direction === 'out');
-        alert("USB Printer ချိတ်ဆက်မှု အောင်မြင်ပါသည်");
-      } catch(e) { alert("USB ချိတ်၍မရပါ: " + e.message); }
-    }
-
-    function setPrintEngine(mode) {
-      printEngine = mode;
-      localStorage.setItem('sm_print_engine', mode);
-    }
-
-    async function sendRawPrint(raw) {
-      if (printEngine === 'direct_bt' && btChar) {
-        await btChar.writeValue(new TextEncoder().encode(raw));
-      } else if (printEngine === 'direct_usb' && usbDevice && usbEndpoint) {
-        await usbDevice.transferOut(usbEndpoint.endpointNumber, new TextEncoder().encode(raw));
-      } else {
-        window.location.href = "rawbt:data:text/plain;charset=utf-8;base64," + btoa(unescape(encodeURIComponent(raw)));
-      }
-    }
-
-    function makeReceipt(type, d) {
-      let t = `${config.shop_name || 'Sky Mother'}
-${config.shop_tagline || 'Hotel & Restaurant'}
-Ph: ${config.shop_phone || '09-340339520'}
---------------------------------
-`;
-      if (type === 'preview') t += `** PREVIEW ဘေလ်စစ်ရန် **
-`;
-      else t += `Order ID: ${d.id || 'SM-01'}
-`;
-      t += `ဝိုင်း: ${d.table} | တာဝန်ခံ: ${d.staff}
-`;
-      if (d.customer) t += `ဧည့်သည်: ${d.customer}
-`;
-      t += `--------------------------------
-`;
-      d.items.forEach(it => { t += `${it.name} x${it.qty}  ${(it.price*it.qty).toLocaleString()} Ks
-`; });
-      t += `--------------------------------
-ကျသင့်ငွေ: ${d.total.toLocaleString()} Ks
-`;
-      if (d.discount) t += `လျှော့ဈေး: ${d.discount.toLocaleString()} Ks
-`;
-      if (d.paid) t += `ပေးချေငွေ: ${d.paid.toLocaleString()} Ks
-`;
-      if (d.due > 0) t += `အကြွေးကျန်: ${d.due.toLocaleString()} Ks
-`;
-      t += `--------------------------------
-Have a wonderful day! Thank You
-
-
-`;
-      return t;
-    }
-
-    function showBillPreview() {
-      const t = document.getElementById('selTable').value;
-      if (currentCart.length === 0) return alert("ဘေလ်စစ်ရန် အော်ဒါမရှိပါ");
-      document.getElementById('pvTable').textContent = t;
-      document.getElementById('pvTime').textContent = new Date().toLocaleTimeString();
-      document.getElementById('pvStaff').textContent = currentUser.name;
-
-      const area = document.getElementById('pvItems');
-      area.innerHTML = '';
-      let sub = 0;
-      currentCart.forEach(it => {
-        sub += (it.price * it.qty);
-        area.innerHTML += `<div class="d-flex justify-content-between"><span>${it.name} x ${it.qty}</span><span>${(it.price*it.qty).toLocaleString()} Ks</span></div>`;
-      });
-      document.getElementById('pvTotal').textContent = sub.toLocaleString() + ' Ks';
-      previewModal.show();
-    }
-
-    function executePreviewPrint() {
-      const t = document.getElementById('selTable').value;
-      let total = 0; currentCart.forEach(i => total += i.price * i.qty);
-      const text = makeReceipt('preview', { table: t, staff: currentUser.name, items: currentCart, total: total });
-      sendRawPrint(text);
-      previewModal.hide();
-    }
-
-    function testThermalPrint() {
-      const text = makeReceipt('preview', { table: 'Test 01', staff: currentUser.name, items: [{name: 'စမ်းသပ်ပစ္စည်း', price: 1000, qty: 1}], total: 1000 });
-      sendRawPrint(text);
-    }
-
-    function openCheckoutModal() {
-      const t = document.getElementById('selTable').value;
-      if (currentCart.length === 0) return alert("ဘေလ်ရှင်းရန် အော်ဒါမရှိပါ");
-      let sub = 0; currentCart.forEach(c => sub += (c.price * c.qty));
-      document.getElementById('chkTotalKs').textContent = sub.toLocaleString() + ' Ks';
-      document.getElementById('chkDiscount').value = '0';
-      document.getElementById('chkNetKs').textContent = sub.toLocaleString() + ' Ks';
-      document.getElementById('chkPaidKs').value = sub;
-      document.getElementById('chkDueKs').textContent = '0 Ks';
-      document.getElementById('chkCustomer').value = '';
-      checkoutModal.show();
-    }
-
-    function calcNetTotal() {
-      let sub = 0; currentCart.forEach(c => sub += (c.price * c.qty));
-      let disc = parseInt(document.getElementById('chkDiscount').value) || 0;
-      let net = Math.max(0, sub - disc);
-      document.getElementById('chkNetKs').textContent = net.toLocaleString() + ' Ks';
-      let paid = parseInt(document.getElementById('chkPaidKs').value);
-      if (isNaN(paid)) paid = net;
-      let due = Math.max(0, net - paid);
-      document.getElementById('chkDueKs').textContent = due.toLocaleString() + ' Ks';
-    }
-
-    function quickCash(val) {
-      let sub = 0; currentCart.forEach(c => sub += (c.price * c.qty));
-      let disc = parseInt(document.getElementById('chkDiscount').value) || 0;
-      let net = Math.max(0, sub - disc);
-      if (val === 'exact') {
-        document.getElementById('chkPaidKs').value = net;
-      } else if (val === 'round') {
-        document.getElementById('chkPaidKs').value = Math.ceil(net / 1000) * 1000;
-      } else {
-        document.getElementById('chkPaidKs').value = val;
-      }
-      calcNetTotal();
-    }
-
-    async function confirmFinalCheckout() {
-      const t = document.getElementById('selTable').value;
-      let sub = 0; currentCart.forEach(c => sub += (c.price * c.qty));
-      let disc = parseInt(document.getElementById('chkDiscount').value) || 0;
-      let net = Math.max(0, sub - disc);
-      let paid = parseInt(document.getElementById('chkPaidKs').value) || net;
-      let due = Math.max(0, net - paid);
-      let cust = document.getElementById('chkCustomer').value.trim();
-      let payType = document.getElementById('chkPayType').value;
-
-      const orderData = {
-        id: 'SM-' + Math.floor(1000 + Math.random() * 9000),
-        table: t,
-        staff: currentUser.name,
-        customer: cust,
-        items: currentCart,
-        total: net,
-        discount: disc,
-        paid: paid,
-        due: due,
-        pay_type: payType
-      };
-
-      const txt = makeReceipt('final', orderData);
-      sendRawPrint(txt);
-
-      try {
-        await fetch('/api/checkout', {
-          method: 'POST',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({
-            table_name: t,
-            customer_name: cust,
-            discount: disc,
-            paid_amount: paid,
-            payment_type: payType,
-            waiter_name: currentUser.name
-          })
-        });
-      } catch(e) {}
-
-      checkoutModal.hide();
-      currentCart = [];
-      delete activeOrders[t];
-      renderCartUI();
-      buildTableOptions();
-      filterMenu();
-      showView('menu');
-      alert(`[${t}] ဘေလ်ရှင်းပြီး စာရင်းပိတ်လိုက်ပါပြီ`);
-    }
-
-    function openReportModal() {
-      window.location.href = '/api/export-csv';
-    }
-
-    function openSettingsModal() {
-      alert("Sky Mother POS Settings Ready");
     }
 
     initSystem();
