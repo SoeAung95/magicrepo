@@ -1571,5 +1571,41 @@ async function syncActiveOrdersLive() {
 setInterval(syncActiveOrdersLive, 4000);
 </script>
 
+
+<script>
+// Direct Bluetooth / USB Print Handler for ZyWell ZM06H
+function printDirectPOS(receiptText) {
+    if (window.NativePrinter && window.NativePrinter.isNative()) {
+        try {
+            // Base64 encode receipt string
+            var encoded = btoa(unescape(encodeURIComponent(receiptText)));
+            var devs = JSON.parse(window.NativePrinter.getBluetoothDevices() || "[]");
+            
+            // Bluetooth device ရှာဖွေခြင်း (ZyWell သို့မဟုတ် ပထမဆုံး paired device)
+            var targetMac = "";
+            for (var i = 0; i < devs.length; i++) {
+                if (devs[i].name.toLowerCase().indexOf("zywell") !== -1 || devs[i].name.toLowerCase().indexOf("printer") !== -1) {
+                    targetMac = devs[i].address;
+                    break;
+                }
+            }
+            if (!targetMac && devs.length > 0) targetMac = devs[0].address;
+
+            if (targetMac) {
+                window.NativePrinter.printBluetooth(targetMac, encoded);
+                return true;
+            } else {
+                // USB ကြိုးချိတ်ထားပါက USB ဖြင့် စမ်းထုတ်ခြင်း
+                window.NativePrinter.printUsb(encoded);
+                return true;
+            }
+        } catch(e) {
+            console.error("Direct print failed, falling back", e);
+        }
+    }
+    return false;
+}
+</script>
+
 </body>
 </html>
