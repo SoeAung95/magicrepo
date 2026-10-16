@@ -1526,5 +1526,50 @@
     }
   </script>
 
+
+<!-- Sky Mother POS Live Sync & Alert System -->
+<script>
+let previousActiveCount = null;
+
+function playOrderAlertSound() {
+    try {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(987.77, audioCtx.currentTime); // B5 note
+        gain.gain.setValueAtTime(0.4, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.6);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.6);
+    } catch (e) {
+        console.log("Audio alert not supported or user gesture needed");
+    }
+}
+
+async function syncActiveOrdersLive() {
+    try {
+        const res = await fetch("/api/active");
+        if (!res.ok) return;
+        const activeOrders = await res.json();
+        const currentCount = Object.keys(activeOrders).length;
+
+        if (previousActiveCount !== null && currentCount > previousActiveCount) {
+            playOrderAlertSound();
+            if (typeof loadData === "function") loadData();
+            if (typeof renderTables === "function") renderTables();
+        }
+        previousActiveCount = currentCount;
+    } catch (err) {
+        console.error("Live sync error:", err);
+    }
+}
+
+// ၄ စက္ကန့်တစ်ခါ အော်ဒါအသစ် ရှိမရှိ အလိုအလျောက် စစ်ဆေးခြင်း
+setInterval(syncActiveOrdersLive, 4000);
+</script>
+
 </body>
 </html>
