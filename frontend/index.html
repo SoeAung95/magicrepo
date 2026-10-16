@@ -1,6 +1,47 @@
 <!DOCTYPE html>
 <html lang="my">
 <head>
+
+<!-- Firebase Cloud Firestore Integration -->
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyC1TH_DPrsiK79XEg7XZBIBja8R9FGWjMQ",
+  authDomain: "skymother-pos.firebaseapp.com",
+  projectId: "skymother-pos",
+  storageBucket: "skymother-pos.firebasestorage.app",
+  messagingSenderId: "896365844615",
+  appId: "1:896365844615:web:4fad1c17b61736d5bbc022",
+  measurementId: "G-EEGX806RC4"
+};
+
+try {
+  if (typeof firebase !== "undefined" && !firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+    window.cloudDB = firebase.firestore();
+    console.log("Firebase Cloud Firestore Ready!");
+
+    // Realtime Order Sync & Alert
+    window.cloudDB.collection("active_orders").onSnapshot((snapshot) => {
+      let hasNew = false;
+      snapshot.docChanges().forEach((change) => {
+        if (change.type === "added") hasNew = true;
+      });
+      if (hasNew && typeof playOrderAlertSound === "function") {
+        playOrderAlertSound();
+      }
+      if (typeof loadData === "function") loadData();
+      if (typeof renderTables === "function") renderTables();
+    }, (err) => {
+      console.warn("Firestore note:", err);
+    });
+  }
+} catch (e) {
+  console.warn("Firebase Init bypassed:", e);
+}
+</script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>Sky Mother POS Pro</title>

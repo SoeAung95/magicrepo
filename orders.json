@@ -933,5 +933,258 @@
     "due_amount": 0,
     "payment_type": "ငွေသား",
     "note": ""
+  },
+  {
+    "order_id": "c4d1ba86",
+    "table_name": "Table 4",
+    "order_time": "02:39:42",
+    "waiter_name": "Soe Aung",
+    "waiter_email": "",
+    "customer_name": "",
+    "items": [
+      {
+        "detail_id": "",
+        "item_id": 0,
+        "name": "(၁၂)မျိုးဟင်းရည်",
+        "price": 35000,
+        "qty": 2
+      },
+      {
+        "detail_id": "",
+        "item_id": 0,
+        "name": "(၃)မျိုးထောင်း",
+        "price": 35000,
+        "qty": 2
+      },
+      {
+        "detail_id": "",
+        "item_id": 0,
+        "name": "၃မျိုးစပ် လွတ်",
+        "price": 15000,
+        "qty": 1
+      }
+    ],
+    "sub_total": 155000,
+    "discount": 0,
+    "total": 155000,
+    "paid_amount": 155000,
+    "due_amount": 0,
+    "payment_type": "ငွေသား",
+    "note": ""
+  },
+  {
+    "order_id": "b2dd1f58",
+    "table_name": "Table 3",
+    "order_time": "03:03:08",
+    "waiter_name": "Soe Aung",
+    "waiter_email": "",
+    "customer_name": "",
+    "items": [
+      {
+        "detail_id": "",
+        "item_id": 0,
+        "name": "Mevius Yellow (ဗူး)",
+        "price": 2000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 0,
+        "name": "Mevius Blue (လိပ်)",
+        "price": 15000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 0,
+        "name": "Mevius Yellow (လိပ်)",
+        "price": 7000,
+        "qty": 1
+      }
+    ],
+    "sub_total": 24000,
+    "discount": 0,
+    "total": 24000,
+    "paid_amount": 10000,
+    "due_amount": 14000,
+    "payment_type": "ငွေသား",
+    "note": ""
+  },
+  {
+    "order_id": "29dc231c",
+    "table_name": "A1",
+    "order_time": "03:04:25",
+    "waiter_name": "Soe Aung",
+    "waiter_email": "",
+    "customer_name": "",
+    "items": [
+      {
+        "detail_id": "",
+        "item_id": 0,
+        "name": "Ice Coffee",
+        "price": 3000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 0,
+        "name": "Lipo",
+        "price": 3500,
+        "qty": 2
+      },
+      {
+        "detail_id": "",
+        "item_id": 0,
+        "name": "Cola",
+        "price": 3000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 0,
+        "name": "Carabao",
+        "price": 3500,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 0,
+        "name": "No. 202 အခန်းခ",
+        "price": 80000,
+        "qty": 2
+      },
+      {
+        "detail_id": "",
+        "item_id": 0,
+        "name": "No. 201 အခန်းခ",
+        "price": 45000,
+        "qty": 1
+      }
+    ],
+    "sub_total": 221500,
+    "discount": 0,
+    "total": 221500,
+    "paid_amount": 221500,
+    "due_amount": 0,
+    "payment_type": "ငွေသား",
+    "note": ""
+  },
+  {
+    "order_id": "0010cd18",
+    "table_name": "A2",
+    "order_time": "03:04:35",
+    "waiter_name": "Soe Aung",
+    "waiter_email": "",
+    "customer_name": "",
+    "items": [
+      {
+        "detail_id": "",
+        "item_id": 0,
+        "name": "Mevius Blue (ဗူး)",
+        "price": 3000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 0,
+        "name": "KTV select",
+        "price": 300000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 0,
+        "name": "KTV K-2",
+        "price": 50000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 0,
+        "name": "KTV 1g",
+        "price": 30000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 0,
+        "name": "Mevius Yellow (ဗူး)",
+        "price": 2000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 0,
+        "name": "အင်တာနက် ၁၂",
+        "price": 5000,
+        "qty": 2
+      },
+      {
+        "detail_id": "",
+        "item_id": 0,
+        "name": "Napoli (လိပ်)",
+        "price": 4000,
+        "qty": 1
+      }
+    ],
+    "sub_total": 399000,
+    "discount": 0,
+    "total": 399000,
+    "paid_amount": 10000,
+    "due_amount": 389000,
+    "payment_type": "ငွေသား",
+    "note": ""
+  },
+  {
+    "order_id": "ac4076d5",
+    "table_name": "Table 1",
+    "order_time": "03:04:48",
+    "waiter_name": "Soe Aung",
+    "waiter_email": "",
+    "customer_name": "",
+    "items": [
+      {
+        "detail_id": "",
+        "item_id": 0,
+        "name": "အင်တာနက် ၁၂",
+        "price": 5000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 0,
+        "name": "Starlink အင်တာနက်",
+        "price": 2000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 0,
+        "name": "Napoli (ဗူး)",
+        "price": 1000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 0,
+        "name": "Mevius Yellow (လိပ်)",
+        "price": 7000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 0,
+        "name": "1H Starlink",
+        "price": 1000,
+        "qty": 1
+      }
+    ],
+    "sub_total": 16000,
+    "discount": 0,
+    "total": 16000,
+    "paid_amount": 46000,
+    "due_amount": 0,
+    "payment_type": "ငွေသား",
+    "note": ""
   }
 ]
