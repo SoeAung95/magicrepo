@@ -7,16 +7,9 @@ import android.app.AlertDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.hardware.usb.UsbConstants;
-import android.hardware.usb.UsbDevice;
-import android.hardware.usb.UsbDeviceConnection;
-import android.hardware.usb.UsbEndpoint;
-import android.hardware.usb.UsbInterface;
-import android.hardware.usb.UsbManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -33,7 +26,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.OutputStream;
-import java.util.HashMap;
+import java.lang.reflect.Method;
 import java.util.Set;
 import java.util.UUID;
 
@@ -50,7 +43,6 @@ public class MainActivity extends Activity {
         webView = new WebView(this);
         setContentView(webView);
 
-        // Android 12+ Bluetooth Runtime Permissions တောင်းဆိုခြင်း
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             if (checkSelfPermission(Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
                 requestPermissions(new String[]{
@@ -95,7 +87,7 @@ public class MainActivity extends Activity {
                         startActivity(intent);
                         return true;
                     } catch (Exception e) {
-                        Toast.makeText(MainActivity.this, "Printer App သို့ ပို့၍မရပါ", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "RawBT App သို့ ပို့၍မရပါ", Toast.LENGTH_SHORT).show();
                         return true;
                     }
                 }
@@ -130,54 +122,90 @@ public class MainActivity extends Activity {
         }
 
         @JavascriptInterface
-        public String getBluetoothDevices() {
-            JSONArray arr = new JSONArray();
-            try {
-                BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
-                if (adapter != null && adapter.isEnabled()) {
-                    @SuppressLint("MissingPermission") Set<BluetoothDevice> paired = adapter.getBondedDevices();
-                    for (BluetoothDevice d : paired) {
-                        JSONObject obj = new JSONObject();
-                        @SuppressLint("MissingPermission") String name = d.getName();
-                        obj.put("name", name != null ? name : "Unknown");
-                        obj.put("address", d.getAddress());
-                        arr.put(obj);
-                    }
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            return arr.toString();
-        }
-
-        @JavascriptInterface
         public void printBluetooth(String macAddress, String textBase64) {
             final String targetMac = (macAddress == null || macAddress.isEmpty()) ? DEFAULT_PRINTER_MAC : macAddress;
             new Thread(() -> {
                 BluetoothSocket socket = null;
+                String detailedError = "";
+                boolean connected = false;
+
                 try {
                     byte[] data = Base64.decode(textBase64, Base64.DEFAULT);
                     BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
-                    if (adapter == null) throw new Exception("ဖုန်းတွင် Bluetooth မရှိပါ");
-                    if (!adapter.isEnabled()) throw new Exception("ဖုန်း Bluetooth ဖွင့်ထားပေးပါ");
+                    if (adapter == null) throw new Exception("Bluetooth Hardware မရှိပါ");
+                    if (!adapter.isEnabled()) throw new Exception("Bluetooth ပိတ်ထားပါသည်");
 
                     BluetoothDevice device = adapter.getRemoteDevice(targetMac);
-                    @SuppressLint("MissingPermission") BluetoothSocket tmpSocket = device.createRfcommSocketToServiceRecord(SPP_UUID);
-                    socket = tmpSocket;
                     adapter.cancelDiscovery();
-                    socket.connect();
+
+                    // အဆင့် ၁ - Insecure SPP ဖြင့် စမ်းသပ်ချိတ်ဆက်ခြင်း
+                    try {
+                        socket = device.createInsecureRfcommSocketToServiceRecord(SPP_UUID);
+                        socket.connect();
+                        connected = true;
+                    } catch (Exception e1) {
+                        detailedError += "[Insecure SPP: " + e1.getMessage() + "] ";
+                    }
+
+                    // အဆင့် ၂ - ပုံမှန် Secure SPP ဖြင့် စမ်းသပ်ချိတ်ဆက်ခြင်း
+                    if (!connected) {
+                        try {
+                            socket = device.createRfcommSocketToServiceRecord(SPP_UUID);
+                            socket.connect();
+                            connected = true;
+                        } catch (Exception e2) {
+                            detailedError += "[Secure SPP: " + e2.getMessage() + "] ";
+                        }
+                    }
+
+                    // အဆင့် ၃ - Reflection (Channel 1 Port) ဖြင့် ချိတ်ဆက်ခြင်း
+                    if (!connected) {
+                        try {
+                            Method m = device.getClass().getMethod("createRfcommSocket", new Class[]{int.class});
+                            socket = (BluetoothSocket) m.invoke(device, 1);
+                            socket.connect();
+                            connected = true;
+                        } catch (Exception e3) {
+                            detailedError += "[Reflection Port 1: " + e3.getMessage() + "]";
+                        }
+                    }
+
+                    if (!connected || socket == null) {
+                        throw new Exception("Socket ချိတ်မရပါ -> " + detailedError);
+                    }
 
                     OutputStream os = socket.getOutputStream();
                     os.write(data);
                     os.flush();
                     Thread.sleep(600);
                     socket.close();
-                    runOnUiThread(() -> Toast.makeText(MainActivity.this, "ZyWell (Printer001) ပရင့် ထုတ်ပြီးပါပြီ", Toast.LENGTH_SHORT).show());
+
+                    runOnUiThread(() -> Toast.makeText(MainActivity.this, "ZyWell (Printer001) ပရင့် အောင်မြင်ပါသည်", Toast.LENGTH_SHORT).show());
+
                 } catch (Exception e) {
-                    final String err = e.getMessage();
-                    runOnUiThread(() -> Toast.makeText(MainActivity.this, "Printer ချိတ်မရပါ: " + err, Toast.LENGTH_LONG).show());
+                    final String errMsg = e.getMessage();
+                    runOnUiThread(() -> {
+                        new AlertDialog.Builder(MainActivity.this)
+                                .setTitle("Printer ချိတ်ဆက်မှု အခြေအနေ")
+                                .setMessage("Error အသေးစိတ်:
+" + errMsg + "
+
+RawBT အရန်စနစ်ဖြင့် ဆက်လက် ပရင့်ထုတ်ပေးပါမည်။")
+                                .setPositiveButton("RawBT ဖြင့် ထုတ်မည်", (dialog, which) -> {
+                                    // Fallback to RawBT Intent
+                                    try {
+                                        Intent intent = new Intent(Intent.ACTION_VIEW);
+                                        intent.setData(Uri.parse("rawbt:base64," + textBase64));
+                                        startActivity(intent);
+                                    } catch (Exception ex) {
+                                        Toast.makeText(MainActivity.this, "RawBT App မရှိပါ", Toast.LENGTH_SHORT).show();
+                                    }
+                                })
+                                .setNegativeButton("ပိတ်မည်", null)
+                                .show();
+                    });
                 } finally {
-                    try { if (socket != null) socket.close(); } catch(Exception ignored){}
+                    try { if (socket != null) socket.close(); } catch (Exception ignored) {}
                 }
             }).start();
         }
