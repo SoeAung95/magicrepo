@@ -1713,5 +1713,77 @@ window.testPrint = function() {
 };
 </script>
 
+
+<!-- Fix Order View & Modals Patch -->
+<script>
+window.openOrderView = function() {
+    let modal = document.getElementById("orderModal") || document.getElementById("checkoutModal") || document.querySelector(".modal-order, #cartModal, .modal");
+    if (modal) {
+        modal.style.display = "flex";
+        modal.classList.remove("hidden");
+    } else if (typeof showCheckout === "function") {
+        showCheckout();
+    } else if (typeof openCheckout === "function") {
+        openCheckout();
+    } else {
+        console.log("Order view modal toggled");
+    }
+};
+</script>
+
+
+<!-- Fix Audit Reprint Patch -->
+<script>
+window.reprintOrder = function(orderObj) {
+    if (!orderObj) return;
+    let lines = [];
+    lines.push("      Sky Mother");
+    lines.push("  HOTEL & RESTAURANT");
+    lines.push("--------------------------------");
+    lines.push("Order ID : " + (orderObj.order_id || "-"));
+    lines.push("Table    : " + (orderObj.table_name || "-"));
+    lines.push("Time     : " + (orderObj.order_time || "-"));
+    lines.push("Staff    : " + (orderObj.waiter_name || "Counter"));
+    lines.push("--------------------------------");
+    if (Array.isArray(orderObj.items)) {
+        orderObj.items.forEach(it => {
+            lines.push(`${it.name} x${it.qty}   ${(it.price * it.qty).toLocaleString()} Ks`);
+        });
+    }
+    lines.push("--------------------------------");
+    lines.push("Total    : " + (orderObj.total || 0).toLocaleString() + " Ks");
+    lines.push("Paid     : " + (orderObj.paid_amount || 0).toLocaleString() + " Ks");
+    lines.push("   *** REPRINT RECEIPT ***\n\n\n");
+
+    let text = lines.join("\n");
+    let b64 = btoa(unescape(encodeURIComponent(text)));
+    if (window.NativePrinter && typeof window.NativePrinter.printBluetooth === "function") {
+        window.NativePrinter.printBluetooth("AB:0D:9E:AD:7F:9B", b64);
+    } else {
+        window.location.href = "rawbt:base64," + b64;
+    }
+};
+</script>
+
+
+<!-- Staff Permissions Patch -->
+<script>
+function enforceStaffRolePermissions() {
+    try {
+        let u = JSON.parse(localStorage.getItem("user") || sessionStorage.getItem("user") || "{}");
+        let role = (u.role || "").toLowerCase();
+        if (role === "waiter" || role === "staff") {
+            document.querySelectorAll("button, a").forEach(el => {
+                let t = el.innerText || "";
+                if (t.includes("ပစ္စည်း") || t.includes("စာရင်း") || t.includes("ဆက်တင်") || (t.includes("ရှင်းမည်") && el.classList.contains("btn-danger"))) {
+                    el.style.display = "none";
+                }
+            });
+        }
+    } catch(e) {}
+}
+setInterval(enforceStaffRolePermissions, 2000);
+</script>
+
 </body>
 </html>

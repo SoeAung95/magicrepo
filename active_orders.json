@@ -43,5 +43,102 @@
     "due_amount": 0,
     "payment_type": "",
     "note": ""
+  },
+  "Table 1": {
+    "order_id": "1ca71823",
+    "table_name": "Table 1",
+    "order_time": "09:52:04",
+    "waiter_name": "Soe Aung",
+    "waiter_email": "",
+    "customer_name": "",
+    "items": [
+      {
+        "detail_id": "",
+        "item_id": 0,
+        "name": "C(T)-",
+        "price": 25000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 0,
+        "name": "Carabao",
+        "price": 3500,
+        "qty": 2
+      },
+      {
+        "detail_id": "",
+        "item_id": 0,
+        "name": "Cola",
+        "price": 3000,
+        "qty": 1
+      }
+    ],
+    "sub_total": 35000,
+    "discount": 0,
+    "total": 35000,
+    "paid_amount": 35000,
+    "due_amount": 0,
+    "payment_type": "ငွေသား",
+    "note": ""
+  },
+  "Table 7": {
+    "order_id": "dbfe5ee5",
+    "table_name": "Table 7",
+    "order_time": "09:52:26",
+    "waiter_name": "Soe Aung",
+    "waiter_email": "",
+    "customer_name": "",
+    "items": [
+      {
+        "detail_id": "",
+        "item_id": 0,
+        "name": "No. 103 အခန်းခ",
+        "price": 45000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 0,
+        "name": "ကိုက်လန်",
+        "price": 8000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 0,
+        "name": "ကြက် / ခွေးထော",
+        "price": 35000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 0,
+        "name": "ကြက် ၃ မျိုးစပ်",
+        "price": 25000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 0,
+        "name": "Full-Moon",
+        "price": 7000,
+        "qty": 1
+      },
+      {
+        "detail_id": "",
+        "item_id": 0,
+        "name": "Grand Royal Sherry",
+        "price": 28000,
+        "qty": 1
+      }
+    ],
+    "sub_total": 148000,
+    "discount": 0,
+    "total": 148000,
+    "paid_amount": 148000,
+    "due_amount": 0,
+    "payment_type": "ငွေသား",
+    "note": ""
   }
 }

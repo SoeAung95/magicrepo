@@ -1,44 +1,27 @@
 package com.skymother.pos;
-
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothSocket;
-import android.content.Intent;
-import android.content.SharedPreferences;
+import android.app.PendingIntent;
+import android.bluetooth.*;
+import android.content.*;
 import android.content.pm.PackageManager;
+import android.hardware.usb.*;
 import android.net.Uri;
-import android.os.Build;
-import android.os.Bundle;
+import android.os.*;
 import android.util.Base64;
-import android.webkit.JavascriptInterface;
-import android.webkit.ValueCallback;
-import android.webkit.WebChromeClient;
-import android.webkit.WebResourceRequest;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import android.widget.EditText;
-import android.widget.Toast;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
+import android.webkit.*;
+import android.widget.*;
 import java.io.OutputStream;
 import java.lang.reflect.Method;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 public class MainActivity extends Activity {
     private WebView webView;
     private SharedPreferences prefs;
     private ValueCallback<Uri[]> filePathCallback;
-    private static final int FILE_CHOOSER_REQUEST_CODE = 1001;
     private static final UUID SPP_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
-    private static final String DEFAULT_PRINTER_MAC = "AB:0D:9E:AD:7F:9B";
 
     @SuppressLint("SetJavaScriptEnabled")
     @Override
@@ -46,257 +29,137 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         webView = new WebView(this);
         setContentView(webView);
+        prefs = getSharedPreferences("SkyMotherPOS", MODE_PRIVATE);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            if (checkSelfPermission(Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
-                requestPermissions(new String[]{
-                        Manifest.permission.BLUETOOTH_CONNECT,
-                        Manifest.permission.BLUETOOTH_SCAN
-                }, 101);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            List<String> perms = new ArrayList<>();
+            perms.add(Manifest.permission.ACCESS_FINE_LOCATION);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                perms.add(Manifest.permission.BLUETOOTH_CONNECT);
+                perms.add(Manifest.permission.BLUETOOTH_SCAN);
             }
+            requestPermissions(perms.toArray(new String[0]), 101);
         }
 
-        prefs = getSharedPreferences("SkyMotherPOS", MODE_PRIVATE);
-        String serverUrl = prefs.getString("server_url", "http://localhost:8080");
+        WebSettings s = webView.getSettings();
+        s.setJavaScriptEnabled(true);
+        s.setDomStorageEnabled(true);
+        s.setDatabaseEnabled(true);
+        s.setAllowFileAccess(true);
+        s.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
 
-        WebSettings settings = webView.getSettings();
-        settings.setJavaScriptEnabled(true);
-        settings.setDomStorageEnabled(true);
-        settings.setDatabaseEnabled(true);
-        settings.setAllowFileAccess(true);
-        settings.setAllowContentAccess(true);
-        settings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
-
-        // Logo ပုံ ရွေးချယ်ခွင့် (WebChromeClient File Chooser)
         webView.setWebChromeClient(new WebChromeClient() {
             @Override
-            public boolean onShowFileChooser(WebView webView, ValueCallback<Uri[]> filePathCallback, FileChooserParams fileChooserParams) {
-                if (MainActivity.this.filePathCallback != null) {
-                    MainActivity.this.filePathCallback.onReceiveValue(null);
-                }
-                MainActivity.this.filePathCallback = filePathCallback;
-
-                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                intent.addCategory(Intent.CATEGORY_OPENABLE);
-                intent.setType("image/*");
-                try {
-                    startActivityForResult(Intent.createChooser(intent, "Logo ပုံ ရွေးချယ်ပါ"), FILE_CHOOSER_REQUEST_CODE);
-                } catch (Exception e) {
-                    MainActivity.this.filePathCallback = null;
-                    return false;
-                }
+            public boolean onShowFileChooser(WebView w, ValueCallback<Uri[]> cb, FileChooserParams p) {
+                filePathCallback = cb;
+                Intent i = new Intent(Intent.ACTION_GET_CONTENT);
+                i.addCategory(Intent.CATEGORY_OPENABLE);
+                i.setType("image/*");
+                startActivityForResult(Intent.createChooser(i, "Logo ရွေးပါ"), 1001);
                 return true;
             }
         });
 
-        webView.addJavascriptInterface(new POSPrinterBridge(), "NativePrinter");
-
+        webView.addJavascriptInterface(new POSBridge(), "NativePrinter");
         webView.setWebViewClient(new WebViewClient() {
             @Override
-            public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-                return handleUri(request.getUrl());
-            }
-
-            @SuppressWarnings("deprecation")
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                return handleUri(Uri.parse(url));
-            }
-
-            private boolean handleUri(Uri uri) {
-                String scheme = uri.getScheme();
-                if (scheme != null && !scheme.startsWith("http")) {
-                    try {
-                        Intent intent = scheme.equals("intent")
-                                ? Intent.parseUri(uri.toString(), Intent.URI_INTENT_SCHEME)
-                                : new Intent(Intent.ACTION_VIEW, uri);
-                        startActivity(intent);
-                        return true;
-                    } catch (Exception e) {
-                        Toast.makeText(MainActivity.this, "RawBT App သို့ ပို့၍မရပါ", Toast.LENGTH_SHORT).show();
-                        return true;
-                    }
+            public boolean shouldOverrideUrlLoading(WebView v, String url) {
+                if (!url.startsWith("http")) {
+                    try { startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url))); } catch(Exception e){}
+                    return true;
                 }
                 return false;
             }
-
-            @Override
-            public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
-                if (failingUrl != null && failingUrl.startsWith("http")) {
-                    showConfigDialog();
-                }
-            }
         });
-
-        webView.setOnLongClickListener(v -> {
-            showConfigDialog();
-            return true;
-        });
-
-        webView.loadUrl(serverUrl);
+        webView.setOnLongClickListener(v -> { showIpDialog(); return true; });
+        webView.loadUrl(prefs.getString("server_url", "http://localhost:8080"));
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == FILE_CHOOSER_REQUEST_CODE) {
-            if (filePathCallback != null) {
-                Uri[] results = null;
-                if (resultCode == Activity.RESULT_OK && data != null) {
-                    String dataString = data.getDataString();
-                    if (dataString != null) {
-                        results = new Uri[]{Uri.parse(dataString)};
-                    }
-                }
-                filePathCallback.onReceiveValue(results);
-                filePathCallback = null;
-            }
+    protected void onActivityResult(int req, int res, Intent d) {
+        if (req == 1001 && filePathCallback != null) {
+            Uri[] r = (res == RESULT_OK && d != null && d.getDataString() != null) ? new Uri[]{Uri.parse(d.getDataString())} : null;
+            filePathCallback.onReceiveValue(r);
+            filePathCallback = null;
         }
     }
 
-    public class POSPrinterBridge {
-        @JavascriptInterface
-        public boolean isNative() {
-            return true;
-        }
-
-        @JavascriptInterface
-        public String getDefaultMac() {
-            return DEFAULT_PRINTER_MAC;
-        }
+    public class POSBridge {
+        @JavascriptInterface public boolean isNative() { return true; }
 
         @SuppressLint("MissingPermission")
         @JavascriptInterface
-        public String getBluetoothDevices() {
-            JSONArray arr = new JSONArray();
-            try {
-                BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
-                if (adapter != null && adapter.isEnabled()) {
-                    Set<BluetoothDevice> paired = adapter.getBondedDevices();
-                    for (BluetoothDevice d : paired) {
-                        JSONObject obj = new JSONObject();
-                        String name = d.getName();
-                        obj.put("name", name != null ? name : "Unknown");
-                        obj.put("address", d.getAddress());
-                        arr.put(obj);
-                    }
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            return arr.toString();
-        }
-
-        @SuppressLint("MissingPermission")
-        @JavascriptInterface
-        public void printBluetooth(String macAddress, String textBase64) {
-            final String targetMac = (macAddress == null || macAddress.isEmpty()) ? DEFAULT_PRINTER_MAC : macAddress;
+        public void printBluetooth(String mac, String b64) {
             new Thread(() -> {
-                BluetoothSocket socket = null;
-                String detailedError = "";
-                boolean connected = false;
-
+                BluetoothSocket sock = null;
                 try {
-                    byte[] data = Base64.decode(textBase64, Base64.DEFAULT);
-                    BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
-                    if (adapter == null) throw new Exception("Bluetooth Hardware မရှိပါ");
-                    if (!adapter.isEnabled()) throw new Exception("Bluetooth ပိတ်ထားပါသည်");
-
-                    BluetoothDevice device = adapter.getRemoteDevice(targetMac);
-                    try { adapter.cancelDiscovery(); } catch (Exception ignored) {}
-
+                    byte[] data = Base64.decode(b64, Base64.DEFAULT);
+                    BluetoothAdapter ad = BluetoothAdapter.getDefaultAdapter();
+                    String target = (mac == null || mac.isEmpty()) ? "AB:0D:9E:AD:7F:9B" : mac;
+                    BluetoothDevice dev = ad.getRemoteDevice(target);
+                    try { ad.cancelDiscovery(); } catch(Exception ignored){}
                     try {
-                        socket = device.createInsecureRfcommSocketToServiceRecord(SPP_UUID);
-                        socket.connect();
-                        connected = true;
-                    } catch (Exception e1) {
-                        detailedError += "[Insecure SPP: " + e1.getMessage() + "] ";
+                        sock = dev.createInsecureRfcommSocketToServiceRecord(SPP_UUID);
+                        sock.connect();
+                    } catch(Exception e1) {
+                        Method m = dev.getClass().getMethod("createRfcommSocket", new Class[]{int.class});
+                        sock = (BluetoothSocket) m.invoke(dev, 1);
+                        sock.connect();
                     }
-
-                    if (!connected) {
-                        try {
-                            socket = device.createRfcommSocketToServiceRecord(SPP_UUID);
-                            socket.connect();
-                            connected = true;
-                        } catch (Exception e2) {
-                            detailedError += "[Secure SPP: " + e2.getMessage() + "] ";
-                        }
-                    }
-
-                    if (!connected) {
-                        try {
-                            Method m = device.getClass().getMethod("createRfcommSocket", new java.lang.Class[]{int.class});
-                            socket = (BluetoothSocket) m.invoke(device, 1);
-                            socket.connect();
-                            connected = true;
-                        } catch (Exception e3) {
-                            detailedError += "[Reflection Port 1: " + e3.getMessage() + "]";
-                        }
-                    }
-
-                    if (!connected || socket == null) {
-                        throw new Exception("Socket ချိတ်မရပါ -> " + detailedError);
-                    }
-
-                    OutputStream os = socket.getOutputStream();
+                    OutputStream os = sock.getOutputStream();
                     os.write(data);
                     os.flush();
-                    Thread.sleep(600);
-                    socket.close();
-
-                    runOnUiThread(() -> Toast.makeText(MainActivity.this, "ZyWell ပရင့် အောင်မြင်ပါသည်", Toast.LENGTH_SHORT).show());
-
-                } catch (Exception e) {
-                    final String errMsg = e.getMessage();
-                    runOnUiThread(() -> {
-                        new AlertDialog.Builder(MainActivity.this)
-                                .setTitle("Printer Error")
-                                .setMessage("Error: " + errMsg + ". RawBT အရန်စနစ်ဖြင့် ထုတ်ယူမည်လား?")
-                                .setPositiveButton("RawBT ဖြင့် ထုတ်မည်", (dialog, which) -> {
-                                    try {
-                                        Intent intent = new Intent(Intent.ACTION_VIEW);
-                                        intent.setData(Uri.parse("rawbt:base64," + textBase64));
-                                        startActivity(intent);
-                                    } catch (Exception ex) {
-                                        Toast.makeText(MainActivity.this, "RawBT App မရှိပါ", Toast.LENGTH_SHORT).show();
-                                    }
-                                })
-                                .setNegativeButton("ပိတ်မည်", null)
-                                .show();
-                    });
-                } finally {
-                    try { if (socket != null) socket.close(); } catch (Exception ignored) {}
+                    Thread.sleep(500);
+                    sock.close();
+                    runOnUiThread(() -> Toast.makeText(MainActivity.this, "Bluetooth ပရင့်အောင်မြင်ပါသည်", Toast.LENGTH_SHORT).show());
+                } catch(Exception e) {
+                    printUsb(b64);
                 }
+            }).start();
+        }
+
+        @JavascriptInterface
+        public void printUsb(String b64) {
+            new Thread(() -> {
+                try {
+                    byte[] data = Base64.decode(b64, Base64.DEFAULT);
+                    UsbManager m = (UsbManager) getSystemService(Context.USB_SERVICE);
+                    for (UsbDevice dev : m.getDeviceList().values()) {
+                        UsbInterface intf = dev.getInterface(0);
+                        for (int j = 0; j < intf.getEndpointCount(); j++) {
+                            UsbEndpoint ep = intf.getEndpoint(j);
+                            if (ep.getDirection() == UsbConstants.USB_DIR_OUT) {
+                                if (!m.hasPermission(dev)) {
+                                    PendingIntent pi = PendingIntent.getBroadcast(MainActivity.this, 0, new Intent("USB_PERM"), PendingIntent.FLAG_IMMUTABLE);
+                                    m.requestPermission(dev, pi);
+                                    return;
+                                }
+                                UsbDeviceConnection c = m.openDevice(dev);
+                                c.claimInterface(intf, true);
+                                c.bulkTransfer(ep, data, data.length, 4000);
+                                c.close();
+                                runOnUiThread(() -> Toast.makeText(MainActivity.this, "USB ပရင့်အောင်မြင်ပါသည်", Toast.LENGTH_SHORT).show());
+                                return;
+                            }
+                        }
+                    }
+                    runOnUiThread(() -> {
+                        try { startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("rawbt:base64," + b64))); }
+                        catch(Exception ex) { Toast.makeText(MainActivity.this, "Printer မတွေ့ပါ", Toast.LENGTH_SHORT).show(); }
+                    });
+                } catch(Exception e) {}
             }).start();
         }
     }
 
-    private void showConfigDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("POS Server ချိတ်ဆက်ရန် IP");
-        final EditText input = new EditText(this);
-        input.setHint("ဥပမာ - http://localhost:8080");
-        input.setText(prefs.getString("server_url", "http://localhost:8080"));
-        builder.setView(input);
-
-        builder.setPositiveButton("ချိတ်မည်", (dialog, which) -> {
-            String url = input.getText().toString().trim();
-            if (!url.startsWith("http://") && !url.startsWith("https://")) {
-                url = "http://" + url;
-            }
-            prefs.edit().putString("server_url", url).apply();
-            webView.loadUrl(url);
-        });
-        builder.setNegativeButton("ပိတ်မည်", (dialog, which) -> dialog.cancel());
-        builder.show();
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (webView.canGoBack()) {
-            webView.goBack();
-        } else {
-            super.onBackPressed();
-        }
+    private void showIpDialog() {
+        EditText in = new EditText(this);
+        in.setText(prefs.getString("server_url", "http://localhost:8080"));
+        new AlertDialog.Builder(this).setTitle("Server IP").setView(in)
+            .setPositiveButton("ချိတ်မည်", (d, w) -> {
+                String u = in.getText().toString().trim();
+                prefs.edit().putString("server_url", u).apply();
+                webView.loadUrl(u);
+            }).show();
     }
 }
