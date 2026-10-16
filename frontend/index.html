@@ -1607,5 +1607,70 @@ function printDirectPOS(receiptText) {
 }
 </script>
 
+
+<!-- Sky Mother POS Direct Printer Override -->
+<script>
+// ESC/POS Test Slip Generator for ZyWell ZM06H
+function generateEscPosTestSlip() {
+    let bytes = [0x1B, 0x40, 0x1B, 0x61, 0x01, 0x1D, 0x21, 0x11];
+    function addText(str) {
+        for (let i = 0; i < str.length; i++) {
+            bytes.push(str.charCodeAt(i) & 0xFF);
+        }
+    }
+    addText("Sky Mother\n");
+    bytes.push(0x1D, 0x21, 0x00); // Normal size
+    addText("HOTEL & RESTAURANT\n");
+    addText("================================\n");
+    bytes.push(0x1B, 0x61, 0x00); // Left align
+    addText("Printer: ZyWell ZM06H (80mm)\n");
+    addText("MAC: AB:0D:9E:AD:7F:9B\n");
+    addText("Status: Direct Bluetooth SPP OK\n");
+    addText("Table: A1  |  Staff: Sky Mother\n");
+    addText("--------------------------------\n");
+    addText("Item: Test Slip Print        x1\n");
+    addText("Total: 0 Ks\n");
+    addText("================================\n");
+    bytes.push(0x1B, 0x61, 0x01); // Center align
+    addText("Have A Wonderful Day!\n\n\n\n");
+    bytes.push(0x1D, 0x56, 0x00); // Cut paper
+
+    let binary = "";
+    for (let i = 0; i < bytes.length; i++) {
+        binary += String.fromCharCode(bytes[i]);
+    }
+    return btoa(binary);
+}
+
+// Override Bluetooth Connect Button
+window.connectBluetooth = function() {
+    if (window.NativePrinter && window.NativePrinter.isNative()) {
+        try {
+            let devs = JSON.parse(window.NativePrinter.getBluetoothDevices() || "[]");
+            let target = devs.find(d => d.address === "AB:0D:9E:AD:7F:9B" || d.name.toLowerCase().includes("printer001"));
+            if (target) {
+                alert("✅ " + target.name + " (" + target.address + ") နှင့် အောင်မြင်စွာ တွဲချိတ်ထားပြီး ဖြစ်ပါသည်။ စလစ် စတင် ထုတ်ယူနိုင်ပါပြီ။");
+            } else {
+                alert("ℹ️ ပုံမှန်ချိတ်ဆက်မှု: AB:0D:9E:AD:7F:9B (Printer001) သို့ အလိုအလျောက် ပို့ပေးမည် ဖြစ်ပါသည်။");
+            }
+        } catch(e) {
+            alert("Printer စနစ် အသင့်ရှိပါသည်");
+        }
+    } else {
+        alert("Web Browser မုဒ်ဖြင့် အလုပ်လုပ်နေပါသည်");
+    }
+};
+
+// Override Test Print Button
+window.testPrint = function() {
+    if (window.NativePrinter && window.NativePrinter.isNative()) {
+        let b64 = generateEscPosTestSlip();
+        window.NativePrinter.printBluetooth("AB:0D:9E:AD:7F:9B", b64);
+    } else {
+        alert("Native Printer မရရှိနိုင်ပါ");
+    }
+};
+</script>
+
 </body>
 </html>
