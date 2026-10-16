@@ -67,7 +67,7 @@ public class MainActivity extends Activity {
         settings.setAllowContentAccess(true);
         settings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
 
-        // Logo ပုံ ရွေးချယ်ခွင့် (WebChromeClient)
+        // Logo ပုံ ရွေးချယ်ခွင့် (WebChromeClient File Chooser)
         webView.setWebChromeClient(new WebChromeClient() {
             @Override
             public boolean onShowFileChooser(WebView webView, ValueCallback<Uri[]> filePathCallback, FileChooserParams fileChooserParams) {
@@ -205,7 +205,6 @@ public class MainActivity extends Activity {
                     BluetoothDevice device = adapter.getRemoteDevice(targetMac);
                     try { adapter.cancelDiscovery(); } catch (Exception ignored) {}
 
-                    // အဆင့် ၁ - Insecure SPP
                     try {
                         socket = device.createInsecureRfcommSocketToServiceRecord(SPP_UUID);
                         socket.connect();
@@ -214,7 +213,6 @@ public class MainActivity extends Activity {
                         detailedError += "[Insecure SPP: " + e1.getMessage() + "] ";
                     }
 
-                    // အဆင့် ၂ - Secure SPP
                     if (!connected) {
                         try {
                             socket = device.createRfcommSocketToServiceRecord(SPP_UUID);
@@ -225,10 +223,9 @@ public class MainActivity extends Activity {
                         }
                     }
 
-                    // အဆင့် ၃ - Reflection Channel 1
                     if (!connected) {
                         try {
-                            Method m = device.getClass().getMethod("createRfcommSocket", new Class[]{int.class});
+                            Method m = device.getClass().getMethod("createRfcommSocket", new java.lang.Class[]{int.class});
                             socket = (BluetoothSocket) m.invoke(device, 1);
                             socket.connect();
                             connected = true;
@@ -253,11 +250,8 @@ public class MainActivity extends Activity {
                     final String errMsg = e.getMessage();
                     runOnUiThread(() -> {
                         new AlertDialog.Builder(MainActivity.this)
-                                .setTitle("Printer ချိတ်ဆက်မှု အခြေအနေ")
-                                .setMessage("Error အသေးစိတ်:
-" + errMsg + "
-
-RawBT အရန်စနစ်ဖြင့် ထုတ်ယူမည်လား?")
+                                .setTitle("Printer Error")
+                                .setMessage("Error: " + errMsg + ". RawBT အရန်စနစ်ဖြင့် ထုတ်ယူမည်လား?")
                                 .setPositiveButton("RawBT ဖြင့် ထုတ်မည်", (dialog, which) -> {
                                     try {
                                         Intent intent = new Intent(Intent.ACTION_VIEW);
