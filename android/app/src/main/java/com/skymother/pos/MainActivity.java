@@ -1,5 +1,6 @@
 package com.skymother.pos;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -9,6 +10,7 @@ import android.bluetooth.BluetoothSocket;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.hardware.usb.UsbConstants;
 import android.hardware.usb.UsbDevice;
 import android.hardware.usb.UsbDeviceConnection;
@@ -16,6 +18,7 @@ import android.hardware.usb.UsbEndpoint;
 import android.hardware.usb.UsbInterface;
 import android.hardware.usb.UsbManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Base64;
 import android.webkit.JavascriptInterface;
@@ -30,7 +33,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.OutputStream;
-import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Set;
 import java.util.UUID;
@@ -39,6 +41,7 @@ public class MainActivity extends Activity {
     private WebView webView;
     private SharedPreferences prefs;
     private static final UUID SPP_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
+    private static final String DEFAULT_PRINTER_MAC = "AB:0D:9E:AD:7F:9B";
 
     @SuppressLint("SetJavaScriptEnabled")
     @Override
@@ -46,6 +49,16 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         webView = new WebView(this);
         setContentView(webView);
+
+        // Android 12+ Bluetooth Runtime Permissions တောင်းဆိုခြင်း
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            if (checkSelfPermission(Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[]{
+                        Manifest.permission.BLUETOOTH_CONNECT,
+                        Manifest.permission.BLUETOOTH_SCAN
+                }, 101);
+            }
+        }
 
         prefs = getSharedPreferences("SkyMotherPOS", MODE_PRIVATE);
         String serverUrl = prefs.getString("server_url", "http://localhost:8080");
@@ -58,7 +71,6 @@ public class MainActivity extends Activity {
         settings.setAllowContentAccess(true);
         settings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
 
-        // Native Printer JavaScript Bridge
         webView.addJavascriptInterface(new POSPrinterBridge(), "NativePrinter");
 
         webView.setWebViewClient(new WebViewClient() {
@@ -83,7 +95,7 @@ public class MainActivity extends Activity {
                         startActivity(intent);
                         return true;
                     } catch (Exception e) {
-                        Toast.makeText(MainActivity.this, "Printer သို့ ချိတ်ဆက်၍မရပါ", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Printer App သို့ ပို့၍မရပါ", Toast.LENGTH_SHORT).show();
                         return true;
                     }
                 }
@@ -113,6 +125,11 @@ public class MainActivity extends Activity {
         }
 
         @JavascriptInterface
+        public String getDefaultMac() {
+            return DEFAULT_PRINTER_MAC;
+        }
+
+        @JavascriptInterface
         public String getBluetoothDevices() {
             JSONArray arr = new JSONArray();
             try {
@@ -135,68 +152,32 @@ public class MainActivity extends Activity {
 
         @JavascriptInterface
         public void printBluetooth(String macAddress, String textBase64) {
+            final String targetMac = (macAddress == null || macAddress.isEmpty()) ? DEFAULT_PRINTER_MAC : macAddress;
             new Thread(() -> {
+                BluetoothSocket socket = null;
                 try {
                     byte[] data = Base64.decode(textBase64, Base64.DEFAULT);
                     BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
-                    if (adapter == null) throw new Exception("Bluetooth မရှိပါ");
-                    BluetoothDevice device = adapter.getRemoteDevice(macAddress);
-                    @SuppressLint("MissingPermission") BluetoothSocket socket = device.createRfcommSocketToServiceRecord(SPP_UUID);
+                    if (adapter == null) throw new Exception("ဖုန်းတွင် Bluetooth မရှိပါ");
+                    if (!adapter.isEnabled()) throw new Exception("ဖုန်း Bluetooth ဖွင့်ထားပေးပါ");
+
+                    BluetoothDevice device = adapter.getRemoteDevice(targetMac);
+                    @SuppressLint("MissingPermission") BluetoothSocket tmpSocket = device.createRfcommSocketToServiceRecord(SPP_UUID);
+                    socket = tmpSocket;
                     adapter.cancelDiscovery();
                     socket.connect();
+
                     OutputStream os = socket.getOutputStream();
                     os.write(data);
                     os.flush();
-                    Thread.sleep(500);
+                    Thread.sleep(600);
                     socket.close();
-                    runOnUiThread(() -> Toast.makeText(MainActivity.this, "Bluetooth ပရင့် ထုတ်ပြီးပါပြီ", Toast.LENGTH_SHORT).show());
+                    runOnUiThread(() -> Toast.makeText(MainActivity.this, "ZyWell (Printer001) ပရင့် ထုတ်ပြီးပါပြီ", Toast.LENGTH_SHORT).show());
                 } catch (Exception e) {
-                    runOnUiThread(() -> Toast.makeText(MainActivity.this, "Bluetooth Print မအောင်မြင်ပါ: " + e.getMessage(), Toast.LENGTH_LONG).show());
-                }
-            }).start();
-        }
-
-        @JavascriptInterface
-        public void printUsb(String textBase64) {
-            new Thread(() -> {
-                try {
-                    byte[] data = Base64.decode(textBase64, Base64.DEFAULT);
-                    UsbManager manager = (UsbManager) getSystemService(Context.USB_SERVICE);
-                    HashMap<String, UsbDevice> list = manager.getDeviceList();
-                    UsbDevice printer = null;
-                    UsbInterface pIntf = null;
-                    UsbEndpoint pEndp = null;
-
-                    for (UsbDevice dev : list.values()) {
-                        for (int i = 0; i < dev.getInterfaceCount(); i++) {
-                            UsbInterface intf = dev.getInterface(i);
-                            if (intf.getInterfaceClass() == UsbConstants.USB_CLASS_PRINTER || dev.getInterfaceCount() == 1) {
-                                for (int j = 0; j < intf.getEndpointCount(); j++) {
-                                    UsbEndpoint ep = intf.getEndpoint(j);
-                                    if (ep.getDirection() == UsbConstants.USB_DIR_OUT) {
-                                        printer = dev;
-                                        pIntf = intf;
-                                        pEndp = ep;
-                                        break;
-                                    }
-                                }
-                            }
-                            if (printer != null) break;
-                        }
-                        if (printer != null) break;
-                    }
-
-                    if (printer == null) throw new Exception("USB Printer ချိတ်ဆက်မထားပါ");
-
-                    UsbDeviceConnection conn = manager.openDevice(printer);
-                    if (conn == null) throw new Exception("USB ခွင့်ပြုချက် မရပါ");
-                    conn.claimInterface(pIntf, true);
-                    conn.bulkTransfer(pEndp, data, data.length, 5000);
-                    conn.releaseInterface(pIntf);
-                    conn.close();
-                    runOnUiThread(() -> Toast.makeText(MainActivity.this, "USB ပရင့် ထုတ်ပြီးပါပြီ", Toast.LENGTH_SHORT).show());
-                } catch (Exception e) {
-                    runOnUiThread(() -> Toast.makeText(MainActivity.this, "USB Print မအောင်မြင်ပါ: " + e.getMessage(), Toast.LENGTH_LONG).show());
+                    final String err = e.getMessage();
+                    runOnUiThread(() -> Toast.makeText(MainActivity.this, "Printer ချိတ်မရပါ: " + err, Toast.LENGTH_LONG).show());
+                } finally {
+                    try { if (socket != null) socket.close(); } catch(Exception ignored){}
                 }
             }).start();
         }
@@ -206,7 +187,7 @@ public class MainActivity extends Activity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("POS Server ချိတ်ဆက်ရန် IP");
         final EditText input = new EditText(this);
-        input.setHint("ဥပမာ - http://192.168.1.15:8080");
+        input.setHint("ဥပမာ - http://localhost:8080");
         input.setText(prefs.getString("server_url", "http://localhost:8080"));
         builder.setView(input);
 
