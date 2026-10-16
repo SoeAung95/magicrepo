@@ -15,6 +15,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Base64;
 import android.webkit.JavascriptInterface;
+import android.webkit.ValueCallback;
+import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -33,6 +35,8 @@ import java.util.UUID;
 public class MainActivity extends Activity {
     private WebView webView;
     private SharedPreferences prefs;
+    private ValueCallback<Uri[]> filePathCallback;
+    private static final int FILE_CHOOSER_REQUEST_CODE = 1001;
     private static final UUID SPP_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     private static final String DEFAULT_PRINTER_MAC = "AB:0D:9E:AD:7F:9B";
 
@@ -62,6 +66,28 @@ public class MainActivity extends Activity {
         settings.setAllowFileAccess(true);
         settings.setAllowContentAccess(true);
         settings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+
+        // Logo ပုံ ရွေးချယ်ခွင့် (WebChromeClient)
+        webView.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public boolean onShowFileChooser(WebView webView, ValueCallback<Uri[]> filePathCallback, FileChooserParams fileChooserParams) {
+                if (MainActivity.this.filePathCallback != null) {
+                    MainActivity.this.filePathCallback.onReceiveValue(null);
+                }
+                MainActivity.this.filePathCallback = filePathCallback;
+
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.addCategory(Intent.CATEGORY_OPENABLE);
+                intent.setType("image/*");
+                try {
+                    startActivityForResult(Intent.createChooser(intent, "Logo ပုံ ရွေးချယ်ပါ"), FILE_CHOOSER_REQUEST_CODE);
+                } catch (Exception e) {
+                    MainActivity.this.filePathCallback = null;
+                    return false;
+                }
+                return true;
+            }
+        });
 
         webView.addJavascriptInterface(new POSPrinterBridge(), "NativePrinter");
 
@@ -110,6 +136,24 @@ public class MainActivity extends Activity {
         webView.loadUrl(serverUrl);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == FILE_CHOOSER_REQUEST_CODE) {
+            if (filePathCallback != null) {
+                Uri[] results = null;
+                if (resultCode == Activity.RESULT_OK && data != null) {
+                    String dataString = data.getDataString();
+                    if (dataString != null) {
+                        results = new Uri[]{Uri.parse(dataString)};
+                    }
+                }
+                filePathCallback.onReceiveValue(results);
+                filePathCallback = null;
+            }
+        }
+    }
+
     public class POSPrinterBridge {
         @JavascriptInterface
         public boolean isNative() {
@@ -121,6 +165,29 @@ public class MainActivity extends Activity {
             return DEFAULT_PRINTER_MAC;
         }
 
+        @SuppressLint("MissingPermission")
+        @JavascriptInterface
+        public String getBluetoothDevices() {
+            JSONArray arr = new JSONArray();
+            try {
+                BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
+                if (adapter != null && adapter.isEnabled()) {
+                    Set<BluetoothDevice> paired = adapter.getBondedDevices();
+                    for (BluetoothDevice d : paired) {
+                        JSONObject obj = new JSONObject();
+                        String name = d.getName();
+                        obj.put("name", name != null ? name : "Unknown");
+                        obj.put("address", d.getAddress());
+                        arr.put(obj);
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return arr.toString();
+        }
+
+        @SuppressLint("MissingPermission")
         @JavascriptInterface
         public void printBluetooth(String macAddress, String textBase64) {
             final String targetMac = (macAddress == null || macAddress.isEmpty()) ? DEFAULT_PRINTER_MAC : macAddress;
@@ -136,9 +203,9 @@ public class MainActivity extends Activity {
                     if (!adapter.isEnabled()) throw new Exception("Bluetooth ပိတ်ထားပါသည်");
 
                     BluetoothDevice device = adapter.getRemoteDevice(targetMac);
-                    adapter.cancelDiscovery();
+                    try { adapter.cancelDiscovery(); } catch (Exception ignored) {}
 
-                    // အဆင့် ၁ - Insecure SPP ဖြင့် စမ်းသပ်ချိတ်ဆက်ခြင်း
+                    // အဆင့် ၁ - Insecure SPP
                     try {
                         socket = device.createInsecureRfcommSocketToServiceRecord(SPP_UUID);
                         socket.connect();
@@ -147,7 +214,7 @@ public class MainActivity extends Activity {
                         detailedError += "[Insecure SPP: " + e1.getMessage() + "] ";
                     }
 
-                    // အဆင့် ၂ - ပုံမှန် Secure SPP ဖြင့် စမ်းသပ်ချိတ်ဆက်ခြင်း
+                    // အဆင့် ၂ - Secure SPP
                     if (!connected) {
                         try {
                             socket = device.createRfcommSocketToServiceRecord(SPP_UUID);
@@ -158,7 +225,7 @@ public class MainActivity extends Activity {
                         }
                     }
 
-                    // အဆင့် ၃ - Reflection (Channel 1 Port) ဖြင့် ချိတ်ဆက်ခြင်း
+                    // အဆင့် ၃ - Reflection Channel 1
                     if (!connected) {
                         try {
                             Method m = device.getClass().getMethod("createRfcommSocket", new Class[]{int.class});
@@ -180,7 +247,7 @@ public class MainActivity extends Activity {
                     Thread.sleep(600);
                     socket.close();
 
-                    runOnUiThread(() -> Toast.makeText(MainActivity.this, "ZyWell (Printer001) ပရင့် အောင်မြင်ပါသည်", Toast.LENGTH_SHORT).show());
+                    runOnUiThread(() -> Toast.makeText(MainActivity.this, "ZyWell ပရင့် အောင်မြင်ပါသည်", Toast.LENGTH_SHORT).show());
 
                 } catch (Exception e) {
                     final String errMsg = e.getMessage();
@@ -190,9 +257,8 @@ public class MainActivity extends Activity {
                                 .setMessage("Error အသေးစိတ်:
 " + errMsg + "
 
-RawBT အရန်စနစ်ဖြင့် ဆက်လက် ပရင့်ထုတ်ပေးပါမည်။")
+RawBT အရန်စနစ်ဖြင့် ထုတ်ယူမည်လား?")
                                 .setPositiveButton("RawBT ဖြင့် ထုတ်မည်", (dialog, which) -> {
-                                    // Fallback to RawBT Intent
                                     try {
                                         Intent intent = new Intent(Intent.ACTION_VIEW);
                                         intent.setData(Uri.parse("rawbt:base64," + textBase64));
