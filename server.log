@@ -1,4 +1,2 @@
 nohup: ignoring input
 Sky Mother POS Server running on port 8080
-2026/10/16 10:17:42 listen tcp :8080: bind: address already in use
-exit status 1

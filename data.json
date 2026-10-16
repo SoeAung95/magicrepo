@@ -1,1092 +1,1365 @@
 {
   "categories": [
-    "All",
-    "Food",
-    "Alcohol",
-    "Drink",
-    "Room",
-    "KTV",
-    "Cigarettes",
-    "Internet",
-    "Service"
+    "🍲🥘Food",
+    "🍺 ALCOHOL \u0026 SPIRITS",
+    "🍨အအေး",
+    "🚬 CIGARETTES",
+    "🎤KTV",
+    "ROOM-FEE",
+    "Service-Fee",
+    "🔗အင်တာနက်",
+    "Other"
   ],
   "items": [
     {
       "id": 40057,
       "name": "(၁၂)မျိုးဟင်းရည်",
       "price": 35000,
-      "category": "Food",
+      "category": "🍲🥘Food",
       "image": ""
     },
     {
       "id": 40069,
       "name": "(၃)မျိုးထောင်း",
       "price": 35000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40043,
-      "name": "၃မျိုးစပ် လွတ်",
-      "price": 15000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 10041,
-      "name": "Indo ကြက်ကြော်",
-      "price": 45000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40047,
-      "name": "အသား၃မျိုးစပ်",
-      "price": 25000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 10039,
-      "name": "ကန်စွန်းပလိန်း",
-      "price": 6000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40073,
-      "name": "ကိုက်လန်",
-      "price": 8000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40045,
-      "name": "ကိုက်လန်သုပ်",
-      "price": 10000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40011,
-      "name": "ကုန်းဘောင်",
-      "price": 25000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40040,
-      "name": "ကျောက်ပွင့်သုပ်",
-      "price": 10000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40060,
-      "name": "ကြက် / ခွေးထော",
-      "price": 35000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 10044,
-      "name": "ကြက် ၃ မျိုးစပ်",
-      "price": 25000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 10051,
-      "name": "ကြက် ဟတ်",
-      "price": 5000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40042,
-      "name": "ကြက်/ဝက် အသား",
-      "price": 20000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40053,
-      "name": "ကြက်/ဝက်ပင်စိမ်း",
-      "price": 25000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40022,
-      "name": "ကြက်ခြောက်ကြော်",
-      "price": 25000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40070,
-      "name": "ကြက်ခြောက်စပ်",
-      "price": 25000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 10022,
-      "name": "ကြက်တုံယမ်း",
-      "price": 30000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40009,
-      "name": "ကြက်မဲကြော်",
-      "price": 10000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 10023,
-      "name": "ကြက်သားပြား",
-      "price": 25000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40059,
-      "name": "ကြံမဆိုင်ဆိုင်ဟင်း",
-      "price": 35000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40008,
-      "name": "ကြေးအိုးဆီချက်",
-      "price": 12000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40007,
-      "name": "ကြေးအိုးပြုတ်",
-      "price": 12000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40002,
-      "name": "ခေါက်ဆွဲကြော်",
-      "price": 8000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 10054,
-      "name": "ခါကြက်ဥဆလပ်",
-      "price": 3000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40046,
-      "name": "ခါကြက်ဥသုပ်",
-      "price": 10000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40012,
-      "name": "ချဉ်စပ်",
-      "price": 25000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 10066,
-      "name": "ဂေါ်ညွန့်",
-      "price": 10000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 10064,
-      "name": "ငါး ဒုက္ခ",
-      "price": 35000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40049,
-      "name": "ငါးခေါင်းမျှစ်ချဉ်",
-      "price": 35000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40082,
-      "name": "ငါးခဲပါတ်",
-      "price": 35000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40030,
-      "name": "ငါးချဉ်ခြောက်စပ်",
-      "price": 25000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 10008,
-      "name": "ငါးချိုချဉ်",
-      "price": 35000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40044,
-      "name": "ငါးဖယ်သုပ်",
-      "price": 15000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40032,
-      "name": "ငါးမုန့်ကြော်",
-      "price": 10000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 10061,
-      "name": "ငါးသံပုရာ",
-      "price": 35000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40076,
-      "name": "ငါးသားကြော်သုပ်",
-      "price": 35000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40062,
-      "name": "စွန်တန်ဟင်းရည်",
-      "price": 3000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 10040,
-      "name": "ဆိတ်မွှထောင်း",
-      "price": 25000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40006,
-      "name": "ဆီချက်",
-      "price": 7000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40056,
-      "name": "တုံယမ်းဟင်းရည်",
-      "price": 35000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40013,
-      "name": "တောက်တောက်",
-      "price": 25000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 10060,
-      "name": "ထမင်းကြမ်း ပွဲကြီး",
-      "price": 25000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 10035,
-      "name": "ထမင်းကြော် ကြက်/ဝက်",
-      "price": 7000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40001,
-      "name": "ထမင်းဆီဆမ်း",
-      "price": 5000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40004,
-      "name": "ထမင်းပေါင်း (မန္တလေး)",
-      "price": 12000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40005,
-      "name": "ထမင်းပေါင်း (ရန်ကုန်)",
-      "price": 12000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 10042,
-      "name": "ထမင်းဖြူ",
-      "price": 3000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40023,
-      "name": "နံရိုးကြော်",
-      "price": 20000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40063,
-      "name": "နံရိုးမီးတောက်",
-      "price": 35000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40087,
-      "name": "ပင်လယ်စာစုံသုပ်",
-      "price": 35000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 10048,
-      "name": "ပင်လယ်စာထမင်း",
-      "price": 15000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40019,
-      "name": "ပင်လယ်စာမြေအိုး",
-      "price": 25000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40085,
-      "name": "ပင်လယ်စာရှမ်း",
-      "price": 35000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40003,
-      "name": "ပသျှူး ကြက်/ဝက်",
-      "price": 12000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40027,
-      "name": "ပုဇွန်ကြော်",
-      "price": 30000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 10062,
-      "name": "ပုဇွန်ချဉ်စပ်",
-      "price": 35000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40077,
-      "name": "ပုဇွန်တန်ပူရာ",
-      "price": 35000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40017,
-      "name": "ပြည်လုံးချမ်းသာ",
-      "price": 30000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40071,
-      "name": "ပြောင်းဖူး",
-      "price": 10000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40065,
-      "name": "ပြောင်းဖူးထောင်း",
-      "price": 10000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 10021,
-      "name": "ဖီတန်သုပ်",
-      "price": 10000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40021,
-      "name": "မဆလာ",
-      "price": 15000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40051,
-      "name": "မာလာမောက်ချို",
-      "price": 35000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40050,
-      "name": "မာလာရှမ်းကော",
-      "price": 30000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40048,
-      "name": "မုန်ညှင်းချဉ်",
-      "price": 25000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40010,
-      "name": "မြေအိုးမြီးရှည်",
-      "price": 12000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 10031,
-      "name": "မှိုကန်စွန်း",
-      "price": 10000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40067,
-      "name": "ယံယံထောင်း",
-      "price": 10000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 10037,
-      "name": "ရွက်စုံကြော်",
-      "price": 10000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40058,
-      "name": "လယ်သမားဟင်း",
-      "price": 35000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40083,
-      "name": "လျှာ/ နား / ခေါင်း",
-      "price": 15000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40080,
-      "name": "ဝက် / ဂျူးလိပ်",
-      "price": 25000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40038,
-      "name": "ဝက်၃ မျိုးစပ်",
-      "price": 25000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40036,
-      "name": "ဝက်ခေါင်းသုပ်",
-      "price": 15000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40026,
-      "name": "ဝက်စတူး",
-      "price": 35000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40064,
-      "name": "ဝက်စုံထောင်း",
-      "price": 25000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40035,
-      "name": "ဝက်စုံသုပ်",
-      "price": 15000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40018,
-      "name": "ဝက်စုံအချိုချက်",
-      "price": 25000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40037,
-      "name": "ဝက်နားရွက်သုပ်",
-      "price": 15000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40039,
-      "name": "ဝက်အူမသုပ်",
-      "price": 15000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40033,
-      "name": "သီးဟိုဠ်စေ့ကြော်",
-      "price": 15000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40020,
-      "name": "သုံးမျိုး ခရုဆီ",
-      "price": 15000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40066,
-      "name": "အပ်မှိုထောင်း",
-      "price": 15000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40024,
-      "name": "အသားစုံခြောက်",
-      "price": 50000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40079,
-      "name": "အသားပြား",
-      "price": 25000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40029,
-      "name": "အသားပြားကြော်",
-      "price": 25000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40028,
-      "name": "အသားလုံးကြော်",
-      "price": 25000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 40031,
-      "name": "အာလူးချောင်း",
-      "price": 10000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 10053,
-      "name": "အာလူးမာလာ",
-      "price": 15000,
-      "category": "Food",
-      "image": ""
-    },
-    {
-      "id": 10001,
-      "name": "ABC Beer",
-      "price": 7000,
-      "category": "Alcohol",
-      "image": ""
-    },
-    {
-      "id": 10014,
-      "name": "Black Shield",
-      "price": 3500,
-      "category": "Alcohol",
-      "image": ""
-    },
-    {
-      "id": 10005,
-      "name": "Black-Label",
-      "price": 230000,
-      "category": "Alcohol",
-      "image": ""
-    },
-    {
-      "id": 10000,
-      "name": "C-Beer",
-      "price": 2500,
-      "category": "Alcohol",
-      "image": ""
-    },
-    {
-      "id": 10028,
-      "name": "C(T)-Up/Down",
-      "price": 30000,
-      "category": "Alcohol",
-      "image": ""
-    },
-    {
-      "id": 10027,
-      "name": "C(T)-",
-      "price": 25000,
-      "category": "Alcohol",
-      "image": ""
-    },
-    {
-      "id": 10026,
-      "name": "C(:)-up/down",
-      "price": 15000,
-      "category": "Alcohol",
-      "image": ""
-    },
-    {
-      "id": 10025,
-      "name": "C[ကြား]-ဆိုင်စျေး",
-      "price": 12500,
-      "category": "Alcohol",
-      "image": ""
-    },
-    {
-      "id": 10065,
-      "name": "Dann5 (1P)",
-      "price": 2500,
-      "category": "Alcohol",
-      "image": ""
-    },
-    {
-      "id": 10006,
-      "name": "Double-Black",
-      "price": 260000,
-      "category": "Alcohol",
-      "image": ""
-    },
-    {
-      "id": 10013,
-      "name": "DUNFIFE",
-      "price": 28000,
-      "category": "Alcohol",
-      "image": ""
-    },
-    {
-      "id": 10003,
-      "name": "Full-Moon",
-      "price": 7000,
-      "category": "Alcohol",
-      "image": ""
-    },
-    {
-      "id": 10007,
-      "name": "Gold-Label",
-      "price": 330000,
-      "category": "Alcohol",
-      "image": ""
-    },
-    {
-      "id": 10011,
-      "name": "Grand Royal Sherry",
-      "price": 28000,
-      "category": "Alcohol",
-      "image": ""
-    },
-    {
-      "id": 10012,
-      "name": "Grand Sherry 1/2",
-      "price": 14000,
-      "category": "Alcohol",
-      "image": ""
-    },
-    {
-      "id": 10009,
-      "name": "Grand (p)",
-      "price": 16000,
-      "category": "Alcohol",
-      "image": ""
-    },
-    {
-      "id": 10010,
-      "name": "Grand (p) 1/2",
-      "price": 8000,
-      "category": "Alcohol",
-      "image": ""
-    },
-    {
-      "id": 10049,
-      "name": "Myanmar ပုလင်း",
-      "price": 5000,
-      "category": "Alcohol",
-      "image": ""
-    },
-    {
-      "id": 10004,
-      "name": "Red-Label",
-      "price": 130000,
-      "category": "Alcohol",
-      "image": ""
-    },
-    {
-      "id": 10030,
-      "name": "Red (1P)",
-      "price": 9000,
-      "category": "Alcohol",
-      "image": ""
-    },
-    {
-      "id": 10032,
-      "name": "S-G",
-      "price": 3000,
-      "category": "Alcohol",
-      "image": ""
-    },
-    {
-      "id": 10002,
-      "name": "Tiger",
-      "price": 6000,
-      "category": "Alcohol",
-      "image": ""
-    },
-    {
-      "id": 50003,
-      "name": "Carabao",
-      "price": 3500,
-      "category": "Drink",
-      "image": ""
-    },
-    {
-      "id": 10024,
-      "name": "Cola",
-      "price": 3000,
-      "category": "Drink",
-      "image": ""
-    },
-    {
-      "id": 10045,
-      "name": "Ice Coffee",
-      "price": 3000,
-      "category": "Drink",
-      "image": ""
-    },
-    {
-      "id": 50004,
-      "name": "Lipo",
-      "price": 3500,
-      "category": "Drink",
-      "image": ""
-    },
-    {
-      "id": 50005,
-      "name": "Shark",
-      "price": 3000,
-      "category": "Drink",
-      "image": ""
-    },
-    {
-      "id": 50002,
-      "name": "SunKist",
-      "price": 3000,
-      "category": "Drink",
+      "category": "🍲🥘Food",
       "image": ""
     },
     {
       "id": 10047,
-      "name": "1 Night တည်းခိုခ",
-      "price": 280000,
-      "category": "Room",
+      "name": "1 Night",
+      "price": 300000,
+      "category": "Night",
       "image": ""
     },
     {
-      "id": 50012,
-      "name": "No. 102 အခန်းခ",
-      "price": 45000,
-      "category": "Room",
+      "id": 10070,
+      "name": "1/2 Ktv  Section",
+      "price": 25000,
+      "category": "🎤KTV",
       "image": ""
     },
     {
-      "id": 50013,
-      "name": "No. 103 အခန်းခ",
-      "price": 45000,
-      "category": "Room",
-      "image": ""
-    },
-    {
-      "id": 50014,
-      "name": "No. 104 အခန်းခ",
-      "price": 35000,
-      "category": "Room",
-      "image": ""
-    },
-    {
-      "id": 50015,
-      "name": "No. 105 အခန်းခ",
-      "price": 45000,
-      "category": "Room",
-      "image": ""
-    },
-    {
-      "id": 50016,
-      "name": "No. 106 အခန်းခ",
-      "price": 35000,
-      "category": "Room",
-      "image": ""
-    },
-    {
-      "id": 50017,
-      "name": "No. 107 အခန်းခ",
-      "price": 35000,
-      "category": "Room",
-      "image": ""
-    },
-    {
-      "id": 50018,
-      "name": "No. 108 အခန်းခ",
-      "price": 35000,
-      "category": "Room",
-      "image": ""
-    },
-    {
-      "id": 50019,
-      "name": "No. 109 အခန်းခ",
-      "price": 35000,
-      "category": "Room",
-      "image": ""
-    },
-    {
-      "id": 50020,
-      "name": "No. 110 အခန်းခ",
-      "price": 35000,
-      "category": "Room",
-      "image": ""
-    },
-    {
-      "id": 50021,
-      "name": "No. 201 အခန်းခ",
-      "price": 45000,
-      "category": "Room",
-      "image": ""
-    },
-    {
-      "id": 50022,
-      "name": "No. 202 အခန်းခ",
-      "price": 80000,
-      "category": "Room",
-      "image": ""
-    },
-    {
-      "id": 50023,
-      "name": "No. 203 အခန်းခ",
-      "price": 90000,
-      "category": "Room",
-      "image": ""
-    },
-    {
-      "id": 50024,
-      "name": "No. 204 အခန်းခ",
-      "price": 35000,
-      "category": "Room",
-      "image": ""
-    },
-    {
-      "id": 50025,
-      "name": "No. 205 အခန်းခ",
-      "price": 45000,
-      "category": "Room",
-      "image": ""
-    },
-    {
-      "id": 50026,
-      "name": "No. 206 အခန်းခ",
-      "price": 35000,
-      "category": "Room",
-      "image": ""
-    },
-    {
-      "id": 50027,
-      "name": "No. 207 အခန်းခ",
-      "price": 35000,
-      "category": "Room",
-      "image": ""
-    },
-    {
-      "id": 50028,
-      "name": "No. 208 အခန်းခ",
-      "price": 35000,
-      "category": "Room",
-      "image": ""
-    },
-    {
-      "id": 50029,
-      "name": "No. 209 အခန်းခ",
-      "price": 35000,
-      "category": "Room",
-      "image": ""
-    },
-    {
-      "id": 50030,
-      "name": "No. 210 အခန်းခ",
-      "price": 35000,
-      "category": "Room",
+      "id": 10052,
+      "name": "12H ကဒ်",
+      "price": 5000,
+      "category": "🔗အင်တာနက်",
       "image": ""
     },
     {
       "id": 10033,
-      "name": "KTV 1g",
+      "name": "1g",
       "price": 30000,
-      "category": "KTV",
-      "image": ""
-    },
-    {
-      "id": 10015,
-      "name": "KTV K-2",
-      "price": 50000,
-      "category": "KTV",
-      "image": ""
-    },
-    {
-      "id": 10063,
-      "name": "KTV select",
-      "price": 300000,
-      "category": "KTV",
-      "image": ""
-    },
-    {
-      "id": 50009,
-      "name": "Mevius Blue (ဗူး)",
-      "price": 3000,
-      "category": "Cigarettes",
-      "image": ""
-    },
-    {
-      "id": 50007,
-      "name": "Mevius Blue (လိပ်)",
-      "price": 15000,
-      "category": "Cigarettes",
-      "image": ""
-    },
-    {
-      "id": 50008,
-      "name": "Mevius Yellow (ဗူး)",
-      "price": 2000,
-      "category": "Cigarettes",
-      "image": ""
-    },
-    {
-      "id": 50006,
-      "name": "Mevius Yellow (လိပ်)",
-      "price": 7000,
-      "category": "Cigarettes",
-      "image": ""
-    },
-    {
-      "id": 50011,
-      "name": "Napoli (ဗူး)",
-      "price": 1000,
-      "category": "Cigarettes",
-      "image": ""
-    },
-    {
-      "id": 50010,
-      "name": "Napoli (လိပ်)",
-      "price": 4000,
-      "category": "Cigarettes",
+      "category": "🎤KTV",
       "image": ""
     },
     {
       "id": 10046,
       "name": "1H Starlink",
       "price": 1000,
-      "category": "Internet",
+      "category": "🔗အင်တာနက်",
       "image": ""
     },
     {
-      "id": 10059,
-      "name": "Starlink အင်တာနက်",
+      "id": 40043,
+      "name": "၃မျိုးစပ် လွတ်",
+      "price": 15000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 10001,
+      "name": "ABC (ဗူး)",
+      "price": 7000,
+      "category": "🍺 ALCOHOL \u0026 SPIRITS",
+      "image": ""
+    },
+    {
+      "id": 10014,
+      "name": "Black Shield",
+      "price": 3500,
+      "category": "🍺 ALCOHOL \u0026 SPIRITS",
+      "image": ""
+    },
+    {
+      "id": 10005,
+      "name": "Black-Label",
+      "price": 230000,
+      "category": "🍺 ALCOHOL \u0026 SPIRITS",
+      "image": ""
+    },
+    {
+      "id": 10000,
+      "name": "C-Beer",
+      "price": 2500,
+      "category": "🍺 ALCOHOL \u0026 SPIRITS",
+      "image": ""
+    },
+    {
+      "id": 10028,
+      "name": "C(T)-Up/Down",
+      "price": 30000,
+      "category": "🍺 ALCOHOL \u0026 SPIRITS",
+      "image": ""
+    },
+    {
+      "id": 10027,
+      "name": "C(T)-ဆိုင်စျေး",
+      "price": 25000,
+      "category": "🍺 ALCOHOL \u0026 SPIRITS",
+      "image": ""
+    },
+    {
+      "id": 10026,
+      "name": "C(ကြား)-up/down",
+      "price": 15000,
+      "category": "🍺 ALCOHOL \u0026 SPIRITS",
+      "image": ""
+    },
+    {
+      "id": 10025,
+      "name": "C[ကြား]-ဆိုင်စျေး",
+      "price": 12500,
+      "category": "🍺 ALCOHOL \u0026 SPIRITS",
+      "image": ""
+    },
+    {
+      "id": 10069,
+      "name": "C[ဗူး]",
+      "price": 9000,
+      "category": "🍺 ALCOHOL \u0026 SPIRITS",
+      "image": ""
+    },
+    {
+      "id": 50003,
+      "name": "Carabao",
+      "price": 3500,
+      "category": "🍨အအေး",
+      "image": ""
+    },
+    {
+      "id": 10024,
+      "name": "Cola",
+      "price": 3000,
+      "category": "🍨အအေး",
+      "image": ""
+    },
+    {
+      "id": 10065,
+      "name": "Dann5 (1P)",
+      "price": 2500,
+      "category": "🍺 ALCOHOL \u0026 SPIRITS",
+      "image": ""
+    },
+    {
+      "id": 10006,
+      "name": "Double-Black",
+      "price": 270000,
+      "category": "🍺 ALCOHOL \u0026 SPIRITS",
+      "image": ""
+    },
+    {
+      "id": 10013,
+      "name": "DUNFIFE",
+      "price": 28000,
+      "category": "🍺 ALCOHOL \u0026 SPIRITS",
+      "image": ""
+    },
+    {
+      "id": 10003,
+      "name": "Full -Moon",
+      "price": 7000,
+      "category": "🍺 ALCOHOL \u0026 SPIRITS",
+      "image": ""
+    },
+    {
+      "id": 10007,
+      "name": "Gold-Label",
+      "price": 330000,
+      "category": "🍺 ALCOHOL \u0026 SPIRITS",
+      "image": ""
+    },
+    {
+      "id": 10011,
+      "name": "grand royal sherry cask",
+      "price": 28000,
+      "category": "🍺 ALCOHOL \u0026 SPIRITS",
+      "image": ""
+    },
+    {
+      "id": 10012,
+      "name": "Grand Sherry 1/2",
+      "price": 14000,
+      "category": "🍺 ALCOHOL \u0026 SPIRITS",
+      "image": ""
+    },
+    {
+      "id": 10009,
+      "name": "Grand(ပြာ)[ထောင့်]",
+      "price": 16000,
+      "category": "🍺 ALCOHOL \u0026 SPIRITS",
+      "image": ""
+    },
+    {
+      "id": 10010,
+      "name": "Grand(ပြာ)1/2",
+      "price": 8000,
+      "category": "🍺 ALCOHOL \u0026 SPIRITS",
+      "image": ""
+    },
+    {
+      "id": 10045,
+      "name": "Ice Coffer",
+      "price": 3000,
+      "category": "🍨အအေး",
+      "image": ""
+    },
+    {
+      "id": 10041,
+      "name": "Indo ကြက်ကြော်",
+      "price": 45000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 10015,
+      "name": "KTV Section Fee",
+      "price": 50000,
+      "category": "🎤KTV",
+      "image": ""
+    },
+    {
+      "id": 50004,
+      "name": "Lipo",
+      "price": 3500,
+      "category": "🍨အအေး",
+      "image": ""
+    },
+    {
+      "id": 50009,
+      "name": "Mevius Blue (ပွဲ)",
+      "price": 3000,
+      "category": "🚬 CIGARETTES",
+      "image": ""
+    },
+    {
+      "id": 50007,
+      "name": "Mevius Blue (ဗူး)",
+      "price": 15000,
+      "category": "🚬 CIGARETTES",
+      "image": ""
+    },
+    {
+      "id": 50008,
+      "name": "Mevius Yellow (ပွဲ)",
       "price": 2000,
-      "category": "Internet",
+      "category": "🚬 CIGARETTES",
       "image": ""
     },
     {
-      "id": 10052,
-      "name": "အင်တာနက် ၁၂",
+      "id": 50006,
+      "name": "Mevius Yellow (ဗူး)",
+      "price": 7000,
+      "category": "🚬 CIGARETTES",
+      "image": ""
+    },
+    {
+      "id": 10076,
+      "name": "Myanmar [Up/Down]",
+      "price": 7000,
+      "category": "🍺 ALCOHOL \u0026 SPIRITS",
+      "image": ""
+    },
+    {
+      "id": 10049,
+      "name": "Myanmar ပုလင်း",
       "price": 5000,
-      "category": "Internet",
+      "category": "🍺 ALCOHOL \u0026 SPIRITS",
       "image": ""
     },
     {
-      "id": 10017,
-      "name": "Service 1",
-      "price": 5000,
-      "category": "Service",
+      "id": 50011,
+      "name": "Napoli (ပွဲ)",
+      "price": 1000,
+      "category": "🚬 CIGARETTES",
       "image": ""
     },
     {
-      "id": 10016,
-      "name": "Service 2",
-      "price": 10000,
-      "category": "Service",
+      "id": 50010,
+      "name": "Napoli (ဗူး)",
+      "price": 4000,
+      "category": "🚬 CIGARETTES",
+      "image": ""
+    },
+    {
+      "id": 50012,
+      "name": "No. 102",
+      "price": 45000,
+      "category": "ROOM-FEE",
+      "image": ""
+    },
+    {
+      "id": 50013,
+      "name": "No. 103",
+      "price": 80000,
+      "category": "ROOM-FEE",
+      "image": ""
+    },
+    {
+      "id": 50014,
+      "name": "No. 104",
+      "price": 35000,
+      "category": "ROOM-FEE",
+      "image": ""
+    },
+    {
+      "id": 50015,
+      "name": "No. 105",
+      "price": 45000,
+      "category": "ROOM-FEE",
+      "image": ""
+    },
+    {
+      "id": 50016,
+      "name": "No. 106",
+      "price": 35000,
+      "category": "ROOM-FEE",
+      "image": ""
+    },
+    {
+      "id": 50017,
+      "name": "No. 107",
+      "price": 35000,
+      "category": "ROOM-FEE",
+      "image": ""
+    },
+    {
+      "id": 50018,
+      "name": "No. 108",
+      "price": 35000,
+      "category": "ROOM-FEE",
+      "image": ""
+    },
+    {
+      "id": 50019,
+      "name": "No. 109",
+      "price": 35000,
+      "category": "ROOM-FEE",
+      "image": ""
+    },
+    {
+      "id": 50020,
+      "name": "No. 110",
+      "price": 35000,
+      "category": "ROOM-FEE",
+      "image": ""
+    },
+    {
+      "id": 50021,
+      "name": "No. 201",
+      "price": 45000,
+      "category": "ROOM-FEE",
+      "image": ""
+    },
+    {
+      "id": 50022,
+      "name": "No. 202",
+      "price": 80000,
+      "category": "ROOM-FEE",
+      "image": ""
+    },
+    {
+      "id": 50023,
+      "name": "No. 203",
+      "price": 90000,
+      "category": "ROOM-FEE",
+      "image": ""
+    },
+    {
+      "id": 50024,
+      "name": "No. 204",
+      "price": 35000,
+      "category": "ROOM-FEE",
+      "image": ""
+    },
+    {
+      "id": 50025,
+      "name": "No. 205",
+      "price": 45000,
+      "category": "ROOM-FEE",
+      "image": ""
+    },
+    {
+      "id": 50026,
+      "name": "No. 206",
+      "price": 35000,
+      "category": "ROOM-FEE",
+      "image": ""
+    },
+    {
+      "id": 50027,
+      "name": "No. 207",
+      "price": 35000,
+      "category": "ROOM-FEE",
+      "image": ""
+    },
+    {
+      "id": 50028,
+      "name": "No. 208",
+      "price": 35000,
+      "category": "ROOM-FEE",
+      "image": ""
+    },
+    {
+      "id": 50029,
+      "name": "No. 209",
+      "price": 35000,
+      "category": "ROOM-FEE",
+      "image": ""
+    },
+    {
+      "id": 50030,
+      "name": "No. 210",
+      "price": 35000,
+      "category": "ROOM-FEE",
+      "image": ""
+    },
+    {
+      "id": 10079,
+      "name": "No106...",
+      "price": 40000,
+      "category": "ROOM-FEE",
+      "image": ""
+    },
+    {
+      "id": 10004,
+      "name": "Red-Label",
+      "price": 130000,
+      "category": "🍺 ALCOHOL \u0026 SPIRITS",
+      "image": ""
+    },
+    {
+      "id": 10030,
+      "name": "Red(1P)",
+      "price": 9000,
+      "category": "🍺 ALCOHOL \u0026 SPIRITS",
+      "image": ""
+    },
+    {
+      "id": 10063,
+      "name": "select",
+      "price": 300000,
+      "category": "🎤KTV",
+      "image": ""
+    },
+    {
+      "id": 10056,
+      "name": "Service",
+      "price": 3000,
+      "category": "Service-Fee",
       "image": ""
     },
     {
       "id": 10018,
       "name": "Service 3",
       "price": 15000,
-      "category": "Service",
+      "category": "Service-Fee",
+      "image": ""
+    },
+    {
+      "id": 10017,
+      "name": "Service1",
+      "price": 5000,
+      "category": "Service-Fee",
+      "image": ""
+    },
+    {
+      "id": 10016,
+      "name": "Service2",
+      "price": 10000,
+      "category": "Service-Fee",
       "image": ""
     },
     {
       "id": 10019,
-      "name": "Service 4",
+      "name": "Service4",
       "price": 20000,
-      "category": "Service",
+      "category": "Service-Fee",
+      "image": ""
+    },
+    {
+      "id": 50005,
+      "name": "Shark",
+      "price": 3000,
+      "category": "🍨အအေး",
+      "image": ""
+    },
+    {
+      "id": 10050,
+      "name": "Sherry p",
+      "price": 2000,
+      "category": "🍺 ALCOHOL \u0026 SPIRITS",
+      "image": ""
+    },
+    {
+      "id": 50002,
+      "name": "SunKist",
+      "price": 3000,
+      "category": "🍨အအေး",
+      "image": ""
+    },
+    {
+      "id": 10002,
+      "name": "Tiger (ဗူး)",
+      "price": 6000,
+      "category": "🍺 ALCOHOL \u0026 SPIRITS",
+      "image": ""
+    },
+    {
+      "id": 10039,
+      "name": "ကန်စွန်းပလိန်း",
+      "price": 6000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40073,
+      "name": "ကိုက်လန်",
+      "price": 8000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40045,
+      "name": "ကိုက်လန်သုပ်",
+      "price": 10000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40011,
+      "name": "ကုန်းဘောင်",
+      "price": 25000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40040,
+      "name": "ကျောက်ပွင့်သုပ်",
+      "price": 10000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40060,
+      "name": "ကြက် / ခွေးထောက်ဟင်းရည်",
+      "price": 35000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 10044,
+      "name": "ကြက် ၃ မျိုးစပ်",
+      "price": 25000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 10051,
+      "name": "ကြက် ဟတ်",
+      "price": 5000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 10058,
+      "name": "ကြက်-ဟတ် 1 လုံး",
+      "price": 1000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40042,
+      "name": "ကြက်/ဝက် အသားသုပ်",
+      "price": 20000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40053,
+      "name": "ကြက်/ဝက်ပင်စိမ်း",
+      "price": 25000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40022,
+      "name": "ကြက်ခြောက်ကြော်",
+      "price": 25000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40070,
+      "name": "ကြက်ခြောက်စပ်",
+      "price": 25000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 10022,
+      "name": "ကြက်တုံယမ်း",
+      "price": 30000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 10078,
+      "name": "ကြက်ပေါင်းခေါက်ဆွဲ",
+      "price": 25000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40009,
+      "name": "ကြက်မဲကြော်",
+      "price": 10000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 10023,
+      "name": "ကြက်သားပြားကြော်",
+      "price": 25000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 10067,
+      "name": "ကြက်ဥမွှေကြော်",
+      "price": 10000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40059,
+      "name": "ကြံမဆိုင်ဆိုင်ဟင်းရည်",
+      "price": 35000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 10057,
+      "name": "ကြာဇံကြော် (ကြက်/ဝက်)",
+      "price": 8000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40008,
+      "name": "ကြေးအိုးဆီချက်",
+      "price": 12000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40007,
+      "name": "ကြေးအိုးပြုတ်",
+      "price": 12000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40002,
+      "name": "ခေါက်ဆွဲကြော်",
+      "price": 8000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 10054,
+      "name": "ခါကြက်ဥဆလပ်",
+      "price": 3000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40046,
+      "name": "ခါကြက်ဥသုပ်",
+      "price": 10000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40012,
+      "name": "ချဉ်စပ်",
+      "price": 25000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40014,
+      "name": "ချိုချဉ်",
+      "price": 25000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 10066,
+      "name": "ဂေါ်ညွန့်",
+      "price": 10000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40016,
+      "name": "ငရုတ်ပွ",
+      "price": 20000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 10064,
+      "name": "ငါး ဒုက္ခ",
+      "price": 35000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40049,
+      "name": "ငါးခေါင်းမျှစ်ချဉ်",
+      "price": 35000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40082,
+      "name": "ငါးခဲပါတ်",
+      "price": 40000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40030,
+      "name": "ငါးချဥ့်ခြောက်စပ်",
+      "price": 25000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 10008,
+      "name": "ငါးချိုချဥ်",
+      "price": 35000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40044,
+      "name": "ငါးဖယ်သုပ်",
+      "price": 15000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40032,
+      "name": "ငါးမုန့်ကြော်",
+      "price": 10000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 10061,
+      "name": "ငါးသံပုရာ",
+      "price": 35000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40076,
+      "name": "ငါးသားကြော်သုပ်",
+      "price": 35000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 10032,
+      "name": "စပ်ကျား",
+      "price": 3000,
+      "category": "🍺 ALCOHOL \u0026 SPIRITS",
+      "image": ""
+    },
+    {
+      "id": 40062,
+      "name": "စွန်တန်ဟင်းရည် (ရှယ်)",
+      "price": 3000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 10040,
+      "name": "ဆိတ်မွှထောင်း",
+      "price": 25000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40006,
+      "name": "ဆီချက်",
+      "price": 7000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 10071,
+      "name": "တာဝါ",
+      "price": 2000,
+      "category": "Service-Fee",
+      "image": ""
+    },
+    {
+      "id": 40056,
+      "name": "တုံယမ်းဟင်းရည်",
+      "price": 35000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40013,
+      "name": "တောက်တောက်",
+      "price": 25000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 10060,
+      "name": "ထမင်းကြမ်း ပွဲကြီး",
+      "price": 25000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 10035,
+      "name": "ထမင်းကြော် ကြက်orဝက်",
+      "price": 8000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40001,
+      "name": "ထမင်းဆီဆမ်း",
+      "price": 5000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40004,
+      "name": "ထမင်းပေါင်း (မန္တလေး)",
+      "price": 12000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40005,
+      "name": "ထမင်းပေါင်း (ရန်ကုန်)",
+      "price": 12000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 10042,
+      "name": "ထမင်းဖြူ",
+      "price": 3000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40025,
+      "name": "နံကင်  ပြန်/ကြော်/ချက်/သုပ်",
+      "price": 25000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40023,
+      "name": "နံရိုးကြော်",
+      "price": 20000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40063,
+      "name": "နံရိုးမီးတောက်",
+      "price": 35000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40087,
+      "name": "ပင်လယ်စာစုံသုပ်",
+      "price": 35000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 10048,
+      "name": "ပင်လယ်စာထမင်းကြော်",
+      "price": 15000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40019,
+      "name": "ပင်လယ်စာမြေအိုး",
+      "price": 25000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 10036,
+      "name": "ပင်လယ်စာရှမ်းကော",
+      "price": 35000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40068,
+      "name": "ပင်လယ်စာအစုံထောင်း",
+      "price": 35000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40034,
+      "name": "ပင်လယ်စာအစုံသုပ်",
+      "price": 35000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40003,
+      "name": "ပသျှူး ကြက်/ဝက်",
+      "price": 12000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40027,
+      "name": "ပုဇွန်ကြော်",
+      "price": 30000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 10062,
+      "name": "ပုဇွန်ချဥ်စပ်",
+      "price": 35000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40077,
+      "name": "ပုဇွန်တန်ပူရာ",
+      "price": 35000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 10055,
+      "name": "ပုဇွန်အစိမ်းသုပ်",
+      "price": 30000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 10075,
+      "name": "ပုရစ်ကြော်",
+      "price": 15000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 10080,
+      "name": "ပုရစ်ကြော်",
+      "price": 20000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40052,
+      "name": "ပဲငပိ",
+      "price": 25000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 10077,
+      "name": "ပဲနို့",
+      "price": 2500,
+      "category": "🍨အအေး",
+      "image": ""
+    },
+    {
+      "id": 40017,
+      "name": "ပြည်လုံးချမ်းသာ",
+      "price": 30000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 10029,
+      "name": "ပြာ (1P)",
+      "price": 1500,
+      "category": "🍺 ALCOHOL \u0026 SPIRITS",
+      "image": ""
+    },
+    {
+      "id": 40071,
+      "name": "ပြောင်းဖူး",
+      "price": 10000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40065,
+      "name": "ပြောင်းဖူးထောင်း",
+      "price": 10000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 10021,
+      "name": "ဖီတန်သုပ်",
+      "price": 10000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40021,
+      "name": "မဆလာ",
+      "price": 15000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40051,
+      "name": "မာလာမောက်ချို",
+      "price": 35000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40050,
+      "name": "မာလာရှမ်းကော",
+      "price": 30000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 10059,
+      "name": "မီးခြစ်",
+      "price": 2000,
+      "category": "🔗အင်တာနက်",
+      "image": ""
+    },
+    {
+      "id": 10081,
+      "name": "မီးခြစ်",
+      "price": 1000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40041,
+      "name": "မီတန်သုပ်",
+      "price": 10000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40048,
+      "name": "မုန်ညှင်းချဉ်",
+      "price": 25000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40061,
+      "name": "မုန်ညှင်းဖြူ / ကြက်ဥ / ငံပြားဟင်းရည်",
+      "price": 15000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 10020,
+      "name": "မြေပဲ",
+      "price": 1000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40010,
+      "name": "မြေအိုးမြှီးရှည်",
+      "price": 12000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 10031,
+      "name": "မှိုကန်စွန်း",
+      "price": 10000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 10074,
+      "name": "ယမ်ယမ်ကြော်",
+      "price": 10000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40067,
+      "name": "ယံယံထောင်း",
+      "price": 10000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 10043,
+      "name": "ရေခဲ",
+      "price": 3000,
+      "category": "🍨အအေး",
+      "image": ""
+    },
+    {
+      "id": 50001,
+      "name": "ရေသန့်",
+      "price": 1500,
+      "category": "🍨အအေး",
+      "image": ""
+    },
+    {
+      "id": 10037,
+      "name": "ရွက်စုံကြော်",
+      "price": 10000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 10072,
+      "name": "ရွှေ 1P",
+      "price": 2500,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 10038,
+      "name": "ရွှေ(1P)",
+      "price": 2000,
+      "category": "🍺 ALCOHOL \u0026 SPIRITS",
+      "image": ""
+    },
+    {
+      "id": 40085,
+      "name": "ရှမ်းကော ပင်လယ်စာ",
+      "price": 35000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40058,
+      "name": "လယ်သမားဟင်းရည်",
+      "price": 35000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40083,
+      "name": "လျှာ / နား / ခေါင်း",
+      "price": 15000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40080,
+      "name": "ဝက် / ဂျူးလိပ်",
+      "price": 25000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40038,
+      "name": "ဝက်၃ မျိုးစပ်",
+      "price": 25000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40036,
+      "name": "ဝက်ခေါင်းသုပ်",
+      "price": 15000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 10068,
+      "name": "ဝက်စဉ်းကော",
+      "price": 25000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40026,
+      "name": "ဝက်စတူး",
+      "price": 35000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40064,
+      "name": "ဝက်စုံထောင်း",
+      "price": 25000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40035,
+      "name": "ဝက်စုံသုပ်",
+      "price": 15000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40018,
+      "name": "ဝက်စုံအချိုချက်",
+      "price": 25000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40037,
+      "name": "ဝက်နားရွက်သုပ်",
+      "price": 15000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40081,
+      "name": "ဝက်မှို",
+      "price": 25000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 10073,
+      "name": "ဝက်သားပြားကြော်",
+      "price": 25000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40039,
+      "name": "ဝက်အူမသုပ်",
+      "price": 15000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 10034,
+      "name": "သံပရာသီး",
+      "price": 1000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40033,
+      "name": "သီးဟိုဠ်စေ့ကြော်",
+      "price": 15000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40020,
+      "name": "သုံးမျိုး ခရုဆီ",
+      "price": 15000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40084,
+      "name": "အကူ",
+      "price": 15000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40054,
+      "name": "အင်ဒိုကြက်ကြော်",
+      "price": 40000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40066,
+      "name": "အပ်မှိုထောင်း",
+      "price": 15000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40047,
+      "name": "အသား၃မျိုးစပ်",
+      "price": 25000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40024,
+      "name": "အသားစုံခြောက်ကြော်",
+      "price": 50000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40091,
+      "name": "အသားတု",
+      "price": 0,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40079,
+      "name": "အသားပြား",
+      "price": 25000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40029,
+      "name": "အသားပြားကြော်",
+      "price": 25000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40028,
+      "name": "အသားလုံးကြော်",
+      "price": 25000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 40031,
+      "name": "အာလူးချောင်းကြော်",
+      "price": 10000,
+      "category": "🍲🥘Food",
+      "image": ""
+    },
+    {
+      "id": 10053,
+      "name": "အာလူးမာလာ",
+      "price": 15000,
+      "category": "🍲🥘Food",
       "image": ""
     }
   ],
