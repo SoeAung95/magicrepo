@@ -36,7 +36,7 @@
       <img id="shopLogoImg" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230f172a' stroke='%23eab308' stroke-width='5'/><text x='50' y='46' font-size='28' text-anchor='middle' fill='%23eab308' font-family='sans-serif' font-weight='bold'>SM</text><text x='50' y='76' font-size='15' text-anchor='middle' fill='%2338bdf8' font-family='sans-serif' font-weight='bold'>POS</text></svg>" style="height: 40px; width: 40px; object-fit: cover; border-radius: 8px; cursor: pointer;" alt="Logo" onclick="openZywellSettings()" title="ပုံနှင့် ဆက်တင်ပြောင်းရန် နှိပ်ပါ">
       <div>
         <h6 class="fw-bold mb-0 text-info"><span id="lblShopName">Sky Mother POS</span> <span class="badge bg-success" style="font-size: 9px;">HD Print</span></h6>
-        <small class="text-secondary" id="lblShopTagline" style="font-size: 11px;">၃ ထပ် စားသောက်ဆိုင်နှင့် တည်းခိုခန်း</small>
+        <small class="text-secondary" id="lblShopTagline" style="font-size: 11px;">Hotel & Restaurant</small>
       </div>
       <span class="badge bg-dark border border-secondary text-light ms-1 p-2 btn-live" onclick="promptStaff()" style="cursor: pointer;">
         <i class="fas fa-user-shield text-info me-1"></i><span id="lblStaff">Soe Aung</span>
@@ -523,7 +523,7 @@
       const scale = parseFloat(localStorage.getItem('sm_font_scale') || '1.18');
       const printLogo = (localStorage.getItem('sm_print_logo') !== 'false');
       const shopName = localStorage.getItem('sm_shop_name') || 'Sky Mother';
-      const shopTagline = localStorage.getItem('sm_shop_tagline') || '၃ ထပ် စားသောက်ဆိုင်နှင့် တည်းခိုခန်း';
+      const shopTagline = localStorage.getItem('sm_shop_tagline') || 'Hotel & Restaurant';
       const shopPhone = localStorage.getItem('sm_shop_phone') || '09-340339520';
       const shopKpay = localStorage.getItem('sm_shop_kpay') || 'KPay: 09-783222755';
       const shopFooter = localStorage.getItem('sm_shop_footer') || 'ကျေးဇူးတင်ပါသည် - Thank You!';
@@ -1051,7 +1051,7 @@
           </div>
           <div class="mb-2">
             <label class="small text-secondary">ဆိုင်အမျိုးအစား / လိပ်စာ (Subtitle):</label>
-            <input type="text" id="inpShopTagline" class="form-control form-control-sm bg-black text-white border-secondary" placeholder="၃ ထပ် စားသောက်ဆိုင်နှင့် တည်းခိုခန်း">
+            <input type="text" id="inpShopTagline" class="form-control form-control-sm bg-black text-white border-secondary" placeholder="Hotel & Restaurant">
           </div>
           <div class="row g-2 mb-2">
             <div class="col-6">
@@ -1090,7 +1090,7 @@
         let tempLogoData = '';
     function openZywellSettings() {
       document.getElementById('inpShopName').value = localStorage.getItem('sm_shop_name') || 'Sky Mother';
-      document.getElementById('inpShopTagline').value = localStorage.getItem('sm_shop_tagline') || '၃ ထပ် စားသောက်ဆိုင်နှင့် တည်းခိုခန်း';
+      document.getElementById('inpShopTagline').value = localStorage.getItem('sm_shop_tagline') || 'Hotel & Restaurant';
       document.getElementById('inpShopPhone').value = localStorage.getItem('sm_shop_phone') || '09-340339520';
       document.getElementById('inpShopKpay').value = localStorage.getItem('sm_shop_kpay') || 'KPay: 09-783222755';
       document.getElementById('inpShopFooter').value = localStorage.getItem('sm_shop_footer') || 'ကျေးဇူးတင်ပါသည် - နောက်လည်း လာအားပေးပါဦးခင်ဗျာ';
@@ -1126,7 +1126,7 @@
 
     function saveNewShopSettings() {
       const name = document.getElementById('inpShopName').value.trim() || 'Sky Mother';
-      const tagline = document.getElementById('inpShopTagline').value.trim() || '၃ ထပ် စားသောက်ဆိုင်နှင့် တည်းခိုခန်း';
+      const tagline = document.getElementById('inpShopTagline').value.trim() || 'Hotel & Restaurant';
       const phone = document.getElementById('inpShopPhone').value.trim() || '09-340339520';
       const kpay = document.getElementById('inpShopKpay').value.trim();
       const footer = document.getElementById('inpShopFooter').value.trim() || 'Thank You!';
@@ -1262,7 +1262,7 @@
     let zwTempLogo = '';
     function openZywellSettings() {
       document.getElementById('zwShopName').value = localStorage.getItem('sm_shop_name') || 'Sky Mother';
-      document.getElementById('zwShopTagline').value = localStorage.getItem('sm_shop_tagline') || '၃ ထပ် စားသောက်ဆိုင်နှင့် တည်းခိုခန်း';
+      document.getElementById('zwShopTagline').value = localStorage.getItem('sm_shop_tagline') || 'Hotel & Restaurant';
       document.getElementById('zwShopPhone').value = localStorage.getItem('sm_shop_phone') || '09-340339520';
       document.getElementById('zwShopKpay').value = localStorage.getItem('sm_shop_kpay') || 'KPay: 09-783222755';
       document.getElementById('zwShopFooter').value = localStorage.getItem('sm_shop_footer') || 'ကျေးဇူးတင်ပါသည် - Thank You!';
@@ -1299,7 +1299,7 @@
 
     function zwSaveSettings() {
       localStorage.setItem('sm_shop_name', document.getElementById('zwShopName').value.trim() || 'Sky Mother');
-      localStorage.setItem('sm_shop_tagline', document.getElementById('zwShopTagline').value.trim() || '၃ ထပ် စားသောက်ဆိုင်နှင့် တည်းခိုခန်း');
+      localStorage.setItem('sm_shop_tagline', document.getElementById('zwShopTagline').value.trim() || 'Hotel & Restaurant');
       localStorage.setItem('sm_shop_phone', document.getElementById('zwShopPhone').value.trim() || '09-340339520');
       localStorage.setItem('sm_shop_kpay', document.getElementById('zwShopKpay').value.trim());
       localStorage.setItem('sm_shop_footer', document.getElementById('zwShopFooter').value.trim() || 'Thank You!');
